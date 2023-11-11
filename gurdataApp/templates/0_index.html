@@ -1,73 +1,92 @@
 {% load static %}
-    <!doctype html>
-    <html lang="tr" dir="ltr">
+<!doctype html>
+<html lang="tr" dir="ltr">
 
-    <head>
+<head>
 
-        <!-- META DATA -->
-        <meta charset="UTF-8">
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Gurdata">
-        <meta name="author" content="Gurdata">
-        <meta name="keywords" content="Gurdata">
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Gurdata">
+    <meta name="author" content="Gurdata">
+    <meta name="keywords" content="Gurdata">
 
-        <!-- FAVICON -->
-        <link rel="icon" href="../assets/landing/cropped-logo-fav-32x32.png" sizes="32x32"/>
-        <link rel="icon" href="../assets/landing/cropped-logo-fav-192x192.png" sizes="192x192"/>
-        <link rel="apple-touch-icon" href="../assets/landing/cropped-logo-fav-180x180.png"/>
-        <meta name="msapplication-TileImage" content="{% static 'assets/landing/cropped-logo-fav-270x270.png' %}"/>
+    <!-- FAVICON -->
+    <link rel="icon" href="../assets/landing/cropped-logo-fav-32x32.png" sizes="32x32" />
+    <link rel="icon" href="../assets/landing/cropped-logo-fav-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="../assets/landing/cropped-logo-fav-180x180.png" />
+    <meta name="msapplication-TileImage" content="{% static 'assets/landing/cropped-logo-fav-270x270.png' %}" />
 
-        <!-- TITLE -->
-        <title>GURDATA</title>
+    <!-- TITLE -->
+    <title>GURDATA</title>
 
-        <!-- BOOTSTRAP CSS -->
-        <link id="style" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
-        <!-- FONTS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-        <link href="https://fonts.googleapis.com/css?family=Inter:wght@500;600;700&amp;display=swap&amp;text=ABCÇDEFGĞHİIJKLMNOÖPRSŞTUÜVYZabcçdefgğhiıjklmnoöprsştuüvyz1234567890"
-              rel="stylesheet">
-<!--        <link rel="preload" href="../assets/fonts/Satoshi-Black.woff2" type="font/woff2" as="font" crossorigin="">-->
-<!--        <link rel="preload" href="../assets/fonts/Satoshi-Medium.woff2" type="font/woff2" as="font" crossorigin="">-->
-        <link rel="preload" href="{% static 'assets/fonts/Satoshi-Variable.woff2' %}" type="font/woff2" as="font" crossorigin="">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css?family=Inter:wght@500;600;700&amp;display=swap&amp;text=ABCÇDEFGĞHİIJKLMNOÖPRSŞTUÜVYZabcçdefgğhiıjklmnoöprsştuüvyz1234567890"
+        rel="stylesheet">
+    <!--        <link rel="preload" href="../assets/fonts/Satoshi-Black.woff2" type="font/woff2" as="font" crossorigin="">-->
+    <!--        <link rel="preload" href="../assets/fonts/Satoshi-Medium.woff2" type="font/woff2" as="font" crossorigin="">-->
+    <link rel="preload" href="{% static 'assets/fonts/Satoshi-Variable.woff2' %}" type="font/woff2" as="font"
+        crossorigin="">
 
-        <!-- STYLE CSS -->
-        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
-        <link href="{% static 'assets/css/landing.css' %}" rel="stylesheet"/>
+    <!-- STYLE CSS -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/landing.css' %}" rel="stylesheet" />
 
-        <!--- FONT-ICONS CSS -->
-        <!--    <link href="../assets/css/icons.css" rel="stylesheet" />-->
+    <!--- FONT-ICONS CSS -->
+    <!--    <link href="../assets/css/icons.css" rel="stylesheet" />-->
 
-        <!-- COLOR SKIN CSS -->
-        <!--    <link id="theme" rel="stylesheet" type="text/css" media="all" href="../assets/colors/color1.css" />-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- COLOR SKIN CSS -->
+    <!--    <link id="theme" rel="stylesheet" type="text/css" media="all" href="../assets/colors/color1.css" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    </head>
+</head>
 
-    <body class="app sidebar-mini ltr">
+<body class="app sidebar-mini ltr">
 
     <!-- MENU -->
     <nav class="menu d-flex justify-content-between align-items-center navbar navbar-expand-md">
-        <a class="navlogo" href="#"><img src="{% static 'assets/landing/logo.svg' %}"/></a>
+        <a class="navlogo" href="#"><img src="{% static 'assets/landing/logo.svg' %}" /></a>
 
-        <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="container-fluid align-items-start">
             <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
                 <ul class="navbar-nav d-flex align-items-start gap12">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#service">Hizmetler</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#service">Hizmetler</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#about">Hakkımızda</a></li>
                     <li class="nav-item"><a class="nav-link" href="#prices">Fiyatlar ve Paketler</a></li>
                     <li class="nav-item"><a class="nav-link" href="#sss">S.S.S.</a></li>
                 </ul>
             </div>
+
+            {% if user_data %}
+            
+            <h5  >Hoşgeldiniz {{ user_data }}</h5>
+            <a href = "{% url 'logout' %}" class = "btn btn-danger"><span>Çıkış Yap</span></a>
+            {% else %}
             <div id="menubtns" class="d-none d-sm-block d-md-block">
                 <div class="d-flex align-items-start gap12">
-                    <a href="{% url 'register' %}" class="menubuttons unfilled d-flex align-items-center justify-content-center"><span>Kayıt Ol</span></a>
-                    <a href="{% url 'login' %}" class="menubuttons filled d-flex align-items-center justify-content-center"><span>Giriş Yap</span></a>
+                    <a href="{% url 'register' %}"
+                        class="menubuttons unfilled d-flex align-items-center justify-content-center"><span>Kayıt
+                            Ol</span></a>
+                    <a href="{% url 'login' %}"
+                        class="menubuttons filled d-flex align-items-center justify-content-center"><span>Giriş
+                            Yap</span></a>
                 </div>
             </div>
+            {% endif %}
+
+
+
         </div>
     </nav>
     <!-- MENU -->
@@ -79,7 +98,10 @@
         <div id="service" class="row d-flex flex-column align-items-center justify-content-center gap22 mt160">
             <div class="col-10 sec-full text-center">
                 <h3 class="mb22 animate__animated">Tüm verilere ulaşın</h3>
-                <h4 class="mb22 animate__animated animate__fadeInUp">Gurdata olarak piyasa içerisinde yer alan sektördeki markaların ihtiyaç duyduğu veri eksikliği ile alakalı müşterilerimize ve kullanıcılarımıza çeşitli alanlarda avantajlar ve fırsatlar sağlamak adına hizmet sağlamaktayız.</h4>
+                <h4 class="mb22 animate__animated animate__fadeInUp">Gurdata olarak piyasa içerisinde yer alan
+                    sektördeki markaların ihtiyaç duyduğu veri eksikliği ile alakalı müşterilerimize ve
+                    kullanıcılarımıza çeşitli alanlarda avantajlar ve fırsatlar sağlamak adına hizmet sağlamaktayız.
+                </h4>
                 <div class="d-flex align-items-center justify-content-center mb22 animate__animated">
                     <a class="action-btn">GURDATA'yı keşfet!</a>
                 </div>
@@ -91,7 +113,7 @@
         <!-- Section 2 -->
         <div class="row d-flex flex-column align-items-center justify-content-center gap22 mt120">
             <div class="col-10 sec-full animate__animated">
-                <img src="{% static 'assets/landing/gurdata-preview2x.webp' %}"/>
+                <img src="{% static 'assets/landing/gurdata-preview2x.webp' %}" />
             </div>
         </div>
         <!-- End Section 2 -->
@@ -101,7 +123,10 @@
         <div id="about" class="row d-flex flex-column align-items-center justify-content-center gap22 mt120">
             <div class="col-10 sec-full text-center">
                 <h3 class="mb22 font60 animate__animated">Geniş veri seti ile başarınızı destekleyin</h3>
-                <h4 class="mb22 animate__animated">Gurdata platformu olarak sizlere geniş yelpazede veri setleri sunmaktayız. Türkiye'deki emlak ve ikinci el araç bilgileri, hava durumu ve hava kirliliği, demografik veriler, kur/emtia bilgileri ve trafik skor verileri ile analitik çalışmalarınızda sizlere destek olmak istiyoruz.</h4>
+                <h4 class="mb22 animate__animated">Gurdata platformu olarak sizlere geniş yelpazede veri setleri
+                    sunmaktayız. Türkiye'deki emlak ve ikinci el araç bilgileri, hava durumu ve hava kirliliği,
+                    demografik veriler, kur/emtia bilgileri ve trafik skor verileri ile analitik çalışmalarınızda
+                    sizlere destek olmak istiyoruz.</h4>
             </div>
         </div>
         <!-- End Section 3 -->
@@ -109,45 +134,64 @@
 
         <!-- Section 4 -->
         <div class="row d-flex flex-column align-items-center mt120 section4">
-            <div class="col-12 service-full d-inline-flex align-items-start justify-content-center gap12 animate__animated">
+            <div
+                class="col-12 service-full d-inline-flex align-items-start justify-content-center gap12 animate__animated">
                 <div class="service-item">
                     <img src="{% static 'assets/landing/emlak.svg' %}">
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Emlak İlanları</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Konut Endeksi</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Konut Kiralama Gücü
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Emlak İlanları</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Konut Endeksi</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Konut Kiralama Gücü
                         Endeksi</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Ofis Kira Değer Endeksi</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> İl / İlçe Harita Bilgileri</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Ofis Kira Değer Endeksi</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> İl / İlçe Harita Bilgileri</div>
                 </div>
                 <div class="service-item">
                     <img src="{% static 'assets/landing/finans.svg' %}">
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Kurlar</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Kişi Başı Aylık Harcama</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Alışveriş Alışkanlıkları</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Kurlar</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Kişi Başı Aylık Harcama</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Alışveriş Alışkanlıkları</div>
                 </div>
                 <div class="service-item">
                     <img src="{% static 'assets/landing/hava_durumu.svg' %}">
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Hava Durumu Verileri</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Hava Kirliliği Verileri</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Hava Durumu Verileri</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Hava Kirliliği Verileri</div>
 
                 </div>
                 <div class="service-item">
                     <img src="{% static 'assets/landing/demografi.svg' %}">
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Sosyo Ekonomik Derecelendirme</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Nüfus Verileri</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> İş Gücü / İşsizlik İstatistikleri</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Evlenme / Boşanma İstatistikleri</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Genel Seçim Sonuçları</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Sosyo Ekonomik Derecelendirme</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Nüfus Verileri</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> İş Gücü / İşsizlik İstatistikleri
+                    </div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Evlenme / Boşanma İstatistikleri</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Genel Seçim Sonuçları</div>
 
                 </div>
                 <div class="service-item">
                     <img src="{% static 'assets/landing/arac.svg' %}">
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Araç İlanları</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Araç İlanları</div>
 
                 </div>
                 <div class="service-item">
                     <img src="{% static 'assets/landing/trafik.svg' %}">
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"> Trafik Yoğunluğu</div>
+                    <div class="d-flex align-items-start gap6 mb-12"><img
+                            src="{% static 'assets/landing/bluetick.svg' %}"> Trafik Yoğunluğu</div>
 
                 </div>
             </div>
@@ -160,7 +204,9 @@
         <div class="row d-flex flex-column align-items-center justify-content-center gap22 mt160">
             <div class="col-10 sec-full text-center">
                 <h3 class="mb22 font60 animate__animated">Onlarca veri seti tek bir panelde</h3>
-                <h4 class="mb22 animate__animated">Farklı sektörlerden ihtiyaç duyulan frekans aralığında veri setlerimizi güncel tutuyoruz. Sizlere en kaliteli veri setini sunmak için geliştirmelerimize her gün devam ediyor ve sürekli yeni veri setleri ile platformumuzu güncel tutuyoruz.</h4>
+                <h4 class="mb22 animate__animated">Farklı sektörlerden ihtiyaç duyulan frekans aralığında veri
+                    setlerimizi güncel tutuyoruz. Sizlere en kaliteli veri setini sunmak için geliştirmelerimize her gün
+                    devam ediyor ve sürekli yeni veri setleri ile platformumuzu güncel tutuyoruz.</h4>
             </div>
         </div>
         <!-- End Section 5 -->
@@ -169,9 +215,15 @@
         <!-- Section 6 -->
         <div class="row d-flex flex-column align-items-center justify-content-center gap22 mt40">
             <div class="col-12 p-0 s_slider animate__animated">
-                <div class="slidetoleft"><img decoding="async" src="{% static 'assets/landing/catslide1.webp' %}" alt="cat slide 1"><img decoding="async" src="{% static 'assets/landing/catslide1.webp' %}" alt="cat slide 1"></div>
-                <div class="slidetoright"><img decoding="async" src="{% static 'assets/landing/catslide2.webp' %}" alt="cat slide 2"><img decoding="async" src="{% static 'assets/landing/catslide2.webp' %}" alt="cat slide 2"></div>
-                <div class="slidetoleft"><img decoding="async" src="{% static 'assets/landing/catslide3.webp' %}" alt="cat slide 3"><img decoding="async" src="{% static 'assets/landing/catslide3.webp' %}" alt="cat slide 3"></div>
+                <div class="slidetoleft"><img decoding="async" src="{% static 'assets/landing/catslide1.webp' %}"
+                        alt="cat slide 1"><img decoding="async" src="{% static 'assets/landing/catslide1.webp' %}"
+                        alt="cat slide 1"></div>
+                <div class="slidetoright"><img decoding="async" src="{% static 'assets/landing/catslide2.webp' %}"
+                        alt="cat slide 2"><img decoding="async" src="{% static 'assets/landing/catslide2.webp' %}"
+                        alt="cat slide 2"></div>
+                <div class="slidetoleft"><img decoding="async" src="{% static 'assets/landing/catslide3.webp' %}"
+                        alt="cat slide 3"><img decoding="async" src="{% static 'assets/landing/catslide3.webp' %}"
+                        alt="cat slide 3"></div>
             </div>
         </div>
         <!-- End Section 6 -->
@@ -181,11 +233,15 @@
         <div class="row d-flex justify-content-center mt180">
             <div class="col-lg-8 col-sm-12 float-start text-start animate__animated pratic-item">
                 <h3 class="mb22">Hızlı ve pratik</h3>
-                <h4 class="mb22">İyi bir verinin en önemli özelliklerinden biri de kolay ulaşılabilir olması ve hızlı elde edilebilmesi olduğunu biliyoruz. Gurdata olarak ihtiyaç duyduğunuz veri setini kolayca filtreleyip indirme imkanı sunuyoruz. Böylelikle en doğru veriye en hızlı şekilde ulaşmanızı sağlıyoruz.</h4>
+                <h4 class="mb22">İyi bir verinin en önemli özelliklerinden biri de kolay ulaşılabilir olması ve hızlı
+                    elde edilebilmesi olduğunu biliyoruz. Gurdata olarak ihtiyaç duyduğunuz veri setini kolayca
+                    filtreleyip indirme imkanı sunuyoruz. Böylelikle en doğru veriye en hızlı şekilde ulaşmanızı
+                    sağlıyoruz.</h4>
                 <br>
                 <br>
                 <br>
-                <h4 class="mb22">Veri eksikliğini gidermek, sizlere tam hakimiyeti sunmak ve çeşitli alanlarda avantajlar sağlamak için buradayız.</h4>
+                <h4 class="mb22">Veri eksikliğini gidermek, sizlere tam hakimiyeti sunmak ve çeşitli alanlarda
+                    avantajlar sağlamak için buradayız.</h4>
                 <ul class="greenli">
                     <li>Onlarca veri seti</li>
                     <li>Kolay ve kullanışlı arayüz</li>
@@ -204,11 +260,14 @@
         <div id="prices" class="row d-flex flex-column align-items-center justify-content-center gap22 mt120">
             <div class="col-10 sec-full text-center">
                 <h3 class="mb22 animate__animated">Fiyatlandırma ve Planlar</h3>
-                <h4 class="mb22 price-sub animate__animated">Veri ve istatistik sağlayıcılarının hizmet fiyatlarına göre sizleri önceliğimiz olarak benimsiyoruz. Fiyatlandırmalarımızı ve planlarımızı sizin için özenle belirliyoruz.</h4>
+                <h4 class="mb22 price-sub animate__animated">Veri ve istatistik sağlayıcılarının hizmet fiyatlarına göre
+                    sizleri önceliğimiz olarak benimsiyoruz. Fiyatlandırmalarımızı ve planlarımızı sizin için özenle
+                    belirliyoruz.</h4>
             </div>
         </div>
         <!-- BOXES -->
-        <div id="all_priceboxes" class="row d-flex justify-content-center align-items-start text-center mt60 overflow-scroll">
+        <div id="all_priceboxes"
+            class="row d-flex justify-content-center align-items-start text-center mt60 overflow-scroll">
             <div class="d-flex price-full gap23 animate__animated">
                 <div class="d-flex flex-column align-items-center boxes">
                     <div class="d-flex flex-column align-items-start gap22 w200">
@@ -225,10 +284,15 @@
                             <div class="boxprice_t"> / 100</div>
                             <div class="boxprice_k"> kredi</div>
                         </div>
-                        <div class="boxdivider"><div class="wpb_wrapper"> </div></div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Tam erişim</div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg'%}"/> Son kullanma tarihi olmayan</div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> İndirilebilir Dosyalar</div>
+                        <div class="boxdivider">
+                            <div class="wpb_wrapper"> </div>
+                        </div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Tam erişim</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg'%}" /> Son kullanma tarihi olmayan</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> İndirilebilir Dosyalar</div>
                         <div class="price-btn"><a class="action-btn-md">İncele ve Satın Al</a></div>
                     </div>
                 </div>
@@ -247,10 +311,15 @@
                             <div class="boxprice_t"> / 100</div>
                             <div class="boxprice_k"> kredi</div>
                         </div>
-                        <div class="boxdivider"><div class="wpb_wrapper"> </div></div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Tam erişim</div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Son kullanma tarihi olmayan</div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> İndirilebilir Dosyalar</div>
+                        <div class="boxdivider">
+                            <div class="wpb_wrapper"> </div>
+                        </div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Tam erişim</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Son kullanma tarihi olmayan</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> İndirilebilir Dosyalar</div>
                         <div class="price-btn"><a class="action-btn-md">İncele ve Satın Al</a></div>
                     </div>
                 </div>
@@ -269,36 +338,47 @@
                             <div class="boxprice_t"> / 100</div>
                             <div class="boxprice_k"> kredi</div>
                         </div>
-                        <div class="boxdivider"><div class="wpb_wrapper"> </div></div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Tam erişim</div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Son kullanma tarihi olmayan</div>
-                        <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> İndirilebilir Dosyalar</div>
+                        <div class="boxdivider">
+                            <div class="wpb_wrapper"> </div>
+                        </div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Tam erişim</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Son kullanma tarihi olmayan</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> İndirilebilir Dosyalar</div>
                         <div class="price-btn"><a class="action-btn-md">İncele ve Satın Al</a></div>
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center boxes">
-                <div class="d-flex flex-column align-items-start gap22 w200">
-                    <!-- badge -->
-                    <div class="d-flex flex-column align-items-end gap22 w200">
-                        <span class="d-flex align-items-center bestsellerbadge">En çok satan</span></div>
+                    <div class="d-flex flex-column align-items-start gap22 w200">
+                        <!-- badge -->
+                        <div class="d-flex flex-column align-items-end gap22 w200">
+                            <span class="d-flex align-items-center bestsellerbadge">En çok satan</span>
+                        </div>
 
-                    <div class="d-flex flex-column align-items-start gap8 w200">
-                        <span class="boxstandart">Standart</span>
-                        <span class="boxstandartsub">Kişisel ve ev ofisi için</span>
-                    </div>
+                        <div class="d-flex flex-column align-items-start gap8 w200">
+                            <span class="boxstandart">Standart</span>
+                            <span class="boxstandartsub">Kişisel ve ev ofisi için</span>
+                        </div>
 
-                    <div class="d-flex align-items-center gap8">
-                        <div class="boxprice_p">$15</div>
-                        <div class="boxprice_t"> / 100</div>
-                        <div class="boxprice_k"> kredi</div>
+                        <div class="d-flex align-items-center gap8">
+                            <div class="boxprice_p">$15</div>
+                            <div class="boxprice_t"> / 100</div>
+                            <div class="boxprice_k"> kredi</div>
+                        </div>
+                        <div class="boxdivider">
+                            <div class="wpb_wrapper"> </div>
+                        </div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Tam erişim</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> Son kullanma tarihi olmayan</div>
+                        <div class="d-flex align-items-start gap6 mb-12"><img
+                                src="{% static 'assets/landing/bluetick.svg' %}" /> İndirilebilir Dosyalar</div>
+                        <div class="price-btn"><a class="action-btn-md">İncele ve Satın Al</a></div>
                     </div>
-                    <div class="boxdivider"><div class="wpb_wrapper"> </div></div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Tam erişim</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> Son kullanma tarihi olmayan</div>
-                    <div class="d-flex align-items-start gap6 mb-12"><img src="{% static 'assets/landing/bluetick.svg' %}"/> İndirilebilir Dosyalar</div>
-                    <div class="price-btn"><a class="action-btn-md">İncele ve Satın Al</a></div>
                 </div>
-            </div>
             </div>
         </div>
         <!-- End Section 8 -->
@@ -314,24 +394,30 @@
             <div class="col-md-7">
                 <div class="accordion-item animate__animated">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Veri platformunuz nedir ve ne tür veriler sunmaktadır?
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             Gurdata veri platformu, analitik çalışmalarınızda sizlere destek olabilecek veri
-                            kaynaklarını, doğrudan filtreleme ile indirme imkanı sunan bir platformdur. Gurdata veri platformunda Emlak, Araç, Demografi, Hava, Finans ve Trafik üst başlıklarında geniş yelpazede veriler sunmaktadır.
+                            kaynaklarını, doğrudan filtreleme ile indirme imkanı sunan bir platformdur. Gurdata veri
+                            platformunda Emlak, Araç, Demografi, Hava, Finans ve Trafik üst başlıklarında geniş
+                            yelpazede veriler sunmaktadır.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item animate__animated">
                     <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Hangi veri türlerini filtreleyebilirim?
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             Gereksiz harcamalardan kurtarmak için ihtiyacınız olan tüm filtreler mevcuttur.
                             Tüm veri setlerimizde filtreler bulunmaktadır.
@@ -340,14 +426,18 @@
                 </div>
                 <div class="accordion-item animate__animated">
                     <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Verileri nasıl indirebilirim?
                         </button>
                     </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             Gurdata veri platformuna kayıt olup hesabınıza bakiye yüklemeniz durumunda
-                            verileri filtreleyip indirebilirsiniz. İlgili veri setinin sayfasına gelip verinizi oluşturduktan sonra verileriniz hazırlanıp dosya yönetimi sayfasına düşer. Buradan verilerine kolayca ulaşıp indirebilirsiniz.
+                            verileri filtreleyip indirebilirsiniz. İlgili veri setinin sayfasına gelip verinizi
+                            oluşturduktan sonra verileriniz hazırlanıp dosya yönetimi sayfasına düşer. Buradan
+                            verilerine kolayca ulaşıp indirebilirsiniz.
                         </div>
                     </div>
                 </div>
@@ -356,7 +446,8 @@
         <!-- End Section 9 -->
 
         <!-- Section 10 -->
-        <div id="mailing" class="row d-flex flex-column align-items-center justify-content-center gap22 mt180 animate__animated">
+        <div id="mailing"
+            class="row d-flex flex-column align-items-center justify-content-center gap22 mt180 animate__animated">
             <div class="col-10 sec-full text-center p-5">
                 <div class="col-md-4 col-sm-12 float-start">
                     <div class="mailing text-start">
@@ -368,7 +459,8 @@
                         <div class="col-sm-12">
                             <div class="form-group text-start w211 float-end">
                                 <label for="emailfield" class="form-label">E-Posta</label>
-                                <input type="email" class="form-control" id="emailfield" placeholder="E-Posta Adresiniz">
+                                <input type="email" class="form-control" id="emailfield"
+                                    placeholder="E-Posta Adresiniz">
                             </div>
                             <div class="form-group text-start w211 float-end mrlarge22">
                                 <label for="namelastname" class="form-label">Ad Soyad</label>
@@ -376,7 +468,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12 text-end">
-                        <a class="action-btn-md w211">Gönder</a>
+                            <a class="action-btn-md w211">Gönder</a>
                         </div>
                     </div>
                 </div>
@@ -387,12 +479,15 @@
         <!-- Section 10 -->
 
         <!-- Footer -->
-        <div class="landing-footer d-flex flex-column align-items-center justify-content-center mt180 animate__animated">
+        <div
+            class="landing-footer d-flex flex-column align-items-center justify-content-center mt180 animate__animated">
             <div class="col-lg-10 col-sm-12 d-flex flex-column align-items-center justify-content-center p-0 gap25">
                 <div class="footer-widgets w-100 d-flex align-items-start gap65">
-                    <div class="content_w_logo col-lg-4 col-sm-12 p-0 d-flex flex-column justify-content-between align-items-start align-self-stretch">
-                        <img src="{% static 'assets/landing/logo.svg' %}" height="41" class="mb65"/>
-                        <span>Farklı kategorilerde ve farklı alanlardaki spesifik ya da genel ölçekli verilerin ve veri setlerini size sunuyoruz.</span>
+                    <div
+                        class="content_w_logo col-lg-4 col-sm-12 p-0 d-flex flex-column justify-content-between align-items-start align-self-stretch">
+                        <img src="{% static 'assets/landing/logo.svg' %}" height="41" class="mb65" />
+                        <span>Farklı kategorilerde ve farklı alanlardaki spesifik ya da genel ölçekli verilerin ve veri
+                            setlerini size sunuyoruz.</span>
                     </div>
                     <div class="content_items col-lg-8 col-sm-12 p-0 d-flex align-items-start gap65">
                         <div class="items gap4">
@@ -410,14 +505,16 @@
                         </div>
                         <div class="items gap10" style="width: 267px">
                             <p>İLETİŞİM</p>
-                            <div class="mb-3">Farklı bir veri setine mi ihtiyacınız var? Bizimle iletişime geçerek ihtiyacınıza uygun veri çözümlerimizi sizlere anlatalım.</div>
+                            <div class="mb-3">Farklı bir veri setine mi ihtiyacınız var? Bizimle iletişime geçerek
+                                ihtiyacınıza uygun veri çözümlerimizi sizlere anlatalım.</div>
                             <a href="mailto:#">info@gurdata.com</a>
 
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-10 col-sm-12 d-flex flex-column align-items-start justify-content-center p-0 gap22 copyright">
+            <div
+                class="col-lg-10 col-sm-12 d-flex flex-column align-items-start justify-content-center p-0 gap22 copyright">
                 <img src="{% static 'assets/landing/footer-divider.svg' %}" class="w-100" height="1">
                 © GURDATA 2023, All Rights Reserved.
             </div>
@@ -426,20 +523,20 @@
 
 
         <!-- Cookie -->
-<!--        <div id="cookie" class="fixed-bottom pd-32">-->
-<!--            <div class="cookies w-100 pd-32 d-inline-flex align-items-center justify-content-between">-->
-<!--                <div class="d-flex align-items-start gap8 cookie-content">-->
-<!--                    🍪-->
-<!--                    <div style="max-width: 693px">Web sitemiz çerez kullanır. Gezinmeye devam ederek, Gizlilik Politikamızda ayrıntılı olarak açıklanan tanımlama bilgilerini dağıtma izninizi üstleniyoruz. <a href="#">Aydınlatma Metni</a></div>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                <div class="d-flex align-items-start gap12">-->
-<!--                    <a class="menubuttons unfilled d-flex align-items-center justify-content-center"><span>Reddet</span></a>-->
-<!--                    <a class="menubuttons filled d-flex align-items-center justify-content-center"><span>Kabul Et</span></a>-->
-<!--                </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div id="cookie" class="fixed-bottom pd-32">-->
+        <!--            <div class="cookies w-100 pd-32 d-inline-flex align-items-center justify-content-between">-->
+        <!--                <div class="d-flex align-items-start gap8 cookie-content">-->
+        <!--                    🍪-->
+        <!--                    <div style="max-width: 693px">Web sitemiz çerez kullanır. Gezinmeye devam ederek, Gizlilik Politikamızda ayrıntılı olarak açıklanan tanımlama bilgilerini dağıtma izninizi üstleniyoruz. <a href="#">Aydınlatma Metni</a></div>-->
+        <!--                </div>-->
+        <!--                <div>-->
+        <!--                <div class="d-flex align-items-start gap12">-->
+        <!--                    <a class="menubuttons unfilled d-flex align-items-center justify-content-center"><span>Reddet</span></a>-->
+        <!--                    <a class="menubuttons filled d-flex align-items-center justify-content-center"><span>Kabul Et</span></a>-->
+        <!--                </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <!-- Cookie -->
 
     </div>
@@ -464,6 +561,6 @@
     <!-- CUSTOM JS -->
     <script src="{% static 'assets/js/custom.js' %}"></script>
 
-    </body>
+</body>
 
-    </html>
+</html>

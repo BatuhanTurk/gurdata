@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sash – Bootstrap 5  Admin & Dashboard Template">
     <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+    <meta name="keywords"
+        content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/brand/favicon.ico' %}" />
@@ -29,7 +30,9 @@
     <!--- FONT-ICONS CSS -->
     <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Inter:wght@500;600;700&display=swap&text=ABCÇDEFGĞHİIJKLMNOÖPRSŞTUÜVYZabcçdefgğhiıjklmnoöprsştuüvyz1234567890" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Inter:wght@500;600;700&display=swap&text=ABCÇDEFGĞHİIJKLMNOÖPRSŞTUÜVYZabcçdefgğhiıjklmnoöprsştuüvyz1234567890"
+        rel="stylesheet">
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static 'assets/colors/color1.css' %}" />
@@ -38,9 +41,9 @@
 <body class="app sidebar-mini ltr">
 
     <!-- GLOBAL-LOADER -->
-<!--    <div id="global-loader">-->
-<!--        <img src="../assets/images/loader.svg" class="loader-img" alt="Loader">-->
-<!--    </div>-->
+    <!--    <div id="global-loader">-->
+    <!--        <img src="../assets/images/loader.svg" class="loader-img" alt="Loader">-->
+    <!--    </div>-->
     <!-- /GLOBAL-LOADER -->
 
     <!-- PAGE -->
@@ -57,71 +60,93 @@
                         <!-- ROW-1 OPEN -->
                         <!-- Row -->
                         <div class="row p-0">
-                            
+
                             <!-- Form left -->
-                            <div class="col-md-6 col-sm-12 p-0 pt-7 d-inline-flex flex-column align-items-center gap58 profileform">
+                            <div
+                                class="col-md-6 col-sm-12 p-0 pt-7 d-inline-flex flex-column align-items-center gap58 profileform">
 
                                 <div class="d-flex flex-column align-items-start gap32">
                                     <img src="{% static 'assets/landing/logo.svg' %}">
                                     <h3>Tekrar hoşgeldiniz!</h3>
+
+                                    {% if alert %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ alert }}
+                                    </div>
+                                    {% endif %}
+
+
                                     <form method="post" action="{% url 'login' %}" autocomplete="off">
                                         {% csrf_token %}
-                                        
+
                                         <div class="form-group">
                                             {{ form.email.label_tag }}
                                             {{ form.email }}
                                         </div>
-                                    
+
                                         <div class="form-group">
                                             {{ form.password.label_tag }}
                                             {{ form.password }}
                                         </div>
-                                    
+
                                         <div class="form-group">
                                             {{ form.remember_me }}
                                             {{ form.remember_me.label_tag }}
                                         </div>
-                                    
+
                                         <input type="submit" value="Giriş Yap" class="bluebtn w-100 p12">
                                         <div class="form-group afterformcontent mt32 text-end">
                                             <a href="#">Parolanızı mı unuttunuz?</a>
                                         </div>
                                     </form>
 
-                                    <div class="w-100 formfootercontent mb-30">Hesabınız yok mu? <a href="0_register.html">Kayıt ol</a>.</div>
+                                    <div class="w-100 formfootercontent mb-30">Hesabınız yok mu? <a
+                                            href="0_register.html">Kayıt ol</a>.</div>
                                 </div>
 
                             </div>
 
                             <!-- Form right -->
-                            <div class="rightcarousel col-md-6 p-0 d-inline-flex flex-column align-items-center rightbg">
+                            <div
+                                class="rightcarousel col-md-6 p-0 d-inline-flex flex-column align-items-center rightbg">
                                 <div class="card-body ">
-                                    <div id="carousel-indicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+                                    <div id="carousel-indicators" class="carousel slide" data-bs-ride="carousel"
+                                        data-bs-interval="10000">
                                         <ol class="carousel-indicators">
-                                            <li data-bs-target="#carousel-indicators" data-bs-slide-to="0" class="active"></li>
+                                            <li data-bs-target="#carousel-indicators" data-bs-slide-to="0"
+                                                class="active"></li>
                                             <li data-bs-target="#carousel-indicators" data-bs-slide-to="1"></li>
                                             <li data-bs-target="#carousel-indicators" data-bs-slide-to="2"></li>
                                         </ol>
                                         <div class="carousel-inner h-100">
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100 br-5" alt="" src="{% static 'assets/landing/register1.webp' %}" data-bs-holder-rendered="true">
+                                                <img class="d-block w-100 br-5" alt=""
+                                                    src="{% static 'assets/landing/register1.webp' %}"
+                                                    data-bs-holder-rendered="true">
                                                 <div class="carousel-caption d-none d-md-block">
                                                     <h3>Kolay kullanılabilir arayüz</h3>
-                                                    <p>Hesap özetiniz, favori veri setleriniz, uygulamalarınız ve dosya yöneticiniz tek bir sayfada.</p>
+                                                    <p>Hesap özetiniz, favori veri setleriniz, uygulamalarınız ve dosya
+                                                        yöneticiniz tek bir sayfada.</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 br-5" alt="" src="{% static 'assets/landing/register2.webp' %}" data-bs-holder-rendered="true">
+                                                <img class="d-block w-100 br-5" alt=""
+                                                    src="{% static 'assets/landing/register2.webp' %}"
+                                                    data-bs-holder-rendered="true">
                                                 <div class="carousel-caption d-none d-md-block">
                                                     <h3>Tüm veri setleri elinizin altında</h3>
-                                                    <p>Satın aldığınız ya da görüntülemek istediğiniz tüm veri setlerine tek bir panel üzerinden ulaşın.</p>
+                                                    <p>Satın aldığınız ya da görüntülemek istediğiniz tüm veri setlerine
+                                                        tek bir panel üzerinden ulaşın.</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 br-5" alt="" src="{% static 'assets/landing/register3.webp' %}" data-bs-holder-rendered="true">
+                                                <img class="d-block w-100 br-5" alt=""
+                                                    src="{% static 'assets/landing/register3.webp' %}"
+                                                    data-bs-holder-rendered="true">
                                                 <div class="carousel-caption d-none d-md-block">
                                                     <h3>Dosya Yöneticisi ile karmaşaya son</h3>
-                                                    <p>Gerçekleştirdiğiniz tüm veri seti satım alımlarınıza tek bir panelde, listelenmiş ve düzenlenmiş olarak erişin.</p>
+                                                    <p>Gerçekleştirdiğiniz tüm veri seti satım alımlarınıza tek bir
+                                                        panelde, listelenmiş ve düzenlenmiş olarak erişin.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,5 +181,18 @@
     <script src="{% static 'assets/js/custom.js' %}"></script>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        setTimeout(function () {
+
+            var alertElement = document.querySelector('.alert');
+
+            if (alertElement) {
+                alertElement.style.display = 'none';
+            }
+        }, 3000);
+    });
+</script>
 
 </html>

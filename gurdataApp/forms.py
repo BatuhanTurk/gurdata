@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 class LoginForm(forms.Form):
     email = forms.EmailField(label='E-Posta Adresiniz', widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -26,6 +27,7 @@ class RegistrationForm(forms.Form):
     )
     password = forms.CharField(
         label='Şifreniz',
+        min_length=8,
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         required=True
     )
@@ -46,3 +48,11 @@ class RegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+
+        if password and confirm_password and password != confirm_password:
+            raise ValidationError("Şifreler eşleşmiyor. Lütfen aynı şifreyi girin.")
