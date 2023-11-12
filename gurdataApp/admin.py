@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserGurdata,DataGurdata,DataDownloadGurdata
+from .models import UserGurdata,DataGurdata,DataDownloadGurdata,ContactGurdata
 
 admin.site.register(UserGurdata)
 class UserGurdataAdmin(admin.ModelAdmin):
@@ -7,3 +7,5 @@ class UserGurdataAdmin(admin.ModelAdmin):
 admin.site.register(DataGurdata)
 
 admin.site.register(DataDownloadGurdata)
+
+admin.site.register(ContactGurdata)

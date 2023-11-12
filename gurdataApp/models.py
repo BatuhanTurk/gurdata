@@ -16,7 +16,7 @@ class UserGurdata(models.Model):
         db_table = 'user_gurdata'
 
     def __str__(self):
-        return f"{self.user_name} {self.user_surname} {self.user_id}"
+        return f"{self.user_name} {self.user_surname}"
     
 class DataGurdata(models.Model):
     data_id = models.AutoField(primary_key=True)
@@ -44,3 +44,14 @@ class DataDownloadGurdata(models.Model):
 
     def __str__(self):
         return f"{self.user_id} downloaded {self.data_id} at {self.download_datatime}"
+
+class ContactGurdata(models.Model):
+    contact_id = models.AutoField(primary_key=True)
+    email = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'contact_gurdata'
+
+    def __str__(self):
+        return f"{self.email}"

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from .forms import LoginForm, RegistrationForm
-from .models import UserGurdata
+from .forms import LoginForm, RegistrationForm,contactForm,UserProfileForm
+from .models import UserGurdata,ContactGurdata
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.core.signing import dumps, loads
@@ -27,7 +27,18 @@ def home(request):
         user_data = user_data[0]
     except:
         user_data = None
-    return render(request, "0_index.html", {"user_data": user_data})
+    form = contactForm(request.POST)
+    if request.method == "POST":
+        email = request.POST["email"]
+        name = request.POST["name"]
+        
+        ContactGurdata.objects.create(
+            name = name, email = email,
+        )
+
+        return redirect("home")
+    else:
+        return render(request, "0_index.html", {"user_data": user_data,"form": form})
 
 
 def authenticate_user(email, password):
@@ -198,3 +209,32 @@ def reset_password(request,uidb64, token):
         return render(request,"0_success_new_pass.html")
     else:
         return render(request,"0_new_password.html",{"uidb64":uidb64,"token":token})
+
+def account(request):
+    user_id = request.session["user_id"]
+    user = UserGurdata.objects.get(user_id=user_id)
+    form = UserProfileForm(request.POST, user=user)
+    
+    if request.method == "POST":
+        user_name = request.POST["user_name"]
+        user_surname = request.POST["user_surname"]
+        user_email = request.POST["user_email"]
+        new_password = request.POST["new_password"]
+        old_password = request.POST["old_password"]
+        user_company = request.POST["user_company"]
+        user_position = request.POST["user_position"]
+
+        if new_password == old_password:
+            user.user_name = user_name
+            user.user_surname = user_surname
+            user.user_email = user_email
+            user.user_password = new_password
+            user.user_company = user_company
+            user.user_company_role = user_position
+            user.save()
+        else:
+            print("hata")
+
+        return redirect("account")
+    else:
+        return render(request,"_account.html",{"form":form,"user":user})
