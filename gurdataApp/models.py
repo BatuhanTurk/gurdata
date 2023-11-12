@@ -16,7 +16,7 @@ class UserGurdata(models.Model):
         db_table = 'user_gurdata'
 
     def __str__(self):
-        return f"{self.user_name} {self.user_surname}"
+        return f"{self.user_name} {self.user_surname} {self.user_id}"
     
 class DataGurdata(models.Model):
     data_id = models.AutoField(primary_key=True)

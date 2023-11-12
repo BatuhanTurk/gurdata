@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .forms import LoginForm, RegistrationForm
 from .models import UserGurdata
 from django.contrib.auth import authenticate, login
-
+from django.urls import reverse
+from django.core.signing import dumps, loads
 import random
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from django.contrib.auth.views import PasswordResetConfirmView
 
 
 def get_user_data_by_id(user_id):
@@ -96,56 +98,103 @@ def register(request):
 
     return render(request, "0_register.html", {"form": form})
 
+def send_email(email,subject, content):
+    mail_from = "Ekrem Gurdal <ekremgurdal@gmail.com>"
+    mail_to = f"Ekrem Gurdal <{email}>"
+
+    msg = MIMEMultipart()
+    msg["From"] = mail_from
+    msg["To"] = mail_to
+    msg["Subject"] = subject
+    mail_body = content
+    msg.attach(MIMEText(mail_body))
+
+    try:
+        server = smtplib.SMTP_SSL("smtp.sendgrid.net", 465)
+        server.ehlo()
+        server.login(
+            "apikey",
+            "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",
+        )
+        server.sendmail(mail_from, mail_to, msg.as_string())
+        server.close()
+        print("mail sent")
+    except:
+        print("issue")
+
 
 def confirm_email(request):
-    
     if request.method == "POST":
-        codes = request.POST.getlist('code[]')  
-        input_code = ""
-        for code in codes:
-            input_code += str(code)
-        
+        codes = request.POST.getlist("code[]")
+        input_code = "".join(map(str, codes))
+
         if int(request.session.get("random_code")) == int(input_code):
             user = UserGurdata.objects.get(user_email=request.session.get("email"))
             user.user_confirmed = 1
             user.save()
-
+            request.session["random_code"] = None
             return redirect("home")
         else:
             return render(request, "0_confirm_email.html")
     else:
         request.session["random_code"] = random.randint(1000, 9999)
-        mail_from = "Ekrem Gurdal <ekremgurdal@gmail.com>"
-        mail_to = "Ekrem Gurdal <{}>".format(request.session.get('email'))
+        subject = "Account confirmation"
+        content = f"""
+            Hello,
 
-        msg = MIMEMultipart()
-        msg["From"] = mail_from
-        msg["To"] = mail_to
-        msg["Subject"] = "Sending mails with Python"
-        mail_body = """
-        Hey,
+            Thank you for signing up with Gurdata! To complete your registration, please enter the following code on the confirmation page:
 
-        This is a test.
-        {}
-        Regards,\nRuan
+            {request.session["random_code"]}
 
-        """.format(request.session.get("random_code"))
-        msg.attach(MIMEText(mail_body))
+            If you did not sign up for Gurdata, please ignore this email.
 
-        try:
-            server = smtplib.SMTP_SSL("smtp.sendgrid.net", 465)
-            server.ehlo()
-            server.login(
-                "apikey",
-                "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",
-            )
-            server.sendmail(mail_from, mail_to, msg.as_string())
-            server.close()
-            print("mail sent")
-        except:
-            print("issue")
-        return render(request, "0_confirm_email.html")
+            Best regards,
+            Gurdata Team
+        """
         
+        send_email(request.session.get("email"),subject,content)
+        return render(request, "0_confirm_email.html")
 
-
+def forgot_password(request):
     
+    if request.method == "POST":
+        email = request.POST.getlist("email")[0]
+        user = UserGurdata.objects.get(user_email=email)
+        
+        user_id = user.user_id
+        if user:
+            user_data = {'user': str(user), 'email': str(email)}
+            token = dumps(user_data)
+            reset_link = reverse('reset_password', kwargs={'uidb64': user_id, 'token': token})
+            subject = "Password Reset"
+            content = f"""
+                Hello,
+
+                To reset your Gurdata password, please use the following link:
+
+                {reset_link}
+
+                Please note that this link is valid for a single use only. If you did not request a password reset, you can safely ignore this email.
+
+                Best regards,
+                Gurdata Team
+            """
+            send_email(email,subject,content)
+            return redirect('home')
+        else:
+            return render(request,"0_forgot_pass.html")
+    else:
+        return render(request,"0_forgot_pass.html")
+    
+    
+def reset_password(request,uidb64, token):
+    user = UserGurdata.objects.get(pk=uidb64)
+    
+    if request.method == "POST":
+        passwords = request.POST.getlist("password")
+        if all(password == passwords[0] for password in passwords):
+            user.user_password = passwords[0]
+            user.save()
+        return render(request,"0_success_new_pass.html")
+    else:
+        return render(request,"0_new_password.html",{"uidb64":uidb64,"token":token})

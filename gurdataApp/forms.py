@@ -56,3 +56,4 @@ class RegistrationForm(forms.Form):
 
         if password and confirm_password and password != confirm_password:
             raise ValidationError("Şifreler eşleşmiyor. Lütfen aynı şifreyi girin.")
+
