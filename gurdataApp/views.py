@@ -214,27 +214,60 @@ def account(request):
     user_id = request.session["user_id"]
     user = UserGurdata.objects.get(user_id=user_id)
     form = UserProfileForm(request.POST, user=user)
-    
     if request.method == "POST":
-        user_name = request.POST["user_name"]
-        user_surname = request.POST["user_surname"]
-        user_email = request.POST["user_email"]
-        new_password = request.POST["new_password"]
-        old_password = request.POST["old_password"]
-        user_company = request.POST["user_company"]
-        user_position = request.POST["user_position"]
-
-        if new_password == old_password:
-            user.user_name = user_name
-            user.user_surname = user_surname
-            user.user_email = user_email
-            user.user_password = new_password
-            user.user_company = user_company
-            user.user_company_role = user_position
+        if form.is_valid():
+            user_name = request.POST["user_name"]
+            user_surname = request.POST["user_surname"]
+            user_email = request.POST["user_email"]
+            new_password = request.POST["new_password"]
+            old_password = request.POST["old_password"]
+            confirm_password = request.POST["confirm_password"]
+            user_company = request.POST["user_company"]
+            user_position = request.POST["user_position"]
+            print(old_password , new_password , confirm_password)
+            if old_password == "" and new_password == "" and confirm_password == "":
+                user.user_name = user_name
+                user.user_surname = user_surname
+                user.user_email = user_email
+                user.user_company = user_company
+                user.user_company_role = user_position
+            else:
+                if new_password == confirm_password and old_password == user.user_password:
+                    user.user_name = user_name
+                    user.user_surname = user_surname
+                    user.user_email = user_email
+                    user.user_company = user_company
+                    user.user_company_role = user_position
+                else:
+                    print("password Error")
             user.save()
-        else:
-            print("hata")
-
+            
         return redirect("account")
     else:
         return render(request,"_account.html",{"form":form,"user":user})
+    
+def notification(request):
+    user_id = request.session["user_id"]
+    user = UserGurdata.objects.get(user_id=user_id)
+    form = form = UserProfileForm(request.POST, user=user)
+    if request.method == "POST":
+        system_notifications = request.POST.get("system_notifications")
+        file_manager_notifications = request.POST.get("file_manager_notifications")
+        mail_notifications = request.POST.get("mail_notifications")
+        print(system_notifications,file_manager_notifications,mail_notifications)
+        if system_notifications == "on":
+            user.system_notifications = 1
+        else:
+            user.system_notifications = 0
+        if file_manager_notifications == "on":
+            user.file_manager_notifications = 1
+        else:
+            user.file_manager_notifications = 0
+        if mail_notifications == "on":
+            user.mail_notifications = 1
+        else:
+            user.mail_notifications = 0
+        user.save()
+        return redirect("account")
+    else:
+        return redirect("account")

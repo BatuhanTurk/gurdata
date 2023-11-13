@@ -9,3 +9,5 @@ admin.site.register(DataGurdata)
 admin.site.register(DataDownloadGurdata)
 
 admin.site.register(ContactGurdata)
+
+

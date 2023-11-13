@@ -11,6 +11,9 @@ class UserGurdata(models.Model):
     user_balance = models.IntegerField()
     user_confirmed = models.IntegerField()
     user_deleted = models.IntegerField()
+    system_notifications = models.IntegerField(default=1)
+    file_manager_notifications = models.IntegerField(default=0)
+    mail_notifications = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'user_gurdata'
@@ -55,3 +58,4 @@ class ContactGurdata(models.Model):
 
     def __str__(self):
         return f"{self.email}"
+    

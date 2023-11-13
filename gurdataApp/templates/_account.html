@@ -411,7 +411,7 @@
                                                 <!--RIGHT-->
                                                 <div class="content_wrapper col-xl-9 ps-4" style="margin-top: -120px;">
                                                     <div class="tab_content active">
-                                                        <form method = "post" action = "{% url 'account' %}">
+                                                        <form method="post" action="{% url 'account' %}">
                                                             {% csrf_token %}
                                                             <div class="row">
 
@@ -424,7 +424,8 @@
                                                                                 MO</div>
                                                                             <!--USER INFO-->
                                                                             <div class="cont">
-                                                                                <div class="wtitle">{{ user.user_name }} {{ user.user_surname }}
+                                                                                <div class="wtitle">{{ user.user_name }}
+                                                                                    {{ user.user_surname }}
                                                                                 </div>
                                                                                 <div class="wsubtitle">
                                                                                     {{user.user_email}}</div>
@@ -525,10 +526,10 @@
                                                                 </div>
 
                                                             </div>
-
+                                                        </form>
 
                                                     </div>
-                                                    </form>
+
                                                     <div class="tab_content">
                                                         <div class="row">
                                                             <div class="col-sm-12 mb-32">
@@ -541,15 +542,16 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
+                                                            <form method="post" action="{% url 'notification' %}">
+                                                                {% csrf_token %}
                                                                 <div
                                                                     class="ps-0 col-sm-6 col-md-6 float-start notify_settings">
                                                                     Sistem Bildirimleri</div>
                                                                 <div class="col-sm-3 col-md-3 float-start">
                                                                     <div class="form-group">
                                                                         <label class="custom-switch form-switch me-5">
-                                                                            <input type="checkbox"
-                                                                                name="custom-switch-checkbox1"
-                                                                                class="custom-switch-input" checked>
+                                                                            {{ form.system_notifications }}
+                                                                            
                                                                             <span
                                                                                 class="custom-switch-indicator custom-switch-indicator-md"></span>
                                                                         </label>
@@ -561,9 +563,8 @@
                                                                 <div class="col-sm-3 col-md-3 float-start">
                                                                     <div class="form-group">
                                                                         <label class="custom-switch form-switch me-5">
-                                                                            <input type="checkbox"
-                                                                                name="custom-switch-checkbox2"
-                                                                                class="custom-switch-input">
+                                                                            {{ form.file_manager_notifications }}
+
                                                                             <span
                                                                                 class="custom-switch-indicator custom-switch-indicator-md"></span>
                                                                         </label>
@@ -578,16 +579,16 @@
                                                                 </div>
                                                                 <div class="col-sm-3 col-md-3 float-start">
                                                                     <div class="form-group">
+                                                                        
                                                                         <label class="custom-switch form-switch me-5">
-                                                                            <input type="checkbox"
-                                                                                name="custom-switch-checkbox3"
-                                                                                class="custom-switch-input">
+                                                                            {{ form.mail_notifications }}
+                                                                            
                                                                             <span
                                                                                 class="custom-switch-indicator custom-switch-indicator-md"></span>
                                                                         </label>
                                                                     </div>
                                                                 </div>
-
+                                                            
                                                             </div>
                                                             <div
                                                                 class="col-xs-12 mt-3 d-md-flex justify-content-md-end">
@@ -600,7 +601,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                </form>
                                                 </div>
                                             </div>
 
@@ -634,7 +635,7 @@
             <!--app-content close-->
 
         </div>
-
+    
         <!-- FOOTER -->
         <footer class="footer">
             <div class="container">
