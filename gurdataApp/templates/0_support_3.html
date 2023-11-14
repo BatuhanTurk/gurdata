@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/brand/favicon.ico' %}" />
 
     <!-- TITLE -->
-    <title>Şifre Yenileme Başarılı - GURDATA</title>
+    <title>Bize Ulaşın - GURDATA</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -46,11 +46,11 @@
 
                 <div class="container-login100">
                     <div class="wrap-login100 p-6">
-                        <form class="login100-form validate-form" autocomplete="off" action="0_login.html">
+                        <form class="login100-form validate-form" autocomplete="off">
 
                             <div class="col col-login mx-auto mt32">
                                 <div class="text-center">
-                                    <a href = "{% url 'login' %}" class="backbtn"><img src="{% static 'assets/landing/back.svg' %}"/></a>
+                                    <a href="{% url 'support2' %}" class="backbtn"><img src="{% static 'assets/landing/back.svg' %}"/></a>
                                     <img src="{% static 'assets/landing/logo.svg' %}" class="header-brand-img" alt="">
                                 </div>
                             </div>
@@ -59,8 +59,8 @@
 
                                 <div class="row mt-7">
                                     <div class="col-12">
-                                        <h3 class="text-center">Şifre Yenileme Başarılı</h3>
-                                        <p class="text-center">Şifre yenileme işlemini başarıyla gerçekleştirdiniz. Giriş Yap butonuna tıklayarak yeni şifrenizle giriş yapabilirsiniz.</p>
+                                        <h3 class="text-center">Bize ulaştığınız için teşekkür ederiz.</h3>
+                                        <p class="text-center">İletişim ekibimiz en kısa sürede sizlere dönüş gerçekleştirecektir.</p>
                                     </div>
                                 </div>
 
@@ -73,18 +73,13 @@
                                 </div>
                             </div>
 
-                            <div class="col-6d-flex flex-column justify-content-center text-center">
-                                
-                                    <a style = "color:white;background-color: blue;" href = "{% url 'login' %}" class = "bluebtn">Giriş Yap</a>
+                            <div class="text-center fpfooter mt180"><a href="{% url 'home' %}">Ana Sayfaya</a> dönmek için tıklayın.</div>
 
-                                
-                            </div>
 
 
 
                         </form>
                     </div>
-                <div class="text-center fpfooter">Hâla yardıma ihtiyacınız varsa, <a href="0_support_1.html">GURDATA Destek</a> ile iletişime geçin</div>
                 </div>
                 <!-- CONTAINER CLOSED -->
             </div>

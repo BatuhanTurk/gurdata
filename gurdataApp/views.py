@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect,get_object_or_404
-from .forms import LoginForm, RegistrationForm,contactForm,UserProfileForm
-from .models import UserGurdata,ContactGurdata
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from .forms import LoginForm, RegistrationForm, contactForm, UserProfileForm,ContactForm1,ContactForm2
+from .models import UserGurdata, ContactGurdata,ContactModel
 from django.urls import reverse
-from django.core.signing import dumps, loads
+from django.core.signing import dumps
 import random
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from django.contrib.auth.views import PasswordResetConfirmView
+from django.db import IntegrityError
+
 
 
 def get_user_data_by_id(user_id):
@@ -18,7 +18,11 @@ def get_user_data_by_id(user_id):
 
 def logout(request):
     request.session["user_id"] = None
-    return render(request, "0_index.html")
+    request.session["message_type"] = "success"
+    request.session["message"] = "Çıkış Başarılı"
+    message_type = request.session.get("message_type")
+    message = request.session.get("message")
+    return redirect("home")
 
 
 def home(request):
@@ -31,14 +35,27 @@ def home(request):
     if request.method == "POST":
         email = request.POST["email"]
         name = request.POST["name"]
-        
-        ContactGurdata.objects.create(
-            name = name, email = email,
-        )
 
+        ContactGurdata.objects.create(
+            name=name,
+            email=email,
+        )
         return redirect("home")
     else:
-        return render(request, "0_index.html", {"user_data": user_data,"form": form})
+        message_type = request.session.get("message_type")
+        message = request.session.get("message")
+        request.session["message_type"] = ""
+        request.session["message"] = ""
+        return render(
+            request,
+            "0_index.html",
+            {
+                "user_data": user_data,
+                "form": form,
+                "message_type": message_type,
+                "message": message,
+            },
+        )
 
 
 def authenticate_user(email, password):
@@ -63,14 +80,33 @@ def login(request):
 
             user = authenticate_user(email=email, password=password)
             if user is not None:
-                request.session["user_id"] = user.user_id
-                return redirect("home")
+                if user.user_confirmed == 1:
+                    request.session["user_id"] = user.user_id
+                    request.session["message_type"] = "success"
+                    request.session["message"] = "Giriş Başarılı"
+                    return redirect("home")
+                else:
+                    request.session["email"] = email
+
+                    return redirect("confirm_email")
             else:
-                alert = "Email ve şifre eşleşmiyor."
-                return render(request, "0_login.html", {"form": form, "alert": alert})
+                message_type = "danger"
+                message = "Email ve şifre eşleşmiyor."
+
+                return render(
+                    request,
+                    "0_login.html",
+                    {"form": form, "message_type": message_type, "message": message},
+                )
 
         else:
-            print(form.errors)
+            message_type = "danger"
+            message = "Geçerli bir email addresi giriniz."
+            return render(
+                request,
+                "0_login.html",
+                {"form": form, "message_type": message_type, "message": message},
+            )
     else:
         form = LoginForm()
 
@@ -88,28 +124,44 @@ def register(request):
             confirm_password = request.POST["confirm_password"]
             company = request.POST["company"]
             position = request.POST["position"]
-
-            user = UserGurdata.objects.create(
-                user_name=first_name,
-                user_surname=last_name,
-                user_email=email,
-                user_company=company,
-                user_company_role=position,
-                user_password=password,
-                user_balance=0,
-                user_confirmed=0,
-                user_deleted=0,
-            )
-            request.method = "GET"
-            request.session["email"] = email
-            return confirm_email(request)
+            if confirm_password == password:
+                try:
+                    user = UserGurdata.objects.create(
+                        user_name=first_name,
+                        user_surname=last_name,
+                        user_email=email,
+                        user_company=company,
+                        user_company_role=position,
+                        user_password=password,
+                        user_balance=0,
+                        user_confirmed=0,
+                        user_deleted=0,
+                    )
+                    request.method = "GET"
+                    request.session["email"] = email
+                    return confirm_email(request)
+                except IntegrityError:
+                    request.session["message_type"] = "danger"
+                    request.session["message"] = "Email adresi zaten kullanılıyor."
+                    return redirect("register")
+            else:
+                request.session["message_type"] = "danger"
+                request.session["message"] = "Şifre Uyuşmuyor."
 
     else:
         form = RegistrationForm()
+    message_type = request.session.get("message_type")
+    message = request.session.get("message")
+    request.session["message_type"] = ""
+    request.session["message"] = ""
+    return render(
+        request,
+        "0_register.html",
+        {"form": form, "message_type": message_type, "message": message},
+    )
 
-    return render(request, "0_register.html", {"form": form})
 
-def send_email(email,subject, content):
+def send_email(email, subject, content):
     mail_from = "Ekrem Gurdal <ekremgurdal@gmail.com>"
     mail_to = f"Ekrem Gurdal <{email}>"
 
@@ -144,6 +196,7 @@ def confirm_email(request):
             user.user_confirmed = 1
             user.save()
             request.session["random_code"] = None
+            request.session["user_id"] = user.user_id
             return redirect("home")
         else:
             return render(request, "0_confirm_email.html")
@@ -162,21 +215,23 @@ def confirm_email(request):
             Best regards,
             Gurdata Team
         """
-        
-        send_email(request.session.get("email"),subject,content)
+
+        send_email(request.session.get("email"), subject, content)
         return render(request, "0_confirm_email.html")
 
+
 def forgot_password(request):
-    
     if request.method == "POST":
         email = request.POST.getlist("email")[0]
         user = UserGurdata.objects.get(user_email=email)
-        
+
         user_id = user.user_id
         if user:
-            user_data = {'user': str(user), 'email': str(email)}
+            user_data = {"user": str(user), "email": str(email)}
             token = dumps(user_data)
-            reset_link = reverse('reset_password', kwargs={'uidb64': user_id, 'token': token})
+            reset_link = reverse(
+                "reset_password", kwargs={"uidb64": user_id, "token": token}
+            )
             subject = "Password Reset"
             content = f"""
                 Hello,
@@ -190,25 +245,28 @@ def forgot_password(request):
                 Best regards,
                 Gurdata Team
             """
-            send_email(email,subject,content)
-            return redirect('home')
+            send_email(email, subject, content)
+            return redirect("home")
         else:
-            return render(request,"0_forgot_pass.html")
+            return render(request, "0_forgot_pass.html")
     else:
-        return render(request,"0_forgot_pass.html")
-    
-    
-def reset_password(request,uidb64, token):
+        return render(request, "0_forgot_pass.html")
+
+
+def reset_password(request, uidb64, token):
     user = UserGurdata.objects.get(pk=uidb64)
-    
+
     if request.method == "POST":
         passwords = request.POST.getlist("password")
         if all(password == passwords[0] for password in passwords):
             user.user_password = passwords[0]
             user.save()
-        return render(request,"0_success_new_pass.html")
+        return render(request, "0_success_new_pass.html")
     else:
-        return render(request,"0_new_password.html",{"uidb64":uidb64,"token":token})
+        return render(
+            request, "0_new_password.html", {"uidb64": uidb64, "token": token}
+        )
+
 
 def account(request):
     user_id = request.session["user_id"]
@@ -224,7 +282,6 @@ def account(request):
             confirm_password = request.POST["confirm_password"]
             user_company = request.POST["user_company"]
             user_position = request.POST["user_position"]
-            print(old_password , new_password , confirm_password)
             if old_password == "" and new_password == "" and confirm_password == "":
                 user.user_name = user_name
                 user.user_surname = user_surname
@@ -232,20 +289,25 @@ def account(request):
                 user.user_company = user_company
                 user.user_company_role = user_position
             else:
-                if new_password == confirm_password and old_password == user.user_password:
+                if (
+                    new_password == confirm_password
+                    and old_password == user.user_password
+                ):
                     user.user_name = user_name
                     user.user_surname = user_surname
                     user.user_email = user_email
                     user.user_company = user_company
                     user.user_company_role = user_position
+                    user.user_password = new_password
                 else:
                     print("password Error")
             user.save()
-            
+
         return redirect("account")
     else:
-        return render(request,"_account.html",{"form":form,"user":user})
-    
+        return render(request, "_account.html", {"form": form, "user": user})
+
+
 def notification(request):
     user_id = request.session["user_id"]
     user = UserGurdata.objects.get(user_id=user_id)
@@ -254,7 +316,7 @@ def notification(request):
         system_notifications = request.POST.get("system_notifications")
         file_manager_notifications = request.POST.get("file_manager_notifications")
         mail_notifications = request.POST.get("mail_notifications")
-        print(system_notifications,file_manager_notifications,mail_notifications)
+        print(system_notifications, file_manager_notifications, mail_notifications)
         if system_notifications == "on":
             user.system_notifications = 1
         else:
@@ -271,3 +333,30 @@ def notification(request):
         return redirect("account")
     else:
         return redirect("account")
+
+def support(request):
+    form1 = ContactForm1(request.POST)
+    if request.method == "POST":
+        support_model = ContactModel.objects.create(
+                        name=request.POST["name"],
+                        surname=request.POST["surname"],
+                        email=request.POST["email"],
+                        position=request.POST["position"],
+                        company=request.POST["company"]
+                    )
+        request.session["support_model_id"] = support_model.id 
+        return redirect("support2")
+    else:
+        return render(request, "0_support_1.html",{"form1":form1})
+
+def support2(request):
+    form2 = ContactForm2(request.POST)
+    if request.method == "POST":
+        support_model_id = request.session.get("support_model_id")
+        support_model = ContactModel.objects.get(id=support_model_id)
+        support_model.subject = request.POST.get("subject")
+        support_model.message = request.POST.get("message")
+        support_model.save()
+        return render(request,"0_support_3.html")
+    else:
+        return render(request, "0_support_2.html",{"form2":form2})

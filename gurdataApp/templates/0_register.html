@@ -69,6 +69,13 @@
                                     <img src="{% static 'assets/landing/logo.svg' %}">
                                     <h3>Hesap Oluşturun</h3>
                                     
+                                    {% if message %}
+                                    <div class="alert alert-{{message_type}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                    {% endif %}
+                                        
+                                    
 
                                     <form method="post" autocomplete="off">
                                         {% csrf_token %}
@@ -84,7 +91,7 @@
                                     </form>
 
                                     <div class="w-100 formfootercontent mb-30">Zaten hesabınız var mı? <a
-                                            href="0_login.html">Giriş yap</a>.</div>
+                                            href="{% url 'login' %}">Giriş yap</a>.</div>
                                 </div>
 
                             </div>
@@ -164,5 +171,18 @@
     <script src="{% static 'assets/js/custom.js' %}"></script>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        setTimeout(function () {
+
+            var alertElement = document.querySelector('.alert');
+
+            if (alertElement) {
+                alertElement.style.display = 'none';
+            }
+        }, 3000);
+    });
+</script>
 
 </html>

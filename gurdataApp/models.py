@@ -59,3 +59,14 @@ class ContactGurdata(models.Model):
     def __str__(self):
         return f"{self.email}"
     
+class ContactModel(models.Model):
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    email = models.EmailField()
+    position = models.CharField(max_length=100, blank=True, null=True)
+    company = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100)
+    message = models.TextField()
+
+    def __str__(self):
+        return f"{self.name} {self.surname} - {self.subject}"

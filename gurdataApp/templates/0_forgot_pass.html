@@ -54,7 +54,7 @@
                             {% csrf_token %}
                             <div class="col col-login mx-auto mt32">
                                 <div class="text-center">
-                                    <a href="0_login.html" class="backbtn"><img
+                                    <a href="{% url 'login' %}" class="backbtn"><img
                                             src="{% static 'assets/landing/back.svg' %}" /></a>
                                     <img src="{% static 'assets/landing/logo.svg' %}" class="header-brand-img" alt="">
                                 </div>

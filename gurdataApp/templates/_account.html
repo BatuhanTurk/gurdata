@@ -59,7 +59,7 @@
                                 src="{% static 'assets/images/svgs/hamicon.svg' %}" class="" alt=""></a>
 
                         <!-- sidebar-toggle-->
-                        <a class="logo-horizontal " href="_dashboard.html">
+                        <a class="logo-horizontal " href="{% url 'home' %}">
                             <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}"
                                 class="header-brand-img desktop-logo" alt="logo">
                             <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}"
@@ -140,7 +140,7 @@
                                         </div>
 
                                         <div class="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
-                                            <a href="_account.html">{{ user.user_name }}{{ user.user_surname }}</a>
+                                            <a href="{% url 'account' %}">{{ user.user_name }}{{ user.user_surname }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                 <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
                 <div class="app-sidebar">
                     <div class="side-header">
-                        <a class="header-brand1" href="_dashboard.html">
+                        <a class="header-brand1" href="{% url 'home' %}">
                             <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img desktop-logo" alt="logo">-->
                             <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img toggle-logo" alt="logo">-->
                             <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img light-logo" alt="logo">-->
