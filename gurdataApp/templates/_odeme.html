@@ -27,7 +27,6 @@
     <!-- STYLE CSS -->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'assets/css/dashboard.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/sidebar.css' %}" rel="stylesheet" />
 
     <!--- FONT-ICONS CSS -->
     <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" />
@@ -53,7 +52,7 @@
             <div class="app-header header sticky">
                 <div class="container-fluid main-container ps-32 pe-0">
                     <div class="d-flex">
-                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle d-sm-block d-md-none" data-bs-toggle="sidebar" href="javascript:void(0)"><img src="{% static 'assets/images/svgs/hamicon.svg' %}" class="" alt=""></a>
+                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle d-sm-block d-md-none" data-bs-toggle="sidebar" href="javascript:void(0)"><img src="../assets/images/svgs/hamicon.svg" class="" alt=""></a>
 
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal " href="{% url 'dashboard' %}">
@@ -259,7 +258,7 @@
                                 <h3>Profil</h3>
                             </li>
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'account' %}">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'dashboard' %}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                         <path d="M11 2.75C8.72803 2.75 6.875 4.60303 6.875 6.875C6.875 9.14697 8.72803 11 11 11C13.272 11 15.125 9.14697 15.125 6.875C15.125 4.60303 13.272 2.75 11 2.75ZM11 11C7.21338 11 4.125 14.0884 4.125 17.875H5.5C5.5 14.8296 7.95459 12.375 11 12.375C14.0454 12.375 16.5 14.8296 16.5 17.875H17.875C17.875 14.0884 14.7866 11 11 11ZM11 4.125C12.5254 4.125 13.75 5.34961 13.75 6.875C13.75 8.40039 12.5254 9.625 11 9.625C9.47461 9.625 8.25 8.40039 8.25 6.875C8.25 5.34961 9.47461 4.125 11 4.125Z" fill=""/>
                                     </svg>
@@ -311,203 +310,34 @@
                     <div class="main-container container-fluid">
 
                         <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title sat-22n700n05"><img src="{% static 'assets/images/svgs/payment-header.svg' %}"/>Ödeme Yöntemleri</h1>
+                        </div>
+                        <div class="sat-14n5003005 mb-30 ps-2">Tüm veri setlerinize dosyalanmış şekilde ulaşabilirsiniz.</div>
                         <!-- PAGE-HEADER END -->
-                        <div class="clearfix h25"></div>
 
                         <!-- ROW-0 -->
                         <div class="row">
                             <!-- ROW CONTENT-->
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-xl-9">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
                                 <div class="row">
 
-                                    <!--INFO BOX-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="infobox overflow-hidden">
-                                            <div class="icon"><img src="{% static 'assets/images/svgs/checkbox_success.svg' %}"></div>
-                                            Güncelleme tamamlandı.
+                                    <!--PANEL-->
+                                    <div class="account-panel pt-5 d-none">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+
+
+
                                         </div>
                                     </div>
 
-                                    <!--BANNER-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="bannerbg1 overflow-hidden">
-                                            <div class="banner_content">
-                                                <div class="banner_title">Tüm Veriler Elinizin Altında</div>
-                                                <div class="banner_subtitle">Veri setlerini incelemek ve satın almak için kredi yüklemesi yapın.</div>
-                                            </div>
-                                            <button class="banner_button">Kredi Yükle</button>
-                                        </div>
-                                    </div>
-
-                                    <!--KREDI-->
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6">
-                                        <div class="mevcutkredi">
-                                            <div class="iconhead"><img src="{% static 'assets/images/svgs/balancewallet.svg' %}"></div>
-                                            <div class="maincont">
-                                                <div class="cont">
-                                                    <div class="wtitle">Mevcut Kredi</div>
-                                                    <div class="wsubtitle">Son Bakiye Yükleme Tarihi  <span>20.05.2023</span></div>
-                                                </div>
-                                            <div class="miktar"><span>{{ user_data.user_balance }}</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--KREDILER-->
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6">
-                                        <div class="toplamkrediler">
-                                            <div class="maincont">
-                                                <div class="cont">
-                                                    <div class="wtitle">Toplam Kullanılan Krediler</div>
-                                                    <div class="wsubtitle">Toplam : 642 credit</div>
-                                                </div>
-                                                <div class="legenditems">
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-1"></div>
-                                                        <div class="legenditem-title">Hava Durumu</div>
-                                                        <div class="legenditem-numbers">210</div>
-                                                    </div>
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-2"></div>
-                                                        <div class="legenditem-title">Emlak Değerleme</div>
-                                                        <div class="legenditem-numbers">50</div>
-                                                    </div>
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-3"></div>
-                                                        <div class="legenditem-title">Trafik Yoğunluğu</div>
-                                                        <div class="legenditem-numbers">50</div>
-                                                    </div>
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-4"></div>
-                                                        <div class="legenditem-title">Diğer</div>
-                                                        <div class="legenditem-numbers">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="chart-pie" class="chartsh"></div>
-                                        </div>
-                                    </div>
-
-                                    <!--EN COK INDIRILENLER-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="verisetleri">
-                                            <div class="cont">
-                                                <div class="wtitle">En Çok İndirilen Veri Setleri</div>
-                                            </div>
-                                            <div class="legenditems">
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_emlak.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_finans.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_hava.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_demografi.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_arac.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_trafik.svg' %}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--SON ISLEMLER-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="sonislemler">
-                                            <div class="cont">
-                                                <div class="wtitle">Son İşlemler</div>
-                                            </div>
-                                            <div class="legenditems">
-                                                <div class="legenditem current">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/file.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button data-bs-toggle="sidebar-right" data-target=".sidebar-right">Daha Fazlasını Gör</button>
-                                        </div>
-                                    </div>
+<!--                                    &lt;!&ndash;PANEL&ndash;&gt;-->
+<!--                                    <div class="account-panel">-->
+<!--                                        &lt;!&ndash;LEFT&ndash;&gt;-->
+<!--                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xl-2 leftside">-->
+<!--                                            <div class="headtitle">Account Setting Panel </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                 </div>
                             </div>
@@ -515,49 +345,6 @@
 
 
                             <!-- SIDEBAR CONTENT-->
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xl-3">
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="welcomebox">
-                                        <div class="wtitle">Hoş geldiniz!</div>
-                                        <div class="wsubtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="sidebar_banner1">
-                                        <div class="content">
-                                            <div class="wtitle">Lorem ipsum dolor</div>
-                                            <div class="wsubtitle">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit,</div>
-                                            <button>Button</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="sidebar_banner2">
-                                        <div class="content">
-                                            <div class="wtitle">Lorem ipsum dolor</div>
-                                            <div class="wsubtitle">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit,</div>
-                                            <button>Button</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="sidebar_banner3">
-                                        <div class="content">
-                                            <div class="wtitle">Lorem ipsum dolor</div>
-                                            <div class="wsubtitle">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit,</div>
-                                            <button>Button</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
                             <!-- SIDEBAR CONTENT-->
 
 
@@ -571,117 +358,6 @@
             <!--app-content close-->
 
         </div>
-
-        <!-- Sidebar-right -->
-        <div class="sidebar sidebar-right sidebar-animate">
-            <div class="panel panel-primary card mb-0 shadow-none border-0">
-
-                <!-- CLOSE -->
-                <div class="card-title mb-2">
-                    <a href="javascript:void(0)">
-                        <img data-bs-toggle="sidebar-right" data-target=".sidebar-right" src="{% static 'assets/images/svgs/rmenuback.svg' %}" />
-                    </a>
-                </div>
-
-                <!--SON ISLEMLER SIDEBAR-->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 p-0">
-                    <div class="sonislemler">
-                        <div class="cont">
-                            <div class="wtitle">Son İşlemler</div>
-                        </div>
-                        <div class="legenditems">
-                            <div class="legenditem current">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/file.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="rsidebarbottombtn w-100">
-                <button class="w-100">Daha Fazlasını Gör</button>
-            </div>
-
-        </div>
-        <!--/Sidebar-right-->
 
         <!-- FOOTER -->
         <footer class="footer">
@@ -730,11 +406,14 @@
 
     <!-- INTERNAL CHARTJS CHART JS-->
     <script src="{% static 'assets/plugins/chart/Chart.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/chart.js' %}"></script>
+
     <script src="{% static 'assets/plugins/chart/rounded-barchart.js' %}"></script>
     <script src="{% static 'assets/plugins/chart/utils.js' %}"></script>
 
     <!-- INTERNAL SELECT2 JS -->
     <script src="{% static 'assets/plugins/select2/select2.full.min.js' %}"></script>
+    <script src="{% static 'assets/js/select2.js' %}"></script>
 
     <!-- INTERNAL Data tables js-->
     <script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js' %}"></script>
@@ -746,27 +425,17 @@
     <script src="{% static 'assets/plugins/apexchart/irregular-data-series.js' %}"></script>
 
     <!-- C3 CHART JS -->
-    <script src="{% static 'assets/plugins/charts-c3/d3.v5.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/charts-c3/c3-chart.js' %}"></script>
+<!--    <script src="../assets/plugins/charts-c3/d3.v5.min.js"></script>-->
+<!--    <script src="../assets/plugins/charts-c3/c3-chart.js"></script>-->
 
-    <!-- CHART-DONUT JS -->
-    <script src="{% static 'assets/js/charts.js' %}"></script>
-
-    <!-- INTERNAL Flot JS -->
-    <script src="{% static 'assets/plugins/flot/jquery.flot.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/jquery.flot.fillbetween.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/chart.flot.sampledata.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/dashboard.sampledata.js' %}"></script>
-
-    <!-- INTERNAL Vector js -->
-    <script src="{% static 'assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
 
     <!-- SIDE-MENU JS-->
     <script src="{% static 'assets/plugins/sidemenu/sidemenu.js' %}"></script>
 
-    <!-- INTERNAL INDEX JS -->
-    <script src="{% static 'assets/js/index1.js' %}"></script>
+    <!--- TABS JS -->
+    <script src="{% static 'assets/plugins/tabs/jquery.multipurpose_tabcontent.js' %}"></script>
+    <script src="{% static 'assets/plugins/tabs/tab-content.js' %}"></script>
+
 
     <!-- Color Theme js -->
     <script src="{% static 'assets/js/themeColors.js' %}"></script>

@@ -14,4 +14,9 @@ urlpatterns = [
     path("support", views.support, name='support'),
     path("support2", views.support2, name='support2'),
     path('dashboard',views.dashboard, name='dashboard'),
+    path("files/", views.files, name='files'),
+    path("pre_owned", views.pre_owned, name='pre_owned'),
+    path("contact/", views.contact, name='contact'),
+    path("payment_methods/", views.payment_methods, name='payment_methods'),
+    path("sss/", views.sss, name='sss')
 ]

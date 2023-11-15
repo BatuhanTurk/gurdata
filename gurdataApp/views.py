@@ -363,6 +363,44 @@ def support2(request):
 
 def dashboard(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    
-    
     return render(request,"_dashboard.html",{"user_data" : user_data})
+
+def files(request):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    return render(request,"_dosyalar.html",{"user_data":user_data})
+
+def pre_owned(request):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    return render(request,"_ikinci-el.html",{"user_data":user_data})
+
+def contact(request):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    form = ContactForm2(request.POST)
+    if request.method == "POST":
+        contact = ContactModel.objects.create(
+            name = user_data.user_name,
+            surname = user_data.user_surname,
+            email = user_data.user_email,
+            position = user_data.user_company_role,
+            company = user_data.user_company,
+            subject = request.POST.get('subject'),
+            message = request.POST.get('message'),
+            )
+        contact.save()
+        request.session["message_type"] = "success"
+        request.session["message"] = "Mesajınız başarı ile gönderildi."
+        return redirect('contact')
+    else:
+        message_type = request.session.get("message_type")
+        message = request.session.get("message")
+        request.session["message_type"] = ""
+        request.session["message"] = ""
+        return render(request,"_iletisim.html",{"user_data":user_data,"form":form,"message":message,"message_type":message_type})
+
+def payment_methods(request):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    return render(request,"_odeme.html",{"user_data":user_data})
+
+def sss(request):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    return render(request,"_sss.html",{"user_data":user_data})

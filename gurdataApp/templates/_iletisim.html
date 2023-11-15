@@ -59,7 +59,7 @@
                                 src="{% static 'assets/images/svgs/hamicon.svg' %}" class="" alt=""></a>
 
                         <!-- sidebar-toggle-->
-                        <a class="logo-horizontal " href="{% url 'home' %}">
+                        <a class="logo-horizontal " href="{% url 'dashboard' %}">
                             <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}"
                                 class="header-brand-img desktop-logo" alt="logo">
                             <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}"
@@ -136,11 +136,11 @@
                                         </div>
 
                                         <div class="dropdown d-flex nameicon sat-12n500n05-bswhite">
-                                            {{ user.user_name.0 }}{{ user.user_surname.0 }}
+                                            {{ user_data.user_name.0 }}{{ user_data.user_surname.0 }}
                                         </div>
 
                                         <div class="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
-                                            <a href="{% url 'account' %}">{{ user.user_name }}{{ user.user_surname }}</a>
+                                            <a href="{% url 'account' %}">{{ user_data.user_name }} {{ user_data.user_surname }} </a>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                 <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
                 <div class="app-sidebar">
                     <div class="side-header">
-                        <a class="header-brand1" href="{% url 'home' %}">
+                        <a class="header-brand1" href="{% url 'dashboard' %}">
                             <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img desktop-logo" alt="logo">-->
                             <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img toggle-logo" alt="logo">-->
                             <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img light-logo" alt="logo">-->
@@ -216,7 +216,8 @@
                                 </a>
 
                                 <ul class="slide-menu">
-                                    <li><a href="{% url 'pre_owned' %}" class="slide-item sat-16n500n05"> İkinci el</a></li>
+                                    <li><a href="{% url 'pre_owned' %}" class="slide-item sat-16n500n05"> İkinci el</a>
+                                    </li>
                                     <li><a href="#" class="slide-item sat-16n500n05"> Konum</a></li>
                                 </ul>
                             </li>
@@ -365,10 +366,10 @@
                         <!-- PAGE-HEADER -->
                         <div class="page-header">
                             <h1 class="page-title sat-22n700n05"><img
-                                    src="{% static 'assets/images/svgs/account-header.svg' %}" />Account</h1>
+                                    src="{% static 'assets/images/svgs/contact-header.svg' %}" />Bize Ulaşın</h1>
                         </div>
-                        <div class="sat-14n5003005 mb-30 ps-2">This information can be edited from your profile page.
-                        </div>
+                        <div class="sat-14n5003005 mb-30 ps-2">Mevcut Veri Setleri, Eksik Veri Setleri yada Diğer
+                            Konular hakkında bizimle iletişime geçebilirsiniz.</div>
                         <!-- PAGE-HEADER END -->
 
                         <!-- ROW-0 -->
@@ -376,247 +377,58 @@
                             <!-- ROW CONTENT-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
                                 <div class="row">
-
+                                    
+                                    {% if message %}
+                                        
+                                    <div class="alert alert-{{message_type}} container" role="alert">
+                                        {{message}}
+                                      </div>
+                                    {% endif %}
+                                        
                                     <!--PANEL-->
-                                    <div class="account-panel p-0">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 ps-0">
+                                    <form method = "post" autocomplete="off" action="{% url 'contact' %}">
+                                        {% csrf_token %}
+                                        <div class="account-panel pt-5">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
 
-                                            <div class="col-xl-3 float-start border-right-gray p-0">
-                                                <div class="headtitle">Account Setting Panel </div>
-                                            </div>
-
-                                            <div class="col-xl-9 float-start d-none">
-                                                <div class="headofrightside ps-0">
-                                                    <div class="maincont">
-                                                        <!--USER ICON-->
-                                                        <div class="d-flex nameicon sat-12n500n05-bswhite">{{ user_data.user_name.0 }}{{ user_data.user_surname.0 }}</div>
-                                                        <!--USER INFO-->
-                                                        <div class="cont">
-                                                            <div class="wtitle">Mehmet Onur Solak</div>
-                                                            <div class="wsubtitle">mehmetonursolak@mail.com</div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Konu <span
+                                                                    class="text-red">*</span></label>
+                                                            {{form.subject}}
                                                         </div>
                                                     </div>
-                                                    <!-- BUTTON-->
-                                                    <button class="uploadbtn"><span>Profil Fotoğrafını Yükle</span> <img
-                                                            src="{% static 'assets/images/svgs/upload.svg' %}"></button>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab_wrapper second_tab p-0">
-                                                <!--LEFT-->
-                                                <ul class="tab_list col-xl-3 border-right-gray p-0">
-                                                    <li class="active"><span>Personal Informations</span></li>
-                                                    <li><span>Notification Settings</span></li>
-                                                </ul>
-                                                <!--RIGHT-->
-                                                <div class="content_wrapper col-xl-9 ps-4" style="margin-top: -120px;">
-                                                    <div class="tab_content active">
-                                                        <form method="post" action="{% url 'account' %}">
-                                                            {% csrf_token %}
-                                                            <div class="row">
-
-                                                                <div class="col-sm-12 ps-0 mb-32">
-                                                                    <div class="headofrightside ps-0">
-                                                                        <div class="maincont">
-                                                                            <!--USER ICON-->
-                                                                            <div
-                                                                                class="d-flex nameicon sat-12n500n05-bswhite">
-                                                                                {{ user.user_name.0 }}{{ user.user_surname.0 }}</div>
-                                                                            <!--USER INFO-->
-                                                                            <div class="cont">
-                                                                                <div class="wtitle">{{ user.user_name }}
-                                                                                    {{ user.user_surname }}
-                                                                                </div>
-                                                                                <div class="wsubtitle">
-                                                                                    {{user.user_email}}</div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- BUTTON-->
-                                                                        <button class="uploadbtn"><span>Profil
-                                                                                Fotoğrafını Yükle</span> <img
-                                                                                src="{% static 'assets/images/svgs/upload.svg' %}"></button>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6 col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Adınız <span
-                                                                                class="text-red">*</span></label>
-                                                                        {{ form.user_name}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6 col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Soyadınız <span
-                                                                                class="text-red">*</span></label>
-                                                                        {{ form.user_surname }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">E-Posta Adresiniz
-                                                                            <span class="text-red">*</span></label>
-                                                                        {{ form.user_email }}
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Eski Şifreniz <span
-                                                                                class="text-red">*</span></label>
-                                                                        <div class="wrap-input100 validate-input input-group"
-                                                                            id="Password-toggle">
-                                                                            {{ form.old_password }}
-                                                                            <a href="javascript:void(0)"
-                                                                                class="input-group-text text-muted"><i
-                                                                                    class="zmdi zmdi-eye text-muted"
-                                                                                    aria-hidden="true"></i></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-12 col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Şifreniz <span
-                                                                                class="text-red">*</span></label>
-                                                                        <div class="wrap-input100 validate-input input-group"
-                                                                            id="Password-toggle1">
-                                                                            {{ form.new_password}}
-                                                                            <a href="javascript:void(0)"
-                                                                                class="input-group-text text-muted"><i
-                                                                                    class="zmdi zmdi-eye text-muted"
-                                                                                    aria-hidden="true"></i></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-12 col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Şifrenizi Onaylayın
-                                                                            <span class="text-red">*</span></label>
-                                                                        <div class="wrap-input100 validate-input input-group"
-                                                                            id="Password-toggle2">
-                                                                            {{ form.confirm_password }}
-                                                                            <a href="javascript:void(0)"
-                                                                                class="input-group-text text-muted"><i
-                                                                                    class="zmdi zmdi-eye text-muted"
-                                                                                    aria-hidden="true"></i></a>
-                                                                        </div>
-                                                                        <!--                                                                    <input type="password" class="form-control" placeholder="" id="confirmpswd">-->
-                                                                        <!--                                                                    <span class="eyespan eye-off" id="buttonEye-confirmpswd" onclick="pushHideButton('confirmpswd')"></span>-->
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-12 col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Şirket İsminiz</label>
-                                                                        {{ form.user_company}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-12">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label">Şirketiniz</label>
-                                                                        {{ form.user_position }}
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="col-xs-12 mt-3 d-md-flex justify-content-md-end">
-                                                                    <div class="form-group">
-                                                                        <button
-                                                                            class="formbutton saveandupdatebtn h42">Kaydet
-                                                                            ve Güncelle <img class="ms-8 pe-2"
-                                                                                src="{% static 'assets/images/svgs/check.svg' %}"></button>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </form>
-
-                                                    </div>
-
-                                                    <div class="tab_content">
-                                                        <div class="row">
-                                                            <div class="col-sm-12 mb-32">
-                                                                <div class="ps-0 pt-4">
-                                                                    <h3 class="headerh3">Bildirim Ayarları</h3>
-                                                                    <div class="subheader mb-32">Gurdata’nın
-                                                                        bildirimlerini güncel olarak almak ya da almamak
-                                                                        için ayarlarınızı yapılandırabilirsiniz.</div>
-                                                                    <div class="headersperator1"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                            <form method="post" action="{% url 'notification' %}">
-                                                                {% csrf_token %}
-                                                                <div
-                                                                    class="ps-0 col-sm-6 col-md-6 float-start notify_settings">
-                                                                    Sistem Bildirimleri</div>
-                                                                <div class="col-sm-3 col-md-3 float-start">
-                                                                    <div class="form-group">
-                                                                        <label class="custom-switch form-switch me-5">
-                                                                            {{ form.system_notifications }}
-                                                                            
-                                                                            <span
-                                                                                class="custom-switch-indicator custom-switch-indicator-md"></span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="ps-0 col-sm-6 col-md-6 float-start notify_settings">
-                                                                    FileManager Bildirimleri</div>
-                                                                <div class="col-sm-3 col-md-3 float-start">
-                                                                    <div class="form-group">
-                                                                        <label class="custom-switch form-switch me-5">
-                                                                            {{ form.file_manager_notifications }}
-
-                                                                            <span
-                                                                                class="custom-switch-indicator custom-switch-indicator-md"></span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div
-                                                                    class="ps-0 col-sm-6 col-md-6 float-start notify_settings">
-                                                                    Mail Bildirimleri<br>
-                                                                    <span>Kampanyalar ve Yenilikler Hakkında
-                                                                        Bilgilendirme Bildirimleri</span>
-                                                                </div>
-                                                                <div class="col-sm-3 col-md-3 float-start">
-                                                                    <div class="form-group">
-                                                                        
-                                                                        <label class="custom-switch form-switch me-5">
-                                                                            {{ form.mail_notifications }}
-                                                                            
-                                                                            <span
-                                                                                class="custom-switch-indicator custom-switch-indicator-md"></span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            
-                                                            </div>
-                                                            <div
-                                                                class="col-xs-12 mt-3 d-md-flex justify-content-md-end">
-                                                                <div class="form-group">
-                                                                    <button
-                                                                        class="formbutton saveandupdatebtn h42">Kaydet
-                                                                        ve Güncelle <img class="ms-8 pe-2"
-                                                                            src="{% static 'assets/images/svgs/check.svg' %}"></button>
-                                                                </div>
-                                                            </div>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Mesajınız <span
+                                                                    class="text-red">*</span></label>
+                                                            {{form.message}}
                                                         </div>
                                                     </div>
-                                                </form>
-                                                </div>
-                                            </div>
 
+                                                    <div class="col-xs-12 mt-3 d-md-flex justify-content-md-end">
+                                                        <div class="form-group">
+                                                            <button class="formbutton saveandupdatebtn h42">Gönder <img
+                                                                    class="ms-8 pe-2"
+                                                                    src="{% static 'assets/images/svgs/send.svg' %}"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <!--                                    &lt;!&ndash;PANEL&ndash;&gt;-->
-                                    <!--                                    <div class="account-panel">-->
-                                    <!--                                        &lt;!&ndash;LEFT&ndash;&gt;-->
-                                    <!--                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xl-2 leftside">-->
-                                    <!--                                            <div class="headtitle">Account Setting Panel </div>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </div>-->
-
+                                        <!--                                    &lt;!&ndash;PANEL&ndash;&gt;-->
+                                        <!--                                    <div class="account-panel">-->
+                                        <!--                                        &lt;!&ndash;LEFT&ndash;&gt;-->
+                                        <!--                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xl-2 leftside">-->
+                                        <!--                                            <div class="headtitle">Account Setting Panel </div>-->
+                                        <!--                                        </div>-->
+                                        <!--                                    </div>-->
+                                    </form>
                                 </div>
+
                             </div>
                             <!-- ROW CONTENT-->
 
@@ -635,7 +447,7 @@
             <!--app-content close-->
 
         </div>
-    
+
         <!-- FOOTER -->
         <footer class="footer">
             <div class="container">
@@ -655,9 +467,6 @@
 
     <!-- JQUERY JS -->
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-
-    <!-- SHOW PASSWORD JS -->
-    <script src="{% static 'assets/js/show-password.min.js' %}"></script>
 
     <!-- BOOTSTRAP JS -->
     <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
@@ -724,5 +533,19 @@
     <script src="{% static 'assets/js/custom.js' %}"></script>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        setTimeout(function () {
+
+            var alertElement = document.querySelector('.alert');
+
+            if (alertElement) {
+                alertElement.style.display = 'none';
+            }
+        }, 3000);
+    });
+</script>
+
 
 </html>

@@ -27,7 +27,6 @@
     <!-- STYLE CSS -->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'assets/css/dashboard.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/sidebar.css' %}" rel="stylesheet" />
 
     <!--- FONT-ICONS CSS -->
     <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" />
@@ -123,11 +122,11 @@
                                         </div>
 
                                         <div class="dropdown d-flex nameicon sat-12n500n05-bswhite">
-                                            {{ user_data.user_name.0 }}{{ user_data.user_surname.0 }}
+                                            {{ user_data.user_name.0 }} {{ user_data.user_surname.0 }}
                                         </div>
-
+    
                                         <div class="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
-                                            <a href="{% url 'account' %}">{{ user_data.user_name }} {{ user_data.user_surname }} </a>
+                                            <a href="{% url 'account' %}">{{ user_data.user_name}} {{ user_data.user_surname}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -311,201 +310,215 @@
                     <div class="main-container container-fluid">
 
                         <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title sat-22n700n05"><img src="{% static 'assets/images/svgs/emlak-header.svg' %}"/>Emlak / İkinci el</h1>
+                        </div>
+                        <div class="sat-14n5003005 mb-30 ps-2">About data set</div>
                         <!-- PAGE-HEADER END -->
-                        <div class="clearfix h25"></div>
 
                         <!-- ROW-0 -->
                         <div class="row">
                             <!-- ROW CONTENT-->
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-xl-9">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
                                 <div class="row">
 
-                                    <!--INFO BOX-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="infobox overflow-hidden">
-                                            <div class="icon"><img src="{% static 'assets/images/svgs/checkbox_success.svg' %}"></div>
-                                            Güncelleme tamamlandı.
-                                        </div>
-                                    </div>
-
-                                    <!--BANNER-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="bannerbg1 overflow-hidden">
-                                            <div class="banner_content">
-                                                <div class="banner_title">Tüm Veriler Elinizin Altında</div>
-                                                <div class="banner_subtitle">Veri setlerini incelemek ve satın almak için kredi yüklemesi yapın.</div>
-                                            </div>
-                                            <button class="banner_button">Kredi Yükle</button>
-                                        </div>
-                                    </div>
-
-                                    <!--KREDI-->
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6">
-                                        <div class="mevcutkredi">
-                                            <div class="iconhead"><img src="{% static 'assets/images/svgs/balancewallet.svg' %}"></div>
-                                            <div class="maincont">
-                                                <div class="cont">
+                                    <!--KREDI DETAY-->
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                                        <div class="kredidetay">
+                                            <div class="wtitle">Kredi Detayları</div>
+                                            <div class="numbers">
+                                                <div class="boxes">
                                                     <div class="wtitle">Mevcut Kredi</div>
-                                                    <div class="wsubtitle">Son Bakiye Yükleme Tarihi  <span>20.05.2023</span></div>
+                                                    <span>{{ user_data.user_balance}}</span>
                                                 </div>
-                                            <div class="miktar"><span>{{ user_data.user_balance }}</span></div>
+                                                <div class="dividerline"><img src="{% static 'assets/images/svgs/dividerline.svg' %}"></div>
+                                                <div class="boxes">
+                                                    <div class="wtitle">Alınabilecek Veri Seti</div>
+                                                    <span class="dashboard_green">{{ user_data.user_balance}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!--KREDILER-->
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6">
-                                        <div class="toplamkrediler">
+                                    <!--KARSILASTIRMA-->
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                                        <div class="karsilastirma">
                                             <div class="maincont">
-                                                <div class="cont">
-                                                    <div class="wtitle">Toplam Kullanılan Krediler</div>
-                                                    <div class="wsubtitle">Toplam : 642 credit</div>
+                                                <div class="col1">
+                                                    <div class="wtitle">Yıla Göre Karşılaştırma</div>
+                                                    <div class="wsubtitle">2022 - 2023</div>
                                                 </div>
-                                                <div class="legenditems">
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-1"></div>
-                                                        <div class="legenditem-title">Hava Durumu</div>
-                                                        <div class="legenditem-numbers">210</div>
-                                                    </div>
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-2"></div>
-                                                        <div class="legenditem-title">Emlak Değerleme</div>
-                                                        <div class="legenditem-numbers">50</div>
-                                                    </div>
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-3"></div>
-                                                        <div class="legenditem-title">Trafik Yoğunluğu</div>
-                                                        <div class="legenditem-numbers">50</div>
-                                                    </div>
-                                                    <div class="legenditem">
-                                                        <div class="legenditem-box boxbg-4"></div>
-                                                        <div class="legenditem-title">Diğer</div>
-                                                        <div class="legenditem-numbers">0</div>
+                                                <div class="col2">
+                                                    <div class="wtitle">%25 <img src="{% static 'assets/images/svgs/arrow-down.svg' %}"></div>
+                                                    <div class="chart-wrapper" style="width: 112px !important; height: 47px !important;">
+                                                        <canvas id="areaChart4" class="areaChart chart-dropshadow-danger"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="chart-pie" class="chartsh"></div>
                                         </div>
                                     </div>
 
-                                    <!--EN COK INDIRILENLER-->
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="verisetleri">
-                                            <div class="cont">
-                                                <div class="wtitle">En Çok İndirilen Veri Setleri</div>
+                                    <!--KARSILASTIRMA 2-->
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                                        <div class="karsilastirma">
+                                            <div class="maincont">
+                                                <div class="col1">
+                                                    <div class="wtitle">Aya Göre Karşılaştırma</div>
+                                                    <div class="wsubtitle">2023 FEB - MAY</div>
+                                                </div>
+                                                <div class="col2">
+                                                    <div class="wtitle">%25 <img src="{% static 'assets/images/svgs/arrow-up.svg' %}"></div>
+                                                    <div class="chart-wrapper" style="width: 112px !important; height: 47px !important;">
+                                                        <canvas id="areaChart2" class="areaChart chart-dropshadow-success"></canvas>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="legenditems">
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_emlak.svg' %}">
+                                        </div>
+                                    </div>
+
+                                    <!--FILTRELER-->
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                                        <div class="dsection">
+                                            <div class="wtitle">Detaylı Veri Seti Sorgulama</div>
+                                            <div class="wsubtitle">İstediğiniz değerleri girerek veri setinizi sınıflandırabilir, ölçülendirebilir ve bu değerlere göre görüntüleyebilirsiniz.</div>
+                                        </div>
+                                        <div class="dfilters">
+                                            <div class="col1">
+                                                <div class="rows">
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_finans.svg' %}">
+                                                <div class="rows">
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="item">
+                                                        <select class="form-control select2-show-search form-select" data-placeholder="City: -">
+                                                            <option label="City: -"></option>
+                                                            <option value="IST">Istanbul</option>
+                                                            <option value="IZM">Izmir</option>
+                                                            <option value="ANK">ANKARA</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_hava.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_demografi.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_arac.svg' %}">
-                                                </div>
-                                                <div class="legenditem">
-                                                    <img src="{% static 'assets/images/svgs/veriseti_trafik.svg' %}">
-                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <button>Filtreyi Temizle <img class="ms-5" src="{% static 'assets/images/svgs/rotate-ccw.svg' %}"></button>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!--SON ISLEMLER-->
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                        <div class="sonislemler">
-                                            <div class="cont">
-                                                <div class="wtitle">Son İşlemler</div>
-                                            </div>
-                                            <div class="legenditems">
-                                                <div class="legenditem current">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/file.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                                <div class="legenditem">
-                                                    <div class="col1">
-                                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                                        <div class="coltitle">
-                                                            <span>How to Farming.csv</span>
-                                                            <div class="attrs">
-                                                                <span>128 Mb</span>
-                                                                <span>Aug 12, 2019</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col2">
-                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button data-bs-toggle="sidebar-right" data-target=".sidebar-right">Daha Fazlasını Gör</button>
+                                        <div class="dtable table-responsive">
+                                            <table class="table text-nowrap text-md-nowrap mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th>Brand</th>
+                                                    <th>model_serIe</th>
+                                                    <th>model</th>
+                                                    <th>prIce</th>
+                                                    <th>lIstIng_date</th>
+                                                    <th>country</th>
+                                                    <th>cIty</th>
+                                                    <th>county</th>
+                                                    <th>dIstrIct</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="clearfix h25"></div>
+                                        <div class="bigbutton">
+                                            <button data-bs-toggle="sidebar-right" data-target=".sidebar-right">Satın Al <img src="{% static 'assets/images/svgs/download.svg' %}"></button>
                                         </div>
                                     </div>
 
@@ -515,49 +528,6 @@
 
 
                             <!-- SIDEBAR CONTENT-->
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xl-3">
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="welcomebox">
-                                        <div class="wtitle">Hoş geldiniz!</div>
-                                        <div class="wsubtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="sidebar_banner1">
-                                        <div class="content">
-                                            <div class="wtitle">Lorem ipsum dolor</div>
-                                            <div class="wsubtitle">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit,</div>
-                                            <button>Button</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="sidebar_banner2">
-                                        <div class="content">
-                                            <div class="wtitle">Lorem ipsum dolor</div>
-                                            <div class="wsubtitle">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit,</div>
-                                            <button>Button</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                    <div class="sidebar_banner3">
-                                        <div class="content">
-                                            <div class="wtitle">Lorem ipsum dolor</div>
-                                            <div class="wsubtitle">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit,</div>
-                                            <button>Button</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
                             <!-- SIDEBAR CONTENT-->
 
 
@@ -585,75 +555,42 @@
 
                 <!--SON ISLEMLER SIDEBAR-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 p-0">
-                    <div class="sonislemler">
-                        <div class="cont">
-                            <div class="wtitle">Son İşlemler</div>
+
+                    <div class="blocks">
+                        <div class="col1">
+                            <div class="iconhead"><img src="{% static 'assets/images/svgs/balancewallet-header.svg' %}"></div>
+                            <div class="cont">
+                                <div class="wtitle">Mevcut Kredi</div>
+                                <div class="wsubtitle">Son Bakiye Yükleme Tarihi <span>20.05.2023</span></div>
+                            </div>
                         </div>
-                        <div class="legenditems">
-                            <div class="legenditem current">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
+                        <div class="col2">
+                            <div class="wtitle">{{ user_data.user_balance}}</div>
+                        </div>
+                    </div>
+
+
+                    <div class="blocks">
+                        <div class="col1">
+                            <div class="iconhead"><img src="{% static 'assets/images/svgs/emlak-header.svg' %}"></div>
+                            <div class="cont">
+                                <div class="wtitle">Emlak / İkinci el</div>
+                                <div class="wsubtitle2">Nüfus Verileri</div>
                             </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/file.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
-                            <div class="legenditem">
-                                <div class="col1">
-                                    <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                                    <div class="coltitle">
-                                        <span>How to Farming.csv</span>
-                                        <div class="attrs">
-                                            <span>128 Mb</span>
-                                            <span>Aug 12, 2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                </div>
-                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="wtitle">50</div>
+                            <span>Satış Başı İçin Gereken Kredi</span>
+                        </div>
+                    </div>
+
+                    <button class="normalbtn">Kredi Yükle</button>
+
+                    <!-- VIEW 1 -->
+                    <div class="maincont view1">
+                        <div class="wtitle">Veri Setiniz Hakkında</div>
+                        <div class="sonislemler">
+                            <div class="legenditems">
                             <div class="legenditem">
                                 <div class="col1">
                                     <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
@@ -672,12 +609,54 @@
                             </div>
                         </div>
                     </div>
+                        <div class="wsubtitle">Gurdata veri platformu, analitik çalışmalarınızda sizlere destek olabilecek veri
+                            kaynaklarını, doğrudan filtreleme ile indirme imkanı sunan bir platformdur. Gurdata veri platformunda Emlak, Araç, Demografi, Hava, Finans ve Trafik üst başlıklarında geniş yelpazede veriler sunmaktadır.</div>
+                        <div class="action_btns green nextview"><span>Satın Al ve FileManager'a Kaydet</span><img src="{% static 'assets/images/svgs/check-circle.svg' %}"></div>
+                        <div class="action_btns red"><span>Veri Setini İndirmek İçin Krediniz Yetersiz</span><img src="{% static 'assets/images/svgs/info.svg' %}"></div>
+                        <div class="info">İşlem tamamlandıktan sonra veri setine FileManager üzerinden ulaşabilirsiniz.</div>
+                    </div>
+
+                    <!-- VIEW 2 -->
+                    <div class="maincont view2 d-none">
+                        <div class="wtitle">Veri Setiniz Hazırlanıyor</div>
+                        <div class="wsubtitle ps-3"> İşlem tamamlandıktan sonra veri setine FileManager üzerinden ulaşabilirsiniz.</div>
+                        <div class="text-center col-lg-12 col-md-12 col-sm-12 col-xl-12 p-0">
+                            <img src="{% static 'assets/images/svgs/preparing.svg' %}">
+                        </div>
+                        <button class="normalbtn">FileManager'a Git</button>
+                    </div>
+
+                    <!-- VIEW 3 -->
+                    <div class="maincont view3 d-none">
+                        <div class="wtitle">Veri Setiniz Hazırlandı</div>
+                        <div class="sonislemler">
+                            <div class="legenditems">
+                                <div class="legenditem">
+                                    <div class="col1">
+                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
+                                        <div class="coltitle">
+                                            <span>How to Farming.csv</span>
+                                            <div class="attrs">
+                                                <span>128 Mb</span>
+                                                <span>Aug 12, 2019</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wsubtitle">Gurdata veri platformu, analitik çalışmalarınızda sizlere destek olabilecek veri
+                            kaynaklarını, doğrudan filtreleme ile indirme imkanı sunan bir platformdur. Gurdata veri platformunda Emlak, Araç, Demografi, Hava, Finans ve Trafik üst başlıklarında geniş yelpazede veriler sunmaktadır.</div>
+                        <div class="action_btns blue"><span>İndir</span><img src="{% static 'assets/images/svgs/download.svg' %}"></div>
+                    </div>
+
+
                 </div>
 
-            </div>
-
-            <div class="rsidebarbottombtn w-100">
-                <button class="w-100">Daha Fazlasını Gör</button>
             </div>
 
         </div>
@@ -730,11 +709,14 @@
 
     <!-- INTERNAL CHARTJS CHART JS-->
     <script src="{% static 'assets/plugins/chart/Chart.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/chart.js' %}"></script>
+
     <script src="{% static 'assets/plugins/chart/rounded-barchart.js' %}"></script>
     <script src="{% static 'assets/plugins/chart/utils.js' %}"></script>
 
     <!-- INTERNAL SELECT2 JS -->
     <script src="{% static 'assets/plugins/select2/select2.full.min.js' %}"></script>
+    <script src="{% static 'assets/js/select2.js' %}"></script>
 
     <!-- INTERNAL Data tables js-->
     <script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js' %}"></script>
@@ -746,8 +728,8 @@
     <script src="{% static 'assets/plugins/apexchart/irregular-data-series.js' %}"></script>
 
     <!-- C3 CHART JS -->
-    <script src="{% static 'assets/plugins/charts-c3/d3.v5.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/charts-c3/c3-chart.js' %}"></script>
+<!--    <script src="../assets/plugins/charts-c3/d3.v5.min.js"></script>-->
+<!--    <script src="../assets/plugins/charts-c3/c3-chart.js"></script>-->
 
     <!-- CHART-DONUT JS -->
     <script src="{% static 'assets/js/charts.js' %}"></script>
@@ -767,12 +749,16 @@
 
     <!-- INTERNAL INDEX JS -->
     <script src="{% static 'assets/js/index1.js' %}"></script>
+    <script src="{% static 'assets/js/widget.js' %}"></script>
+
 
     <!-- Color Theme js -->
     <script src="{% static 'assets/js/themeColors.js' %}"></script>
 
     <!-- CUSTOM JS -->
     <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    <!-- DEMO FUNCS-->
 
 </body>
 
