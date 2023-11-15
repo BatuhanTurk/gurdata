@@ -316,7 +316,6 @@ def notification(request):
         system_notifications = request.POST.get("system_notifications")
         file_manager_notifications = request.POST.get("file_manager_notifications")
         mail_notifications = request.POST.get("mail_notifications")
-        print(system_notifications, file_manager_notifications, mail_notifications)
         if system_notifications == "on":
             user.system_notifications = 1
         else:
@@ -360,3 +359,10 @@ def support2(request):
         return render(request,"0_support_3.html")
     else:
         return render(request, "0_support_2.html",{"form2":form2})
+    
+
+def dashboard(request):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    
+    
+    return render(request,"_dashboard.html",{"user_data" : user_data})
