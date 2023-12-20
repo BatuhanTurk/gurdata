@@ -13,24 +13,25 @@
     <meta name="keywords" content="">
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/brand/favicon.ico' %}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/brand/favicon.ico' %}" />
 
     <!-- TITLE -->
     <title>GÜRDATA</title>
 
     <!-- BOOTSTRAP CSS -->
-    <link id="style" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link id="style" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
     <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Inter:wght@500;600;700&display=swap&text=ABCÇDEFGĞHİIJKLMNOÖPRSŞTUÜVYZabcçdefgğhiıjklmnoöprsştuüvyz1234567890"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Inter:wght@500;600;700&display=swap&text=ABCÇDEFGĞHİIJKLMNOÖPRSŞTUÜVYZabcçdefgğhiıjklmnoöprsştuüvyz1234567890"
+        rel="stylesheet">
 
     <!-- STYLE CSS -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
-    <link href="{% static 'assets/css/dashboard.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/dashboard.css' %}" rel="stylesheet" />
 
     <!--- FONT-ICONS CSS -->
-    <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" />
 
     <!-- COLOR SKIN CSS -->
     <!-- <link id="theme" rel="stylesheet" type="text/css" media="all" href="../assets/colors/color1.css" />-->
@@ -39,101 +40,109 @@
 
 <body class="app sidebar-mini ltr light-mode">
 
-<!-- GLOBAL-LOADER -->
-<div id="global-loader">
-    <img src="{% static 'assets/images/loader.svg' %}" class="loader-img" alt="Loader">
-</div>
-<!-- /GLOBAL-LOADER -->
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="{% static 'assets/images/loader.svg' %}" class="loader-img" alt="Loader">
+    </div>
+    <!-- /GLOBAL-LOADER -->
 
-<!-- PAGE -->
-<div class="page">
-    <div class="page-main">
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
 
-        <!-- app-Header -->
-        <div class="app-header header sticky">
-            <div class="container-fluid main-container ps-32 pe-0">
-                <div class="d-flex">
-                    <a aria-label="Hide Sidebar" class="app-sidebar__toggle d-sm-block d-md-none"
-                       data-bs-toggle="sidebar" href="javascript:void(0)"><img src="{% static 'assets/images/svgs/hamicon.svg' %}"
-                                                                               class="" alt=""></a>
+            <!-- app-Header -->
+            <div class="app-header header sticky">
+                <div class="container-fluid main-container ps-32 pe-0">
+                    <div class="d-flex">
+                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle d-sm-block d-md-none"
+                            data-bs-toggle="sidebar" href="javascript:void(0)"><img
+                                src="{% static 'assets/images/svgs/hamicon.svg' %}" class="" alt=""></a>
 
-                    <!-- sidebar-toggle-->
-                    <a class="logo-horizontal " href="{% url 'dashboard' %}">
-                        <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}" class="header-brand-img desktop-logo"
-                             alt="logo">
-                        <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}" class="header-brand-img light-logo1"
-                             alt="logo">
-                    </a>
-                    <!-- LOGO -->
+                        <!-- sidebar-toggle-->
+                        <a class="logo-horizontal " href="{% url 'dashboard' %}">
+                            <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}"
+                                class="header-brand-img desktop-logo" alt="logo">
+                            <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}"
+                                class="header-brand-img light-logo1" alt="logo">
+                        </a>
+                        <!-- LOGO -->
 
-                    <div class="main-header-center d-none d-lg-block searchbar">
-                        <input class="form-control sat-12n500n05-bgray" placeholder="Ara" type="search">
-                        <button class="btn px-0 pt-2"><img src="{% static 'assets/images/svgs/search.svg' %}"/></button>
-                    </div>
-                    <!-- SEARCH -->
-                    <div class="d-flex order-lg-2 ms-auto header-right-icons">
-                        <div class="navbar responsive-navbar p-0">
-                            <div class="" id="navbarSupportedContent-4">
-                                <div class="d-flex order-lg-2">
-                                    <div class="dropdown d-flex">
-                                        <a class="nav-link" data-bs-toggle="dropdown"><img
-                                                src="{% static 'assets/images/svgs/notif.svg' %}"/><span class="pulse"></span></a>
-                                        <!-- NOTIFICATIONS -->
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <div class="drop-heading">
-                                                <div class="d-flex">
+                        <div class="main-header-center d-none d-lg-block searchbar">
+                            <input class="form-control sat-12n500n05-bgray" placeholder="Ara" type="search">
+                            <button class="btn px-0 pt-2"><img
+                                    src="{% static 'assets/images/svgs/search.svg' %}" /></button>
+                        </div>
+                        <!-- SEARCH -->
+                        <div class="d-flex order-lg-2 ms-auto header-right-icons">
+                            <div class="navbar responsive-navbar p-0">
+                                <div class="" id="navbarSupportedContent-4">
+                                    <div class="d-flex order-lg-2">
+                                        <div class="dropdown d-flex">
+                                            <a class="nav-link" data-bs-toggle="dropdown"><img
+                                                    src="{% static 'assets/images/svgs/notif.svg' %}" /><span
+                                                    class="pulse"></span></a>
+                                            <!-- NOTIFICATIONS -->
+                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <div class="drop-heading">
+                                                    <div class="d-flex">
+                                                    </div>
                                                 </div>
+                                                <div class="notifications-menu">
+                                                    <a class="dropdown-item d-flex" href="notify-list.html">
+                                                        <div
+                                                            class="me-3 notifyimg  bg-primary brround box-shadow-primary">
+                                                            <i class="fe fe-mail"></i>
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <h5 class="notification-label mb-1">New Application
+                                                                received</h5>
+                                                            <span class="notification-subtext">3 days ago</span>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item d-flex" href="notify-list.html">
+                                                        <div
+                                                            class="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
+                                                            <i class="fe fe-check-circle"></i>
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <h5 class="notification-label mb-1">Project has been
+                                                                approved</h5>
+                                                            <span class="notification-subtext">2 hours ago</span>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item d-flex" href="notify-list.html">
+                                                        <div
+                                                            class="me-3 notifyimg  bg-success brround box-shadow-success">
+                                                            <i class="fe fe-shopping-cart"></i>
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <h5 class="notification-label mb-1">Your Product Delivered
+                                                            </h5>
+                                                            <span class="notification-subtext">30 min ago</span>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item d-flex" href="notify-list.html">
+                                                        <div class="me-3 notifyimg bg-pink brround box-shadow-pink">
+                                                            <i class="fe fe-user-plus"></i>
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <h5 class="notification-label mb-1">Friend Requests</h5>
+                                                            <span class="notification-subtext">1 day ago</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="dropdown-divider m-0"></div>
                                             </div>
-                                            <div class="notifications-menu">
-                                                <a class="dropdown-item d-flex" href="notify-list.html">
-                                                    <div class="me-3 notifyimg  bg-primary brround box-shadow-primary">
-                                                        <i class="fe fe-mail"></i>
-                                                    </div>
-                                                    <div class="mt-1">
-                                                        <h5 class="notification-label mb-1">New Application
-                                                            received</h5>
-                                                        <span class="notification-subtext">3 days ago</span>
-                                                    </div>
-                                                </a>
-                                                <a class="dropdown-item d-flex" href="notify-list.html">
-                                                    <div class="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
-                                                        <i class="fe fe-check-circle"></i>
-                                                    </div>
-                                                    <div class="mt-1">
-                                                        <h5 class="notification-label mb-1">Project has been
-                                                            approved</h5>
-                                                        <span class="notification-subtext">2 hours ago</span>
-                                                    </div>
-                                                </a>
-                                                <a class="dropdown-item d-flex" href="notify-list.html">
-                                                    <div class="me-3 notifyimg  bg-success brround box-shadow-success">
-                                                        <i class="fe fe-shopping-cart"></i>
-                                                    </div>
-                                                    <div class="mt-1">
-                                                        <h5 class="notification-label mb-1">Your Product Delivered</h5>
-                                                        <span class="notification-subtext">30 min ago</span>
-                                                    </div>
-                                                </a>
-                                                <a class="dropdown-item d-flex" href="notify-list.html">
-                                                    <div class="me-3 notifyimg bg-pink brround box-shadow-pink">
-                                                        <i class="fe fe-user-plus"></i>
-                                                    </div>
-                                                    <div class="mt-1">
-                                                        <h5 class="notification-label mb-1">Friend Requests</h5>
-                                                        <span class="notification-subtext">1 day ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-divider m-0"></div>
                                         </div>
-                                    </div>
 
-                                    <div class="dropdown d-flex nameicon sat-12n500n05-bswhite">
-                                        {{ user_data.user_name.0 }} {{ user_data.user_surname.0 }}
-                                    </div>
+                                        <div class="dropdown d-flex nameicon sat-12n500n05-bswhite">
+                                            {{ user_data.user_name.0 }} {{ user_data.user_surname.0 }}
+                                        </div>
 
-                                    <div class="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
-                                        <a href="{% url 'account' %}">{{ user_data.user_name}} {{ user_data.user_surname}}</a>
+                                        <div class="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
+                                            <a href="{% url 'account' %}">{{ user_data.user_name }} 
+                                            {{  user_data.user_surname }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -141,233 +150,275 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /app-Header -->
+            <!-- /app-Header -->
 
-        <!--APP-SIDEBAR-->
-        <div class="sticky">
-            <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
-            <div class="app-sidebar">
-                <div class="side-header">
-                    <a class="header-brand1" href="{% url 'dashboard' %}">
-                        <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img desktop-logo" alt="logo">-->
-                        <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img toggle-logo" alt="logo">-->
-                        <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img light-logo" alt="logo">-->
-                        <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}" class="header-brand-img" alt="logo">
-                    </a>
-                    <!-- LOGO -->
-                </div>
-                <div class="main-sidemenu">
-                    <div class="menulogo d-sm-block d-md-none">
-                        <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}" width=110" height="40" class="" alt="logo">
-                        <button class="closesidebar"><img src="{% static 'assets/images/svgs/closesidebar.svg' %}" class="" alt="">
-                        </button>
+            <!--APP-SIDEBAR-->
+            <div class="sticky">
+                <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+                <div class="app-sidebar">
+                    <div class="side-header">
+                        <a class="header-brand1" href="{% url 'dashboard' %}">
+                            <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img desktop-logo" alt="logo">-->
+                            <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img toggle-logo" alt="logo">-->
+                            <!--                            <img src="../assets/images/svgs/gurdatalogo.svg" class="header-brand-img light-logo" alt="logo">-->
+                            <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}" class="header-brand-img"
+                                alt="logo">
+                        </a>
+                        <!-- LOGO -->
                     </div>
-                    <div class="h32"></div>
-                    <div class="slide-left disabled" id="slide-left">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"/>
-                        </svg>
-                    </div>
-                    <ul class="side-menu">
-                        <li class="sub-category int-14n700n05-gurdata">
-                            <h3>Veri Setleri</h3>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'dashboard' %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="#3662FF">
-                                    <path d="M11.0004 1.375C10.885 1.37461 10.7714 1.40324 10.67 1.45826L3.10754 5.58326C2.99879 5.6423 2.90799 5.72961 2.84472 5.83595C2.78144 5.9423 2.74805 6.06376 2.74805 6.1875C2.74805 6.31125 2.78144 6.4327 2.84472 6.53905C2.90799 6.6454 2.99879 6.73271 3.10754 6.79175L5.77966 8.25L3.10754 9.70826C2.99879 9.7673 2.90799 9.85461 2.84472 9.96095C2.78144 10.0673 2.74805 10.1888 2.74805 10.3125C2.74805 10.4363 2.78144 10.5577 2.84472 10.6641C2.90799 10.7704 2.99879 10.8577 3.10754 10.9168L5.77966 12.375L3.10754 13.8333C2.99879 13.8923 2.90799 13.9796 2.84472 14.086C2.78144 14.1923 2.74805 14.3138 2.74805 14.4375C2.74805 14.5613 2.78144 14.6827 2.84472 14.7891C2.90799 14.8954 2.99879 14.9827 3.10754 15.0418L10.67 19.1668C10.7713 19.2222 10.8849 19.2513 11.0004 19.2513C11.1158 19.2513 11.2294 19.2222 11.3307 19.1668L18.8932 15.0418C19.0019 14.9827 19.0927 14.8954 19.156 14.7891C19.2193 14.6827 19.2527 14.5613 19.2527 14.4375C19.2527 14.3138 19.2193 14.1923 19.156 14.086C19.0927 13.9796 19.0019 13.8923 18.8932 13.8333L16.2211 12.375L18.8932 10.9168C19.0019 10.8577 19.0927 10.7704 19.156 10.6641C19.2193 10.5577 19.2527 10.4363 19.2527 10.3125C19.2527 10.1888 19.2193 10.0673 19.156 9.96095C19.0927 9.85461 19.0019 9.7673 18.8932 9.70826L16.2211 8.25L18.8932 6.79175C19.0019 6.73271 19.0927 6.6454 19.156 6.53905C19.2193 6.4327 19.2527 6.31125 19.2527 6.1875C19.2527 6.06376 19.2193 5.9423 19.156 5.83595C19.0927 5.72961 19.0019 5.6423 18.8932 5.58326L11.3307 1.45826C11.2293 1.40324 11.1157 1.37461 11.0004 1.375ZM11.0004 2.84668L17.1261 6.1875L14.4513 7.64576L11.0004 9.52832L4.87463 6.1875L11.0004 2.84668ZM7.21911 9.03418L10.67 10.9168C10.7713 10.9722 10.8849 11.0013 11.0004 11.0013C11.1158 11.0013 11.2294 10.9722 11.3307 10.9168L14.7816 9.03418L17.1261 10.3125L14.454 11.7708L11.0004 13.6533L7.54138 11.7681L4.87463 10.3125L7.21911 9.03418ZM7.21911 13.1592L10.67 15.0418C10.7713 15.0972 10.8849 15.1263 11.0004 15.1263C11.1158 15.1263 11.2294 15.0972 11.3307 15.0418L14.7816 13.1592L17.1261 14.4375L11.0004 17.7783L4.87463 14.4375L7.21911 13.1592Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Kullanıcı Paneli</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'files' %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M3.4375 2.75C2.3042 2.75 1.375 3.6792 1.375 4.8125V17.1875C1.375 18.3208 2.3042 19.25 3.4375 19.25H18.5625C19.6958 19.25 20.625 18.3208 20.625 17.1875V7.5625C20.625 6.4292 19.6958 5.5 18.5625 5.5H9.3457L8.44873 3.83496C8.08887 3.16357 7.39063 2.75 6.6333 2.75H3.4375ZM3.4375 4.125H6.6333C6.88574 4.125 7.1167 4.26465 7.24023 4.48486L7.78809 5.5H2.75V4.8125C2.75 4.42578 3.05078 4.125 3.4375 4.125ZM2.75 6.875H18.5625C18.9492 6.875 19.25 7.17578 19.25 7.5625V17.1875C19.25 17.5742 18.9492 17.875 18.5625 17.875H3.4375C3.05078 17.875 2.75 17.5742 2.75 17.1875V6.875Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Dosya Yöneticisi</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M10.9995 1.81543L0.907227 11.1826L1.8418 12.1924L2.74951 11.3491V19.25H9.62451V12.375H12.3745V19.25H19.2495V11.3491L20.1572 12.1924L21.0918 11.1826L10.9995 1.81543ZM10.9995 3.68457L17.8745 10.0762V17.875H13.7495V11H8.24951V17.875H4.12451V10.0762L10.9995 3.68457Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Emlak</span>
-                                <i class="angle fe fe-chevron-right"></i>
-                            </a>
+                    <div class="main-sidemenu">
+                        <div class="menulogo d-sm-block d-md-none">
+                            <img src="{% static 'assets/images/svgs/gurdatalogo.svg' %}" width=110" height="40" class=""
+                                alt="logo">
+                            <button class="closesidebar"><img src="{% static 'assets/images/svgs/closesidebar.svg' %}"
+                                    class="" alt="">
+                            </button>
+                        </div>
+                        <div class="h32"></div>
+                        <div class="slide-left disabled" id="slide-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
+                            </svg>
+                        </div>
+                        <ul class="side-menu">
+                            <li class="sub-category int-14n700n05-gurdata">
+                                <h3>Veri Setleri</h3>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'dashboard' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="#3662FF">
+                                        <path
+                                            d="M11.0004 1.375C10.885 1.37461 10.7714 1.40324 10.67 1.45826L3.10754 5.58326C2.99879 5.6423 2.90799 5.72961 2.84472 5.83595C2.78144 5.9423 2.74805 6.06376 2.74805 6.1875C2.74805 6.31125 2.78144 6.4327 2.84472 6.53905C2.90799 6.6454 2.99879 6.73271 3.10754 6.79175L5.77966 8.25L3.10754 9.70826C2.99879 9.7673 2.90799 9.85461 2.84472 9.96095C2.78144 10.0673 2.74805 10.1888 2.74805 10.3125C2.74805 10.4363 2.78144 10.5577 2.84472 10.6641C2.90799 10.7704 2.99879 10.8577 3.10754 10.9168L5.77966 12.375L3.10754 13.8333C2.99879 13.8923 2.90799 13.9796 2.84472 14.086C2.78144 14.1923 2.74805 14.3138 2.74805 14.4375C2.74805 14.5613 2.78144 14.6827 2.84472 14.7891C2.90799 14.8954 2.99879 14.9827 3.10754 15.0418L10.67 19.1668C10.7713 19.2222 10.8849 19.2513 11.0004 19.2513C11.1158 19.2513 11.2294 19.2222 11.3307 19.1668L18.8932 15.0418C19.0019 14.9827 19.0927 14.8954 19.156 14.7891C19.2193 14.6827 19.2527 14.5613 19.2527 14.4375C19.2527 14.3138 19.2193 14.1923 19.156 14.086C19.0927 13.9796 19.0019 13.8923 18.8932 13.8333L16.2211 12.375L18.8932 10.9168C19.0019 10.8577 19.0927 10.7704 19.156 10.6641C19.2193 10.5577 19.2527 10.4363 19.2527 10.3125C19.2527 10.1888 19.2193 10.0673 19.156 9.96095C19.0927 9.85461 19.0019 9.7673 18.8932 9.70826L16.2211 8.25L18.8932 6.79175C19.0019 6.73271 19.0927 6.6454 19.156 6.53905C19.2193 6.4327 19.2527 6.31125 19.2527 6.1875C19.2527 6.06376 19.2193 5.9423 19.156 5.83595C19.0927 5.72961 19.0019 5.6423 18.8932 5.58326L11.3307 1.45826C11.2293 1.40324 11.1157 1.37461 11.0004 1.375ZM11.0004 2.84668L17.1261 6.1875L14.4513 7.64576L11.0004 9.52832L4.87463 6.1875L11.0004 2.84668ZM7.21911 9.03418L10.67 10.9168C10.7713 10.9722 10.8849 11.0013 11.0004 11.0013C11.1158 11.0013 11.2294 10.9722 11.3307 10.9168L14.7816 9.03418L17.1261 10.3125L14.454 11.7708L11.0004 13.6533L7.54138 11.7681L4.87463 10.3125L7.21911 9.03418ZM7.21911 13.1592L10.67 15.0418C10.7713 15.0972 10.8849 15.1263 11.0004 15.1263C11.1158 15.1263 11.2294 15.0972 11.3307 15.0418L14.7816 13.1592L17.1261 14.4375L11.0004 17.7783L4.87463 14.4375L7.21911 13.1592Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Kullanıcı Paneli</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'files' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M3.4375 2.75C2.3042 2.75 1.375 3.6792 1.375 4.8125V17.1875C1.375 18.3208 2.3042 19.25 3.4375 19.25H18.5625C19.6958 19.25 20.625 18.3208 20.625 17.1875V7.5625C20.625 6.4292 19.6958 5.5 18.5625 5.5H9.3457L8.44873 3.83496C8.08887 3.16357 7.39063 2.75 6.6333 2.75H3.4375ZM3.4375 4.125H6.6333C6.88574 4.125 7.1167 4.26465 7.24023 4.48486L7.78809 5.5H2.75V4.8125C2.75 4.42578 3.05078 4.125 3.4375 4.125ZM2.75 6.875H18.5625C18.9492 6.875 19.25 7.17578 19.25 7.5625V17.1875C19.25 17.5742 18.9492 17.875 18.5625 17.875H3.4375C3.05078 17.875 2.75 17.5742 2.75 17.1875V6.875Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Dosya Yöneticisi</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M10.9995 1.81543L0.907227 11.1826L1.8418 12.1924L2.74951 11.3491V19.25H9.62451V12.375H12.3745V19.25H19.2495V11.3491L20.1572 12.1924L21.0918 11.1826L10.9995 1.81543ZM10.9995 3.68457L17.8745 10.0762V17.875H13.7495V11H8.24951V17.875H4.12451V10.0762L10.9995 3.68457Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Emlak</span>
+                                    <i class="angle fe fe-chevron-right"></i>
+                                </a>
 
-                            <ul class="slide-menu">
-                                <li><a href="{% url 'pre_owned' %}" class="slide-item sat-16n500n05"> İkinci el</a></li>
-                                <li><a href="#" class="slide-item sat-16n500n05"> Konum</a></li>
-                            </ul>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M10.3125 1.375C5.38721 1.375 1.375 5.38721 1.375 10.3125C1.375 15.2378 5.38721 19.25 10.3125 19.25C15.2378 19.25 19.25 15.2378 19.25 10.3125C19.25 5.38721 15.2378 1.375 10.3125 1.375ZM9.625 2.78223V10.5972L15.1519 16.124C13.8413 17.2144 12.1548 17.875 10.3125 17.875C6.12842 17.875 2.75 14.4966 2.75 10.3125C2.75 6.35938 5.76318 3.13135 9.625 2.78223ZM11 2.78223C14.6309 3.10986 17.5151 5.99414 17.8374 9.625H11V2.78223ZM11.9722 11H17.8374C17.6978 12.5737 17.0801 14.0078 16.124 15.1519L11.9722 11Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Demografi</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <g clip-path="url(#clip0_124_30026)">
-                                        <path d="M6.93945 4.125C6.23671 4.125 5.5804 4.48531 5.2019 5.07568L2.92993 8.46216C1.31329 8.74016 0 9.99468 0 11.6875V13.0625C0 14.1937 0.925302 15.1275 2.05713 15.1357L2.75269 15.1411C2.76172 16.6442 3.9949 17.875 5.5 17.875C7.01064 17.875 8.25 16.6356 8.25 15.125H13.75C13.75 16.6356 14.9894 17.875 16.5 17.875C18.0106 17.875 19.25 16.6356 19.25 15.125H20.625C21.3765 15.125 22 14.5015 22 13.75V11.8674C22 10.6425 21.1819 9.56121 20.0046 9.22485L16.8921 8.33594L14.2092 5.11597C13.6872 4.48956 12.9142 4.125 12.0984 4.125H6.93945ZM6.93945 5.5H8.25V8.25H4.72656L6.35669 5.82227L6.35938 5.81689C6.48688 5.61802 6.70445 5.5 6.93945 5.5ZM9.625 5.5H12.0984C12.5063 5.5 12.8921 5.68004 13.1538 5.99414L15.0337 8.25H9.625V5.5ZM3.4375 9.625H3.60938H3.80273H16.4087L19.6287 10.5461C20.2224 10.7158 20.625 11.2499 20.625 11.8674V13.75H18.8633C18.3845 12.9339 17.5081 12.375 16.5 12.375C15.4919 12.375 14.6155 12.9339 14.1367 13.75H7.86328C7.38449 12.9339 6.50808 12.375 5.5 12.375C4.48424 12.375 3.60212 12.9424 3.12598 13.7688L2.06787 13.7607C1.6872 13.758 1.375 13.4438 1.375 13.0625V11.6875C1.375 10.5394 2.28935 9.625 3.4375 9.625ZM5.5 13.75C6.26753 13.75 6.875 14.3575 6.875 15.125C6.875 15.8925 6.26753 16.5 5.5 16.5C4.73247 16.5 4.125 15.8925 4.125 15.125C4.125 14.3575 4.73247 13.75 5.5 13.75ZM16.5 13.75C17.2675 13.75 17.875 14.3575 17.875 15.125C17.875 15.8925 17.2675 16.5 16.5 16.5C15.7325 16.5 15.125 15.8925 15.125 15.125C15.125 14.3575 15.7325 13.75 16.5 13.75Z"
-                                              fill=""/>
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_124_30026">
-                                            <rect width="22" height="22" fill="white"/>
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                                <span class="side-menu__label">Araç</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M9.625 1.375C8.87305 1.375 8.25 1.99805 8.25 2.75V4.125H3.4375C2.3042 4.125 1.375 5.0542 1.375 6.1875V15.8125C1.375 16.9458 2.3042 17.875 3.4375 17.875H18.5625C19.6958 17.875 20.625 16.9458 20.625 15.8125V6.1875C20.625 5.0542 19.6958 4.125 18.5625 4.125H13.75V2.75C13.75 1.99805 13.127 1.375 12.375 1.375H9.625ZM9.625 2.75H12.375V4.125H9.625V2.75ZM3.4375 5.5H5.5V15.125H6.875V5.5H15.125V15.125H16.5V5.5H18.5625C18.9492 5.5 19.25 5.80078 19.25 6.1875V15.8125C19.25 16.1992 18.9492 16.5 18.5625 16.5H3.4375C3.05078 16.5 2.75 16.1992 2.75 15.8125V6.1875C2.75 5.80078 3.05078 5.5 3.4375 5.5Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Finans</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M7.5625 1.375C6.43152 1.375 5.5 2.30652 5.5 3.4375V18.5625C5.5 19.6935 6.43152 20.625 7.5625 20.625H14.4375C15.5685 20.625 16.5 19.6935 16.5 18.5625V3.4375C16.5 2.30652 15.5685 1.375 14.4375 1.375H7.5625ZM7.5625 2.75H14.4375C14.8245 2.75 15.125 3.05048 15.125 3.4375V18.5625C15.125 18.9495 14.8245 19.25 14.4375 19.25H7.5625C7.17548 19.25 6.875 18.9495 6.875 18.5625V3.4375C6.875 3.05048 7.17548 2.75 7.5625 2.75ZM11 4.125C10.6353 4.125 10.2856 4.26987 10.0277 4.52773C9.76987 4.78559 9.625 5.13533 9.625 5.5C9.625 5.86467 9.76987 6.21441 10.0277 6.47227C10.2856 6.73013 10.6353 6.875 11 6.875C11.3647 6.875 11.7144 6.73013 11.9723 6.47227C12.2301 6.21441 12.375 5.86467 12.375 5.5C12.375 5.13533 12.2301 4.78559 11.9723 4.52773C11.7144 4.26987 11.3647 4.125 11 4.125ZM11 9.625C10.6353 9.625 10.2856 9.76987 10.0277 10.0277C9.76987 10.2856 9.625 10.6353 9.625 11C9.625 11.3647 9.76987 11.7144 10.0277 11.9723C10.2856 12.2301 10.6353 12.375 11 12.375C11.3647 12.375 11.7144 12.2301 11.9723 11.9723C12.2301 11.7144 12.375 11.3647 12.375 11C12.375 10.6353 12.2301 10.2856 11.9723 10.0277C11.7144 9.76987 11.3647 9.625 11 9.625ZM11 15.125C10.6353 15.125 10.2856 15.2699 10.0277 15.5277C9.76987 15.7856 9.625 16.1353 9.625 16.5C9.625 16.8647 9.76987 17.2144 10.0277 17.4723C10.2856 17.7301 10.6353 17.875 11 17.875C11.3647 17.875 11.7144 17.7301 11.9723 17.4723C12.2301 17.2144 12.375 16.8647 12.375 16.5C12.375 16.1353 12.2301 15.7856 11.9723 15.5277C11.7144 15.2699 11.3647 15.125 11 15.125Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Trafik</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M11 2.75C8.48096 2.75 6.28955 4.50098 5.68262 6.90723C4.2002 7.12744 3.02393 8.30908 2.79297 9.84521C1.14941 10.4038 0 11.9722 0 13.75C0 16.022 1.85303 17.875 4.125 17.875H8.25V16.5H4.125C2.61035 16.5 1.375 15.2646 1.375 13.75C1.375 12.4448 2.3042 11.3115 3.57715 11.0537L4.14111 10.8926L4.125 10.3125C4.125 9.17383 5.04883 8.25 6.11768 8.24463L6.85352 8.26074L6.93945 7.66455C7.22412 5.64502 8.96973 4.125 11 4.125C12.6597 4.125 14.1528 5.11328 14.8027 6.63867L15.0444 7.22949L15.646 7.02539C15.9575 6.92334 16.2368 6.875 16.5 6.875C18.0146 6.875 19.25 8.11035 19.25 9.625C19.25 9.94727 19.1855 10.2749 19.0566 10.6025L18.8633 11.1289L19.3359 11.4297C20.1416 11.9399 20.625 12.8047 20.625 13.75C20.625 15.0552 19.7065 16.1509 18.4819 16.4302C18.7773 16.79 18.9922 17.2036 19.1157 17.6602C20.7808 17.1338 22 15.5923 22 13.75C22 12.5146 21.4522 11.3599 20.5068 10.5811C20.5874 10.2642 20.625 9.9419 20.625 9.625C20.625 7.12207 18.4121 5.08106 15.8018 5.56445C14.835 3.84033 13.0142 2.75 11 2.75ZM13.0625 11C12.1655 11 11.4082 11.5747 11.1289 12.375H13.0625C13.4438 12.375 13.75 12.6812 13.75 13.0625C13.75 13.4438 13.4438 13.75 13.0625 13.75H6.875V15.125H13.0625C14.2012 15.125 15.125 14.2012 15.125 13.0625C15.125 11.9238 14.2012 11 13.0625 11ZM9.625 16.5V17.875H15.8125C16.1938 17.875 16.5 18.1812 16.5 18.5625C16.5 18.9438 16.1938 19.25 15.8125 19.25H13.8789C14.1582 20.0503 14.9155 20.625 15.8125 20.625C16.9512 20.625 17.875 19.7012 17.875 18.5625C17.875 17.4238 16.9512 16.5 15.8125 16.5H9.625Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Hava</span>
-                            </a>
-                        </li>
-                        <li class="sub-category int-14n700n05-gurdata">
-                            <span class="sat-8n700n05 menu-comingsoon">Coming Soon</span>
-                            <h3>Uygulamalar</h3>
-                        </li>
-                        <li class="sub-category menupassiveitem">
-                            <h3>Veri Çekme</h3>
-                        </li>
-                        <li class="sub-category menupassiveitem">
-                            <h3>Emlak Değerleme</h3>
-                        </li>
-                        <li class="sub-category menupassiveitem">
-                            <h3>Araç Değerleme</h3>
-                        </li>
-                        <li class="sub-category int-14n700n05-gurdata">
-                            <h3>Profil</h3>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'account' %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M11 2.75C8.72803 2.75 6.875 4.60303 6.875 6.875C6.875 9.14697 8.72803 11 11 11C13.272 11 15.125 9.14697 15.125 6.875C15.125 4.60303 13.272 2.75 11 2.75ZM11 11C7.21338 11 4.125 14.0884 4.125 17.875H5.5C5.5 14.8296 7.95459 12.375 11 12.375C14.0454 12.375 16.5 14.8296 16.5 17.875H17.875C17.875 14.0884 14.7866 11 11 11ZM11 4.125C12.5254 4.125 13.75 5.34961 13.75 6.875C13.75 8.40039 12.5254 9.625 11 9.625C9.47461 9.625 8.25 8.40039 8.25 6.875C8.25 5.34961 9.47461 4.125 11 4.125Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Profil Ayarları</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'payment_methods' %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M7.5625 1.375C6.4292 1.375 5.5 2.3042 5.5 3.4375V4.125H3.4375C2.3042 4.125 1.375 5.0542 1.375 6.1875V14.4375C1.375 15.5708 2.3042 16.5 3.4375 16.5H17.1875C18.3208 16.5 19.25 15.5708 19.25 14.4375V6.1875C19.25 5.0542 18.3208 4.125 17.1875 4.125H15.125V3.4375C15.125 2.3042 14.1958 1.375 13.0625 1.375H7.5625ZM8.25 2.75H12.375C12.375 3.50195 12.998 4.125 13.75 4.125V9.625H12.2461C12.3213 9.41016 12.375 9.1792 12.375 8.9375C12.375 7.8042 11.4458 6.875 10.3125 6.875C9.1792 6.875 8.25 7.8042 8.25 8.9375C8.25 9.1792 8.30371 9.41016 8.37891 9.625H6.875V4.125C7.62695 4.125 8.25 3.50195 8.25 2.75ZM10.3125 4.125C9.93115 4.125 9.625 4.43115 9.625 4.8125C9.625 5.19385 9.93115 5.5 10.3125 5.5C10.6938 5.5 11 5.19385 11 4.8125C11 4.43115 10.6938 4.125 10.3125 4.125ZM3.4375 5.5H5.5V9.625H4.125V11H16.5V9.625H15.125V5.5H17.1875C17.5742 5.5 17.875 5.80078 17.875 6.1875V14.4375C17.875 14.8242 17.5742 15.125 17.1875 15.125H3.4375C3.05078 15.125 2.75 14.8242 2.75 14.4375V6.1875C2.75 5.80078 3.05078 5.5 3.4375 5.5ZM10.3125 8.25C10.6992 8.25 11 8.55078 11 8.9375C11 9.32422 10.6992 9.625 10.3125 9.625C9.92578 9.625 9.625 9.32422 9.625 8.9375C9.625 8.55078 9.92578 8.25 10.3125 8.25ZM5.5 17.875V19.25H15.125V17.875H5.5Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">Ödeme Yöntemleri</span>
-                            </a>
-                        </li>
-                        <li class="sub-category int-14n700n05-gurdata">
-                            <h3>Destek</h3>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'contact' %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M3.4375 1.375C2.3042 1.375 1.375 2.3042 1.375 3.4375V14.4375C1.375 15.5708 2.3042 16.5 3.4375 16.5H5.5V19.8462L10.522 16.5H17.1875C18.3208 16.5 19.25 15.5708 19.25 14.4375V3.4375C19.25 2.3042 18.3208 1.375 17.1875 1.375H3.4375ZM3.4375 2.75H17.1875C17.5742 2.75 17.875 3.05078 17.875 3.4375V14.4375C17.875 14.8242 17.5742 15.125 17.1875 15.125H10.103L6.875 17.2788V15.125H3.4375C3.05078 15.125 2.75 14.8242 2.75 14.4375V3.4375C2.75 3.05078 3.05078 2.75 3.4375 2.75ZM6.1875 8.25C5.80615 8.25 5.5 8.55615 5.5 8.9375C5.5 9.31885 5.80615 9.625 6.1875 9.625C6.56885 9.625 6.875 9.31885 6.875 8.9375C6.875 8.55615 6.56885 8.25 6.1875 8.25ZM10.3125 8.25C9.93115 8.25 9.625 8.55615 9.625 8.9375C9.625 9.31885 9.93115 9.625 10.3125 9.625C10.6938 9.625 11 9.31885 11 8.9375C11 8.55615 10.6938 8.25 10.3125 8.25ZM14.4375 8.25C14.0562 8.25 13.75 8.55615 13.75 8.9375C13.75 9.31885 14.0562 9.625 14.4375 9.625C14.8188 9.625 15.125 9.31885 15.125 8.9375C15.125 8.55615 14.8188 8.25 14.4375 8.25Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">İletişim</span>
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'sss' %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                     fill="none">
-                                    <path d="M10.3125 1.375C5.38721 1.375 1.375 5.38721 1.375 10.3125C1.375 15.2378 5.38721 19.25 10.3125 19.25C15.2378 19.25 19.25 15.2378 19.25 10.3125C19.25 5.38721 15.2378 1.375 10.3125 1.375ZM10.3125 2.75C14.4966 2.75 17.875 6.12842 17.875 10.3125C17.875 14.4966 14.4966 17.875 10.3125 17.875C6.12842 17.875 2.75 14.4966 2.75 10.3125C2.75 6.12842 6.12842 2.75 10.3125 2.75ZM10.3931 5.5C8.72803 5.59668 7.36914 6.99316 7.36914 8.69043H8.74414C8.74414 7.57324 9.71094 6.69775 10.8926 6.90185C11.7358 7.04687 12.4019 7.87402 12.375 8.74414C12.3535 9.50684 11.9077 9.99023 11.2524 10.2803C10.8442 10.4629 10.4575 10.6348 10.1299 10.9785C9.80225 11.3223 9.625 11.8325 9.625 12.375H11C11 12.0635 11.043 12.0151 11.1289 11.9238C11.2095 11.8379 11.4351 11.7036 11.8057 11.5371C12.8315 11.0913 13.7124 10.1084 13.75 8.78711C13.7983 7.22412 12.6758 5.81152 11.1235 5.54297C10.8765 5.50537 10.6294 5.48926 10.3931 5.5ZM9.625 13.75V15.125H11V13.75H9.625Z"
-                                          fill=""/>
-                                </svg>
-                                <span class="side-menu__label">S.S.S.</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="slide-right" id="slide-right">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
-                             width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"/>
-                        </svg>
+                                <ul class="slide-menu">
+                                    <li><a href="{% url 'pre_owned' %}" class="slide-item sat-16n500n05"> İkinci el</a>
+                                    </li>
+                                    <li><a href="#" class="slide-item sat-16n500n05"> Konum</a></li>
+                                </ul>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M10.3125 1.375C5.38721 1.375 1.375 5.38721 1.375 10.3125C1.375 15.2378 5.38721 19.25 10.3125 19.25C15.2378 19.25 19.25 15.2378 19.25 10.3125C19.25 5.38721 15.2378 1.375 10.3125 1.375ZM9.625 2.78223V10.5972L15.1519 16.124C13.8413 17.2144 12.1548 17.875 10.3125 17.875C6.12842 17.875 2.75 14.4966 2.75 10.3125C2.75 6.35938 5.76318 3.13135 9.625 2.78223ZM11 2.78223C14.6309 3.10986 17.5151 5.99414 17.8374 9.625H11V2.78223ZM11.9722 11H17.8374C17.6978 12.5737 17.0801 14.0078 16.124 15.1519L11.9722 11Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Demografi</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <g clip-path="url(#clip0_124_30026)">
+                                            <path
+                                                d="M6.93945 4.125C6.23671 4.125 5.5804 4.48531 5.2019 5.07568L2.92993 8.46216C1.31329 8.74016 0 9.99468 0 11.6875V13.0625C0 14.1937 0.925302 15.1275 2.05713 15.1357L2.75269 15.1411C2.76172 16.6442 3.9949 17.875 5.5 17.875C7.01064 17.875 8.25 16.6356 8.25 15.125H13.75C13.75 16.6356 14.9894 17.875 16.5 17.875C18.0106 17.875 19.25 16.6356 19.25 15.125H20.625C21.3765 15.125 22 14.5015 22 13.75V11.8674C22 10.6425 21.1819 9.56121 20.0046 9.22485L16.8921 8.33594L14.2092 5.11597C13.6872 4.48956 12.9142 4.125 12.0984 4.125H6.93945ZM6.93945 5.5H8.25V8.25H4.72656L6.35669 5.82227L6.35938 5.81689C6.48688 5.61802 6.70445 5.5 6.93945 5.5ZM9.625 5.5H12.0984C12.5063 5.5 12.8921 5.68004 13.1538 5.99414L15.0337 8.25H9.625V5.5ZM3.4375 9.625H3.60938H3.80273H16.4087L19.6287 10.5461C20.2224 10.7158 20.625 11.2499 20.625 11.8674V13.75H18.8633C18.3845 12.9339 17.5081 12.375 16.5 12.375C15.4919 12.375 14.6155 12.9339 14.1367 13.75H7.86328C7.38449 12.9339 6.50808 12.375 5.5 12.375C4.48424 12.375 3.60212 12.9424 3.12598 13.7688L2.06787 13.7607C1.6872 13.758 1.375 13.4438 1.375 13.0625V11.6875C1.375 10.5394 2.28935 9.625 3.4375 9.625ZM5.5 13.75C6.26753 13.75 6.875 14.3575 6.875 15.125C6.875 15.8925 6.26753 16.5 5.5 16.5C4.73247 16.5 4.125 15.8925 4.125 15.125C4.125 14.3575 4.73247 13.75 5.5 13.75ZM16.5 13.75C17.2675 13.75 17.875 14.3575 17.875 15.125C17.875 15.8925 17.2675 16.5 16.5 16.5C15.7325 16.5 15.125 15.8925 15.125 15.125C15.125 14.3575 15.7325 13.75 16.5 13.75Z"
+                                                fill="" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_124_30026">
+                                                <rect width="22" height="22" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <span class="side-menu__label">Araç</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M9.625 1.375C8.87305 1.375 8.25 1.99805 8.25 2.75V4.125H3.4375C2.3042 4.125 1.375 5.0542 1.375 6.1875V15.8125C1.375 16.9458 2.3042 17.875 3.4375 17.875H18.5625C19.6958 17.875 20.625 16.9458 20.625 15.8125V6.1875C20.625 5.0542 19.6958 4.125 18.5625 4.125H13.75V2.75C13.75 1.99805 13.127 1.375 12.375 1.375H9.625ZM9.625 2.75H12.375V4.125H9.625V2.75ZM3.4375 5.5H5.5V15.125H6.875V5.5H15.125V15.125H16.5V5.5H18.5625C18.9492 5.5 19.25 5.80078 19.25 6.1875V15.8125C19.25 16.1992 18.9492 16.5 18.5625 16.5H3.4375C3.05078 16.5 2.75 16.1992 2.75 15.8125V6.1875C2.75 5.80078 3.05078 5.5 3.4375 5.5Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Finans</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M7.5625 1.375C6.43152 1.375 5.5 2.30652 5.5 3.4375V18.5625C5.5 19.6935 6.43152 20.625 7.5625 20.625H14.4375C15.5685 20.625 16.5 19.6935 16.5 18.5625V3.4375C16.5 2.30652 15.5685 1.375 14.4375 1.375H7.5625ZM7.5625 2.75H14.4375C14.8245 2.75 15.125 3.05048 15.125 3.4375V18.5625C15.125 18.9495 14.8245 19.25 14.4375 19.25H7.5625C7.17548 19.25 6.875 18.9495 6.875 18.5625V3.4375C6.875 3.05048 7.17548 2.75 7.5625 2.75ZM11 4.125C10.6353 4.125 10.2856 4.26987 10.0277 4.52773C9.76987 4.78559 9.625 5.13533 9.625 5.5C9.625 5.86467 9.76987 6.21441 10.0277 6.47227C10.2856 6.73013 10.6353 6.875 11 6.875C11.3647 6.875 11.7144 6.73013 11.9723 6.47227C12.2301 6.21441 12.375 5.86467 12.375 5.5C12.375 5.13533 12.2301 4.78559 11.9723 4.52773C11.7144 4.26987 11.3647 4.125 11 4.125ZM11 9.625C10.6353 9.625 10.2856 9.76987 10.0277 10.0277C9.76987 10.2856 9.625 10.6353 9.625 11C9.625 11.3647 9.76987 11.7144 10.0277 11.9723C10.2856 12.2301 10.6353 12.375 11 12.375C11.3647 12.375 11.7144 12.2301 11.9723 11.9723C12.2301 11.7144 12.375 11.3647 12.375 11C12.375 10.6353 12.2301 10.2856 11.9723 10.0277C11.7144 9.76987 11.3647 9.625 11 9.625ZM11 15.125C10.6353 15.125 10.2856 15.2699 10.0277 15.5277C9.76987 15.7856 9.625 16.1353 9.625 16.5C9.625 16.8647 9.76987 17.2144 10.0277 17.4723C10.2856 17.7301 10.6353 17.875 11 17.875C11.3647 17.875 11.7144 17.7301 11.9723 17.4723C12.2301 17.2144 12.375 16.8647 12.375 16.5C12.375 16.1353 12.2301 15.7856 11.9723 15.5277C11.7144 15.2699 11.3647 15.125 11 15.125Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Trafik</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M11 2.75C8.48096 2.75 6.28955 4.50098 5.68262 6.90723C4.2002 7.12744 3.02393 8.30908 2.79297 9.84521C1.14941 10.4038 0 11.9722 0 13.75C0 16.022 1.85303 17.875 4.125 17.875H8.25V16.5H4.125C2.61035 16.5 1.375 15.2646 1.375 13.75C1.375 12.4448 2.3042 11.3115 3.57715 11.0537L4.14111 10.8926L4.125 10.3125C4.125 9.17383 5.04883 8.25 6.11768 8.24463L6.85352 8.26074L6.93945 7.66455C7.22412 5.64502 8.96973 4.125 11 4.125C12.6597 4.125 14.1528 5.11328 14.8027 6.63867L15.0444 7.22949L15.646 7.02539C15.9575 6.92334 16.2368 6.875 16.5 6.875C18.0146 6.875 19.25 8.11035 19.25 9.625C19.25 9.94727 19.1855 10.2749 19.0566 10.6025L18.8633 11.1289L19.3359 11.4297C20.1416 11.9399 20.625 12.8047 20.625 13.75C20.625 15.0552 19.7065 16.1509 18.4819 16.4302C18.7773 16.79 18.9922 17.2036 19.1157 17.6602C20.7808 17.1338 22 15.5923 22 13.75C22 12.5146 21.4522 11.3599 20.5068 10.5811C20.5874 10.2642 20.625 9.9419 20.625 9.625C20.625 7.12207 18.4121 5.08106 15.8018 5.56445C14.835 3.84033 13.0142 2.75 11 2.75ZM13.0625 11C12.1655 11 11.4082 11.5747 11.1289 12.375H13.0625C13.4438 12.375 13.75 12.6812 13.75 13.0625C13.75 13.4438 13.4438 13.75 13.0625 13.75H6.875V15.125H13.0625C14.2012 15.125 15.125 14.2012 15.125 13.0625C15.125 11.9238 14.2012 11 13.0625 11ZM9.625 16.5V17.875H15.8125C16.1938 17.875 16.5 18.1812 16.5 18.5625C16.5 18.9438 16.1938 19.25 15.8125 19.25H13.8789C14.1582 20.0503 14.9155 20.625 15.8125 20.625C16.9512 20.625 17.875 19.7012 17.875 18.5625C17.875 17.4238 16.9512 16.5 15.8125 16.5H9.625Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Hava</span>
+                                </a>
+                            </li>
+                            <li class="sub-category int-14n700n05-gurdata">
+                                <span class="sat-8n700n05 menu-comingsoon">Coming Soon</span>
+                                <h3>Uygulamalar</h3>
+                            </li>
+                            <li class="sub-category menupassiveitem">
+                                <h3>Veri Çekme</h3>
+                            </li>
+                            <li class="sub-category menupassiveitem">
+                                <h3>Emlak Değerleme</h3>
+                            </li>
+                            <li class="sub-category menupassiveitem">
+                                <h3>Araç Değerleme</h3>
+                            </li>
+                            <li class="sub-category int-14n700n05-gurdata">
+                                <h3>Profil</h3>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'account' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M11 2.75C8.72803 2.75 6.875 4.60303 6.875 6.875C6.875 9.14697 8.72803 11 11 11C13.272 11 15.125 9.14697 15.125 6.875C15.125 4.60303 13.272 2.75 11 2.75ZM11 11C7.21338 11 4.125 14.0884 4.125 17.875H5.5C5.5 14.8296 7.95459 12.375 11 12.375C14.0454 12.375 16.5 14.8296 16.5 17.875H17.875C17.875 14.0884 14.7866 11 11 11ZM11 4.125C12.5254 4.125 13.75 5.34961 13.75 6.875C13.75 8.40039 12.5254 9.625 11 9.625C9.47461 9.625 8.25 8.40039 8.25 6.875C8.25 5.34961 9.47461 4.125 11 4.125Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Profil Ayarları</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'payment_methods' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M7.5625 1.375C6.4292 1.375 5.5 2.3042 5.5 3.4375V4.125H3.4375C2.3042 4.125 1.375 5.0542 1.375 6.1875V14.4375C1.375 15.5708 2.3042 16.5 3.4375 16.5H17.1875C18.3208 16.5 19.25 15.5708 19.25 14.4375V6.1875C19.25 5.0542 18.3208 4.125 17.1875 4.125H15.125V3.4375C15.125 2.3042 14.1958 1.375 13.0625 1.375H7.5625ZM8.25 2.75H12.375C12.375 3.50195 12.998 4.125 13.75 4.125V9.625H12.2461C12.3213 9.41016 12.375 9.1792 12.375 8.9375C12.375 7.8042 11.4458 6.875 10.3125 6.875C9.1792 6.875 8.25 7.8042 8.25 8.9375C8.25 9.1792 8.30371 9.41016 8.37891 9.625H6.875V4.125C7.62695 4.125 8.25 3.50195 8.25 2.75ZM10.3125 4.125C9.93115 4.125 9.625 4.43115 9.625 4.8125C9.625 5.19385 9.93115 5.5 10.3125 5.5C10.6938 5.5 11 5.19385 11 4.8125C11 4.43115 10.6938 4.125 10.3125 4.125ZM3.4375 5.5H5.5V9.625H4.125V11H16.5V9.625H15.125V5.5H17.1875C17.5742 5.5 17.875 5.80078 17.875 6.1875V14.4375C17.875 14.8242 17.5742 15.125 17.1875 15.125H3.4375C3.05078 15.125 2.75 14.8242 2.75 14.4375V6.1875C2.75 5.80078 3.05078 5.5 3.4375 5.5ZM10.3125 8.25C10.6992 8.25 11 8.55078 11 8.9375C11 9.32422 10.6992 9.625 10.3125 9.625C9.92578 9.625 9.625 9.32422 9.625 8.9375C9.625 8.55078 9.92578 8.25 10.3125 8.25ZM5.5 17.875V19.25H15.125V17.875H5.5Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">Ödeme Yöntemleri</span>
+                                </a>
+                            </li>
+                            <li class="sub-category int-14n700n05-gurdata">
+                                <h3>Destek</h3>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'contact' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M3.4375 1.375C2.3042 1.375 1.375 2.3042 1.375 3.4375V14.4375C1.375 15.5708 2.3042 16.5 3.4375 16.5H5.5V19.8462L10.522 16.5H17.1875C18.3208 16.5 19.25 15.5708 19.25 14.4375V3.4375C19.25 2.3042 18.3208 1.375 17.1875 1.375H3.4375ZM3.4375 2.75H17.1875C17.5742 2.75 17.875 3.05078 17.875 3.4375V14.4375C17.875 14.8242 17.5742 15.125 17.1875 15.125H10.103L6.875 17.2788V15.125H3.4375C3.05078 15.125 2.75 14.8242 2.75 14.4375V3.4375C2.75 3.05078 3.05078 2.75 3.4375 2.75ZM6.1875 8.25C5.80615 8.25 5.5 8.55615 5.5 8.9375C5.5 9.31885 5.80615 9.625 6.1875 9.625C6.56885 9.625 6.875 9.31885 6.875 8.9375C6.875 8.55615 6.56885 8.25 6.1875 8.25ZM10.3125 8.25C9.93115 8.25 9.625 8.55615 9.625 8.9375C9.625 9.31885 9.93115 9.625 10.3125 9.625C10.6938 9.625 11 9.31885 11 8.9375C11 8.55615 10.6938 8.25 10.3125 8.25ZM14.4375 8.25C14.0562 8.25 13.75 8.55615 13.75 8.9375C13.75 9.31885 14.0562 9.625 14.4375 9.625C14.8188 9.625 15.125 9.31885 15.125 8.9375C15.125 8.55615 14.8188 8.25 14.4375 8.25Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">İletişim</span>
+                                </a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'sss' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                                        fill="none">
+                                        <path
+                                            d="M10.3125 1.375C5.38721 1.375 1.375 5.38721 1.375 10.3125C1.375 15.2378 5.38721 19.25 10.3125 19.25C15.2378 19.25 19.25 15.2378 19.25 10.3125C19.25 5.38721 15.2378 1.375 10.3125 1.375ZM10.3125 2.75C14.4966 2.75 17.875 6.12842 17.875 10.3125C17.875 14.4966 14.4966 17.875 10.3125 17.875C6.12842 17.875 2.75 14.4966 2.75 10.3125C2.75 6.12842 6.12842 2.75 10.3125 2.75ZM10.3931 5.5C8.72803 5.59668 7.36914 6.99316 7.36914 8.69043H8.74414C8.74414 7.57324 9.71094 6.69775 10.8926 6.90185C11.7358 7.04687 12.4019 7.87402 12.375 8.74414C12.3535 9.50684 11.9077 9.99023 11.2524 10.2803C10.8442 10.4629 10.4575 10.6348 10.1299 10.9785C9.80225 11.3223 9.625 11.8325 9.625 12.375H11C11 12.0635 11.043 12.0151 11.1289 11.9238C11.2095 11.8379 11.4351 11.7036 11.8057 11.5371C12.8315 11.0913 13.7124 10.1084 13.75 8.78711C13.7983 7.22412 12.6758 5.81152 11.1235 5.54297C10.8765 5.50537 10.6294 5.48926 10.3931 5.5ZM9.625 13.75V15.125H11V13.75H9.625Z"
+                                            fill="" />
+                                    </svg>
+                                    <span class="side-menu__label">S.S.S.</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="slide-right" id="slide-right">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
+                <!--/APP-SIDEBAR-->
             </div>
-            <!--/APP-SIDEBAR-->
-        </div>
 
-        <!--app-content open-->
-        <div class="main-content app-content mt-0">
-            <div class="side-app">
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
 
-                <!-- CONTAINER -->
-                <div class="main-container container-fluid">
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
 
-                    <!-- PAGE-HEADER -->
-                    <div class="page-header">
-                        <h1 class="page-title sat-22n700n05"><img src="{% static 'assets/images/svgs/dosyayoneticisi.svg' %}"/>Dosya
-                            Yöneticisi</h1>
-                    </div>
-                    <div class="sat-14n5003005 mb-30 ps-2">Tüm veri setlerinize dosyalanmış şekilde ulaşabilirsiniz.
-                    </div>
-                    <!-- PAGE-HEADER END -->
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title sat-22n700n05"><img
+                                    src="{% static 'assets/images/svgs/dosyayoneticisi.svg' %}" />Dosya
+                                Yöneticisi</h1>
+                        </div>
+                        <div class="sat-14n5003005 mb-30 ps-2">Tüm veri setlerinize dosyalanmış şekilde ulaşabilirsiniz.
+                        </div>
+                        <!-- PAGE-HEADER END -->
 
-                    <!-- ROW-0 -->
-                    <div class="row">
-                        <!-- ROW CONTENT-->
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                            <div class="row">
+                        <!-- ROW-0 -->
+                        <div class="row">
+                            <!-- ROW CONTENT-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                                <div class="row">
 
-                                <!--PANEL-->
-                                <div class="account-panel p-0 d-flex align-items-start">
-                                    <div class="col-md-3 col-sm-3 p-0 listcol">
-                                        <div class="file-item-content">
-                                            <h3 class="miniheader p26">Kategoriler</h3>
-                                        </div>
+                                    <!--PANEL-->
+                                    <div class="account-panel p-0 d-flex align-items-start">
+                                        <div class="col-md-3 col-sm-3 p-0 listcol">
+                                            <div class="file-item-content">
+                                                <h3 class="miniheader p26">Kategoriler</h3>
+                                            </div>
 
-                                        <div class="files">
+                                            <div class="files" onclick="set_visible('all')">
+                                                <img src="{% static 'assets/images/svgs/dir_emlak.svg' %}">
+                                                <div class="file-item-content">
+                                                    Hepsi
+                                                    <div class="file-item-info">
+                                                        <span>100 file</span>
+                                                        <span>Last update Aug 12, 2019</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            {% for category in category_data %}
+                                            <div class="files" onclick="set_visible('{{category}}')">
+                                                <img src="{% static 'assets/images/svgs/dir_emlak.svg' %}">
+                                                <div class="file-item-content">
+                                                    {{ category }}
+                                                    <div class="file-item-info">
+                                                        <span>100 file</span>
+                                                        <span>Last update Aug 12, 2019</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+
+                                            <!-- <div class="files">
                                             <img src="{% static 'assets/images/svgs/dir_emlak.svg' %}">
                                             <div class="file-item-content">
                                                 Emlak
@@ -436,15 +487,40 @@
                                                     <span>Last update Aug 12, 2019</span>
                                                 </div>
                                             </div>
+                                        </div> -->
+
+                                            <br>
                                         </div>
+                                        <div class="col-md-9 col-sm-9 p-0 d-flex align-items-start">
 
-                                    <br>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 p-0 d-flex align-items-start">
+                                            <div class="filelist sonislemler">
+                                                <div class="legenditems">
 
-                                        <div class="filelist sonislemler">
-                                            <div class="legenditems">
-                                                <div class="legenditem">
+                                                    {% for data in all_data %}
+                                                    <div class="legenditem {{data.category_id}}">
+                                                        <div class="col1">
+                                                            <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
+                                                            <div class="coltitle">
+                                                                <span>{{ data.data_name }}</span>
+                                                                <div class="attrs">
+                                                                    <span>128 Mb</span>
+                                                                    <span>{{data.data_time}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col2">
+                                                            <div class="expirebtn">
+                                                                <span>24 Days to expire</span>
+                                                                <img src="{% static 'assets/images/svgs/clock.svg' %}">
+                                                            </div>
+                                                            <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                                            <img
+                                                                src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+
+                                                    <!-- <div class="legenditem">
                                                     <div class="col1">
                                                         <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
                                                         <div class="coltitle">
@@ -765,126 +841,150 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div> -->
+
+                                                </div>
+
+
+                                            </div>
                                         </div>
 
+                                        <!--                                    &lt;!&ndash;PANEL&ndash;&gt;-->
+                                        <!--                                    <div class="account-panel">-->
+                                        <!--                                        &lt;!&ndash;LEFT&ndash;&gt;-->
+                                        <!--                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xl-2 leftside">-->
+                                        <!--                                            <div class="headtitle">Account Setting Panel </div>-->
+                                        <!--                                        </div>-->
+                                        <!--                                    </div>-->
+
                                     </div>
-
-
                                 </div>
-                            </div>
+                                <!-- ROW CONTENT-->
 
-                            <!--                                    &lt;!&ndash;PANEL&ndash;&gt;-->
-                            <!--                                    <div class="account-panel">-->
-                            <!--                                        &lt;!&ndash;LEFT&ndash;&gt;-->
-                            <!--                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xl-2 leftside">-->
-                            <!--                                            <div class="headtitle">Account Setting Panel </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
+
+                                <!-- SIDEBAR CONTENT-->
+                                <!-- SIDEBAR CONTENT-->
+
+
+                            </div>
+                            <!-- ROW-0 END -->
 
                         </div>
+                        <!-- CONTAINER END -->
                     </div>
-                    <!-- ROW CONTENT-->
-
-
-                    <!-- SIDEBAR CONTENT-->
-                    <!-- SIDEBAR CONTENT-->
-
-
                 </div>
-                <!-- ROW-0 END -->
+                <!--app-content close-->
 
             </div>
-            <!-- CONTAINER END -->
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="row align-items-center flex-row-reverse">
+                        <div class="col-md-12 col-sm-12 text-center footerstyle">
+                            COPYRIGHT ©2021 <span>GURDATA</span>, All rights Reserved
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- FOOTER END -->
+
         </div>
-    </div>
-    <!--app-content close-->
 
-</div>
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-md-12 col-sm-12 text-center footerstyle">
-                COPYRIGHT ©2021 <span>GURDATA</span>, All rights Reserved
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- FOOTER END -->
+        <!-- JQUERY JS -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
 
-</div>
+        <!-- BOOTSTRAP JS -->
+        <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 
-<!-- BACK-TO-TOP -->
-<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+        <!-- SPARKLINE JS-->
+        <script src="{% static 'assets/js/jquery.sparkline.min.js' %}"></script>
 
-<!-- JQUERY JS -->
-<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <!-- Sticky js -->
+        <script src="{% static 'assets/js/sticky.js' %}"></script>
 
-<!-- BOOTSTRAP JS -->
-<script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
-<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- CHART-CIRCLE JS-->
+        <script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
 
-<!-- SPARKLINE JS-->
-<script src="{% static 'assets/js/jquery.sparkline.min.js' %}"></script>
+        <!-- PIETY CHART JS-->
+        <script src="{% static 'assets/plugins/peitychart/jquery.peity.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/peitychart/peitychart.init.js' %}"></script>
 
-<!-- Sticky js -->
-<script src="{% static 'assets/js/sticky.js' %}"></script>
+        <!-- SIDEBAR JS -->
+        <script src="{% static 'assets/plugins/sidebar/sidebar.js' %}"></script>
 
-<!-- CHART-CIRCLE JS-->
-<script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
+        <!-- Perfect SCROLLBAR JS-->
+        <!--    <script src="../assets/plugins/p-scroll/perfect-scrollbar.js"></script>-->
+        <!--    <script src="../assets/plugins/p-scroll/pscroll.js"></script>-->
+        <!--    <script src="../assets/plugins/p-scroll/pscroll-1.js"></script>-->
 
-<!-- PIETY CHART JS-->
-<script src="{% static 'assets/plugins/peitychart/jquery.peity.min.js' %}"></script>
-<script src="{% static 'assets/plugins/peitychart/peitychart.init.js' %}"></script>
+        <!-- INTERNAL CHARTJS CHART JS-->
+        <script src="{% static 'assets/plugins/chart/Chart.bundle.js' %}"></script>
+        <script src="{% static 'assets/js/chart.js' %}"></script>
 
-<!-- SIDEBAR JS -->
-<script src="{% static 'assets/plugins/sidebar/sidebar.js' %}"></script>
+        <script src="{% static 'assets/plugins/chart/rounded-barchart.js' %}"></script>
+        <script src="{% static 'assets/plugins/chart/utils.js' %}"></script>
 
-<!-- Perfect SCROLLBAR JS-->
-<!--    <script src="../assets/plugins/p-scroll/perfect-scrollbar.js"></script>-->
-<!--    <script src="../assets/plugins/p-scroll/pscroll.js"></script>-->
-<!--    <script src="../assets/plugins/p-scroll/pscroll-1.js"></script>-->
+        <!-- INTERNAL SELECT2 JS -->
+        <script src="{% static 'assets/plugins/select2/select2.full.min.js' %}"></script>
+        <script src="{% static 'assets/js/select2.js' %}"></script>
 
-<!-- INTERNAL CHARTJS CHART JS-->
-<script src="{% static 'assets/plugins/chart/Chart.bundle.js' %}"></script>
-<script src="{% static 'assets/js/chart.js' %}"></script>
+        <!-- INTERNAL Data tables js-->
+        <script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatable/js/dataTables.bootstrap5.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatable/dataTables.responsive.min.js' %}"></script>
 
-<script src="{% static 'assets/plugins/chart/rounded-barchart.js' %}"></script>
-<script src="{% static 'assets/plugins/chart/utils.js' %}"></script>
+        <!-- INTERNAL APEXCHART JS -->
+        <script src="{% static 'assets/js/apexcharts.js' %}"></script>
+        <script src="{% static 'assets/plugins/apexchart/irregular-data-series.js' %}"></script>
 
-<!-- INTERNAL SELECT2 JS -->
-<script src="{% static 'assets/plugins/select2/select2.full.min.js' %}"></script>
-<script src="{% static 'assets/js/select2.js' %}"></script>
-
-<!-- INTERNAL Data tables js-->
-<script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js' %}"></script>
-<script src="{% static 'assets/plugins/datatable/js/dataTables.bootstrap5.js' %}"></script>
-<script src="{% static 'assets/plugins/datatable/dataTables.responsive.min.js' %}"></script>
-
-<!-- INTERNAL APEXCHART JS -->
-<script src="{% static 'assets/js/apexcharts.js' %}"></script>
-<script src="{% static 'assets/plugins/apexchart/irregular-data-series.js' %}"></script>
-
-<!-- C3 CHART JS -->
-<!--    <script src="../assets/plugins/charts-c3/d3.v5.min.js"></script>-->
-<!--    <script src="../assets/plugins/charts-c3/c3-chart.js"></script>-->
+        <!-- C3 CHART JS -->
+        <!--    <script src="../assets/plugins/charts-c3/d3.v5.min.js"></script>-->
+        <!--    <script src="../assets/plugins/charts-c3/c3-chart.js"></script>-->
 
 
-<!-- SIDE-MENU JS-->
-<script src="{% static 'assets/plugins/sidemenu/sidemenu.js' %}"></script>
+        <!-- SIDE-MENU JS-->
+        <script src="{% static 'assets/plugins/sidemenu/sidemenu.js' %}"></script>
 
-<!--- TABS JS -->
-<script src="{% static 'assets/plugins/tabs/jquery.multipurpose_tabcontent.js' %}"></script>
-<script src="{% static 'assets/plugins/tabs/tab-content.js' %}"></script>
+        <!--- TABS JS -->
+        <script src="{% static 'assets/plugins/tabs/jquery.multipurpose_tabcontent.js' %}"></script>
+        <script src="{% static 'assets/plugins/tabs/tab-content.js' %}"></script>
 
 
-<!-- Color Theme js -->
-<script src="{% static 'assets/js/themeColors.js' %}"></script>
+        <!-- Color Theme js -->
+        <script src="{% static 'assets/js/themeColors.js' %}"></script>
 
-<!-- CUSTOM JS -->
-<script src="{% static 'assets/js/custom.js' %}"></script>
+        <!-- CUSTOM JS -->
+        <script src="{% static 'assets/js/custom.js' %}"></script>
 
 </body>
+<script>
+    function set_visible(category) {
+        category_elements = document.getElementsByClassName(category);
+        all_elements = document.getElementsByClassName('legenditem');
+
+        if (category === 'all') {
+            for (var i = 0; i < all_elements.length; i++) {
+                all_elements[i].style.display = 'flex';
+            }
+        } else {
+
+            for (var i = 0; i < all_elements.length; i++) {
+                all_elements[i].style.display = 'none';
+            }
+
+
+            for (var j = 0; j < category_elements.length; j++) {
+                category_elements[j].style.display = 'flex';
+            }
+        }
+
+    }
+
+</script>
 
 </html>

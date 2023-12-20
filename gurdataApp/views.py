@@ -1,6 +1,19 @@
 from django.shortcuts import render, redirect
-from .forms import LoginForm, RegistrationForm, contactForm, UserProfileForm,ContactForm1,ContactForm2
-from .models import UserGurdata, ContactGurdata,ContactModel
+from .forms import (
+    LoginForm,
+    RegistrationForm,
+    contactForm,
+    UserProfileForm,
+    ContactForm1,
+    ContactForm2,
+)
+from .models import (
+    UserGurdata,
+    ContactGurdata,
+    ContactModel,
+    DataCategoryGurdata,
+    DataGurdata,
+)
 from django.urls import reverse
 from django.core.signing import dumps
 import random
@@ -8,7 +21,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from django.db import IntegrityError
-
 
 
 def get_user_data_by_id(user_id):
@@ -333,20 +345,22 @@ def notification(request):
     else:
         return redirect("account")
 
+
 def support(request):
     form1 = ContactForm1(request.POST)
     if request.method == "POST":
         support_model = ContactModel.objects.create(
-                        name=request.POST["name"],
-                        surname=request.POST["surname"],
-                        email=request.POST["email"],
-                        position=request.POST["position"],
-                        company=request.POST["company"]
-                    )
-        request.session["support_model_id"] = support_model.id 
+            name=request.POST["name"],
+            surname=request.POST["surname"],
+            email=request.POST["email"],
+            position=request.POST["position"],
+            company=request.POST["company"],
+        )
+        request.session["support_model_id"] = support_model.id
         return redirect("support2")
     else:
-        return render(request, "0_support_1.html",{"form1":form1})
+        return render(request, "0_support_1.html", {"form1": form1})
+
 
 def support2(request):
     form2 = ContactForm2(request.POST)
@@ -356,51 +370,72 @@ def support2(request):
         support_model.subject = request.POST.get("subject")
         support_model.message = request.POST.get("message")
         support_model.save()
-        return render(request,"0_support_3.html")
+        return render(request, "0_support_3.html")
     else:
-        return render(request, "0_support_2.html",{"form2":form2})
-    
+        return render(request, "0_support_2.html", {"form2": form2})
+
 
 def dashboard(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request,"_dashboard.html",{"user_data" : user_data})
+    return render(request, "_dashboard.html", {"user_data": user_data})
+
 
 def files(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request,"_dosyalar.html",{"user_data":user_data})
+    category_data = DataCategoryGurdata.objects.all()
+    all_data = DataGurdata.objects.all()
+
+    return render(
+        request,
+        "_dosyalar.html",
+        {"user_data": user_data, "category_data": category_data, "all_data": all_data},
+    )
+
 
 def pre_owned(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request,"_ikinci-el.html",{"user_data":user_data})
+    return render(request, "_ikinci-el.html", {"user_data": user_data})
+
 
 def contact(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     form = ContactForm2(request.POST)
     if request.method == "POST":
         contact = ContactModel.objects.create(
-            name = user_data.user_name,
-            surname = user_data.user_surname,
-            email = user_data.user_email,
-            position = user_data.user_company_role,
-            company = user_data.user_company,
-            subject = request.POST.get('subject'),
-            message = request.POST.get('message'),
-            )
+            name=user_data.user_name,
+            surname=user_data.user_surname,
+            email=user_data.user_email,
+            position=user_data.user_company_role,
+            company=user_data.user_company,
+            subject=request.POST.get("subject"),
+            message=request.POST.get("message"),
+        )
         contact.save()
         request.session["message_type"] = "success"
         request.session["message"] = "Mesajınız başarı ile gönderildi."
-        return redirect('contact')
+        return redirect("contact")
     else:
         message_type = request.session.get("message_type")
         message = request.session.get("message")
         request.session["message_type"] = ""
         request.session["message"] = ""
-        return render(request,"_iletisim.html",{"user_data":user_data,"form":form,"message":message,"message_type":message_type})
+        return render(
+            request,
+            "_iletisim.html",
+            {
+                "user_data": user_data,
+                "form": form,
+                "message": message,
+                "message_type": message_type,
+            },
+        )
+
 
 def payment_methods(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request,"_odeme.html",{"user_data":user_data})
+    return render(request, "_odeme.html", {"user_data": user_data})
+
 
 def sss(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request,"_sss.html",{"user_data":user_data})
+    return render(request, "_sss.html", {"user_data": user_data})

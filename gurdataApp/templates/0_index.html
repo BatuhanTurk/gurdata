@@ -94,9 +94,14 @@
     <!-- MENU -->
 
     <!-- BACKGROUND-IMAGE -->
+    
+    {% if message_type %}
+        
     <div class="alert alert-{{message_type}} container" role="alert">
         {{message}}
       </div>
+    {% endif %}
+        
     <div class="sections">
 
         <!-- Section 1 -->
