@@ -284,6 +284,7 @@ def account(request):
     user_id = request.session["user_id"]
     user = UserGurdata.objects.get(user_id=user_id)
     form = UserProfileForm(request.POST, user=user)
+    category_data = DataCategoryGurdata.objects.all()
     if request.method == "POST":
         if form.is_valid():
             user_name = request.POST["user_name"]
@@ -317,7 +318,7 @@ def account(request):
 
         return redirect("account")
     else:
-        return render(request, "_account.html", {"form": form, "user": user})
+        return render(request, "_account.html", {"form": form, "user": user,"category_data":category_data})
 
 
 def notification(request):
@@ -377,7 +378,8 @@ def support2(request):
 
 def dashboard(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request, "_dashboard.html", {"user_data": user_data})
+    category_data = DataCategoryGurdata.objects.all()
+    return render(request, "_dashboard.html", {"user_data": user_data, "category_data": category_data})
 
 
 def files(request):
@@ -394,12 +396,14 @@ def files(request):
 
 def pre_owned(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request, "_ikinci-el.html", {"user_data": user_data})
+    category_data = DataCategoryGurdata.objects.all()
+    return render(request, "_ikinci-el.html", {"user_data": user_data,"category_data":category_data})
 
 
 def contact(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     form = ContactForm2(request.POST)
+    category_data = DataCategoryGurdata.objects.all()
     if request.method == "POST":
         contact = ContactModel.objects.create(
             name=user_data.user_name,
@@ -427,15 +431,25 @@ def contact(request):
                 "form": form,
                 "message": message,
                 "message_type": message_type,
+                "category_data":category_data,
             },
         )
 
 
 def payment_methods(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request, "_odeme.html", {"user_data": user_data})
+    category_data = DataCategoryGurdata.objects.all()
+    return render(request, "_odeme.html", {"user_data": user_data,"category_data": category_data})
 
 
 def sss(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    return render(request, "_sss.html", {"user_data": user_data})
+    category_data = DataCategoryGurdata.objects.all()
+    return render(request, "_sss.html", {"user_data": user_data,"category_data":category_data})
+
+def category_page(request,category):
+    user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+    category_data = DataCategoryGurdata.objects.filter(category_name = category)
+    all_category_data = DataCategoryGurdata.objects.all()
+    all_data = DataGurdata.objects.filter(category_id = category_data[0].category_id)
+    return render(request, 'categories_page.html', {"all_category_data":all_category_data,'category_data': category_data[0],"user_data":user_data,"all_data":all_data})

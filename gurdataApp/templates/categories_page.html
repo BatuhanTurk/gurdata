@@ -194,7 +194,7 @@
                                     <li><a href="#" class="slide-item sat-16n500n05"> Konum</a></li>
                                 </ul>
                             </li>
-                            {% for category in category_data %}
+                            {% for category in all_category_data %}
                             <li class="slide">
                                 <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'category_page' category=category %}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
@@ -324,9 +324,9 @@
 
                         <!-- PAGE-HEADER -->
                         <div class="page-header">
-                            <h1 class="page-title sat-22n700n05"><img src="{% static 'assets/images/svgs/emlak-header.svg' %}"/>Emlak / İkinci el</h1>
+                            <h1 class="page-title sat-22n700n05"><img src="{% static '/' %}{{ category_data.category_image }}" width="50" height="auto"/>{{ category_data.category_name }}</h1>
                         </div>
-                        <div class="sat-14n5003005 mb-30 ps-2">About data set</div>
+                        <div class="sat-14n5003005 mb-30 ps-2">{{ category_data.category_description }}</div>
                         <!-- PAGE-HEADER END -->
 
                         <!-- ROW-0 -->
@@ -470,63 +470,89 @@
                                             <table class="table text-nowrap text-md-nowrap mb-0">
                                                 <thead>
                                                 <tr>
-                                                    <th>Brand</th>
-                                                    <th>model_serIe</th>
-                                                    <th>model</th>
-                                                    <th>prIce</th>
-                                                    <th>lIstIng_date</th>
-                                                    <th>country</th>
-                                                    <th>cIty</th>
-                                                    <th>county</th>
-                                                    <th>dIstrIct</th>
+                                                    <th>name</th>
+                                                    <th>description</th>
+                                                    <th>path</th>
+                                                    <th>demo path</th>
+                                                    <th>download count</th>
+                                                    <th>price</th>
+                                                    <th>time</th>
+                                                    
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Renault</td>
-                                                    <td>Clio</td>
-                                                    <td>1.5 dCi Alize</td>
-                                                    <td>210000 TL</td>
-                                                    <td>2023-04-08 02:56:07.00000</td>
-                                                    <td>Türkiye</td>
-                                                    <td>Antalya</td>
-                                                    <td>Alanya</td>
-                                                    <td>Beldeler</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Renault</td>
-                                                    <td>Clio</td>
-                                                    <td>1.5 dCi Alize</td>
-                                                    <td>210000 TL</td>
-                                                    <td>2023-04-08 02:56:07.00000</td>
-                                                    <td>Türkiye</td>
-                                                    <td>Antalya</td>
-                                                    <td>Alanya</td>
-                                                    <td>Beldeler</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Renault</td>
-                                                    <td>Clio</td>
-                                                    <td>1.5 dCi Alize</td>
-                                                    <td>210000 TL</td>
-                                                    <td>2023-04-08 02:56:07.00000</td>
-                                                    <td>Türkiye</td>
-                                                    <td>Antalya</td>
-                                                    <td>Alanya</td>
-                                                    <td>Beldeler</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Renault</td>
-                                                    <td>Clio</td>
-                                                    <td>1.5 dCi Alize</td>
-                                                    <td>210000 TL</td>
-                                                    <td>2023-04-08 02:56:07.00000</td>
-                                                    <td>Türkiye</td>
-                                                    <td>Antalya</td>
-                                                    <td>Alanya</td>
-                                                    <td>Beldeler</td>
-                                                </tr>
+                                                {% for data in all_data %}
+                                                    <tr>
+                                                        <td>{{data.data_name}}</td>
+                                                        <td>{{data.data_description}}</td>
+                                                        <td>{{data.data_path}}</td>
+                                                        <td>{{data.data_demo_path}}</td>
+                                                        <td>{{data.data_download_count}}</td>
+                                                        <td>{{data.data_price}}</td>
+                                                        <td>{{data.data_time}}</td>
+                                                        
+                                                        
+                                                    </tr>
+                                                {% endfor %}
                                                 </tbody>
+                                                
+                                                    <!-- <tr>
+                                                        <td>Renault</td>
+                                                        <td>Clio</td>
+                                                        <td>1.5 dCi Alize</td>
+                                                        <td>210000 TL</td>
+                                                        <td>2023-04-08 02:56:07.00000</td>
+                                                        <td>Türkiye</td>
+                                                        <td>Antalya</td>
+                                                        
+                                                    </tr> -->
+                                                
+                                                <!-- <tbody>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Renault</td>
+                                                    <td>Clio</td>
+                                                    <td>1.5 dCi Alize</td>
+                                                    <td>210000 TL</td>
+                                                    <td>2023-04-08 02:56:07.00000</td>
+                                                    <td>Türkiye</td>
+                                                    <td>Antalya</td>
+                                                    <td>Alanya</td>
+                                                    <td>Beldeler</td>
+                                                </tr>
+                                                </tbody> -->
                                             </table>
                                         </div>
                                         <div class="clearfix h25"></div>
@@ -587,7 +613,7 @@
                         <div class="col1">
                             <div class="iconhead"><img src="{% static 'assets/images/svgs/emlak-header.svg' %}"></div>
                             <div class="cont">
-                                <div class="wtitle">Emlak / İkinci el</div>
+                                <div class="wtitle">{{category}}</div>
                                 <div class="wsubtitle2">Nüfus Verileri</div>
                             </div>
                         </div>

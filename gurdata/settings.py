@@ -126,6 +126,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'gurdata/gurdataApp/static'),  
+    os.path.join(BASE_DIR, 'gurdata/category_images'),
+    
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
