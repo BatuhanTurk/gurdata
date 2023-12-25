@@ -318,7 +318,11 @@ def account(request):
 
         return redirect("account")
     else:
-        return render(request, "_account.html", {"form": form, "user": user,"category_data":category_data})
+        return render(
+            request,
+            "_account.html",
+            {"form": form, "user": user, "category_data": category_data},
+        )
 
 
 def notification(request):
@@ -379,7 +383,11 @@ def support2(request):
 def dashboard(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.all()
-    return render(request, "_dashboard.html", {"user_data": user_data, "category_data": category_data})
+    return render(
+        request,
+        "_dashboard.html",
+        {"user_data": user_data, "category_data": category_data},
+    )
 
 
 def files(request):
@@ -397,7 +405,11 @@ def files(request):
 def pre_owned(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.all()
-    return render(request, "_ikinci-el.html", {"user_data": user_data,"category_data":category_data})
+    return render(
+        request,
+        "_ikinci-el.html",
+        {"user_data": user_data, "category_data": category_data},
+    )
 
 
 def contact(request):
@@ -431,7 +443,7 @@ def contact(request):
                 "form": form,
                 "message": message,
                 "message_type": message_type,
-                "category_data":category_data,
+                "category_data": category_data,
             },
         )
 
@@ -439,17 +451,51 @@ def contact(request):
 def payment_methods(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.all()
-    return render(request, "_odeme.html", {"user_data": user_data,"category_data": category_data})
+    return render(
+        request, "_odeme.html", {"user_data": user_data, "category_data": category_data}
+    )
 
 
 def sss(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.all()
-    return render(request, "_sss.html", {"user_data": user_data,"category_data":category_data})
+    return render(
+        request, "_sss.html", {"user_data": user_data, "category_data": category_data}
+    )
 
-def category_page(request,category):
+
+def category_page(request, category):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    category_data = DataCategoryGurdata.objects.filter(category_name = category)
+    category_data = DataCategoryGurdata.objects.filter(category_name=category)
     all_category_data = DataCategoryGurdata.objects.all()
-    all_data = DataGurdata.objects.filter(category_id = category_data[0].category_id)
-    return render(request, 'categories_page.html', {"all_category_data":all_category_data,'category_data': category_data[0],"user_data":user_data,"all_data":all_data})
+    all_data = DataGurdata.objects.filter(category_id=category_data[0].category_id)
+    data_dict = {
+        "name": set(),
+        "description": set(),
+        "path": set(),
+        "demo_path": set(),
+        "download_count": set(),
+        "price": set(),
+        "time": set(),
+    }
+
+    for data in all_data:
+        data_dict["name"].add(data.data_name)
+        data_dict["description"].add(data.data_description)
+        data_dict["path"].add(data.data_path)
+        data_dict["demo_path"].add(data.data_demo_path)
+        data_dict["download_count"].add(data.data_download_count)
+        data_dict["price"].add(data.data_price)
+        data_dict["time"].add(data.data_time)
+    
+    return render(
+        request,
+        "categories_page.html",
+        {
+            "all_category_data": all_category_data,
+            "category_data": category_data[0],
+            "user_data": user_data,
+            "all_data": all_data,
+            "data_dict":data_dict
+        },
+    )
