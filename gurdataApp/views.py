@@ -479,6 +479,7 @@ def category_page(request, category):
         "time": set(),
     }
 
+    image_path = str(category_data[0].category_image).replace("gurdataApp/static/","")
     for data in all_data:
         data_dict["name"].add(data.data_name)
         data_dict["description"].add(data.data_description)
@@ -487,11 +488,11 @@ def category_page(request, category):
         data_dict["download_count"].add(data.data_download_count)
         data_dict["price"].add(data.data_price)
         data_dict["time"].add(data.data_time)
-    
+
     return render(
         request,
         "categories_page.html",
-        {
+        {   "image_path":image_path,
             "all_category_data": all_category_data,
             "category_data": category_data[0],
             "user_data": user_data,

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a1b0y4txk!1b6=u=6ew%_9dtr3k1k^njzcobt_$c8pg(vw=&oa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -125,8 +125,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'gurdata/gurdataApp/static'),  
-    os.path.join(BASE_DIR, 'gurdata/category_images'),
+    os.path.join(BASE_DIR, './gurdata/gurdataApp/static'),
     
 ]
 

@@ -27,7 +27,7 @@ class DataCategoryGurdata(models.Model):
     category_id = models.AutoField(primary_key=True)
     category_name = models.CharField(max_length=255)
     category_description = models.TextField()
-    category_image = models.ImageField(upload_to="./gurdata/gurdataApp/static/category_images/")
+    category_image = models.ImageField(upload_to="./gurdataApp/static/category_images")
 
     def __str__(self):
         return self.category_name
