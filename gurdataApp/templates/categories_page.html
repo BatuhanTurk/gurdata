@@ -37,7 +37,28 @@
     <!-- <link id="theme" rel="stylesheet" type="text/css" media="all" href="../assets/colors/color1.css" />-->
 
 </head>
+<style>
+.green{
+    
+}
+.green:hover{
+    background-color: white !important;
+    color: gray !important;
+    border-color: #00C693 !important;
+}
+.green:active {
 
+    background-color: #00C693 !important;
+    color:white !important;
+
+
+    
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
+    }
+</style>
 <body class="app sidebar-mini ltr light-mode">
 
     <!-- GLOBAL-LOADER -->
@@ -139,9 +160,10 @@
                                             {{ user_data.user_name.0 }} {{ user_data.user_surname.0 }}
                                         </div>
 
-                                        <div class a="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
+                                        <div class="dropdown namebox sat-12n500n05-bsemib d-none d-sm-block">
                                             <a href="{% url 'account' %}">{{ user_data.user_name}} {{ user_data.user_surname}}</a>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -646,7 +668,7 @@
                                         </div>
                                         <div class="clearfix h25"></div>
                                         <div class="bigbutton">
-                                            <button data-bs-toggle="sidebar-right" data-target=".sidebar-right">Satın Al
+                                            <button onclick="showBuyPanel()" data-bs-toggle="sidebar-right" data-target=".sidebar-right">Satın Al
                                                 <img src="{% static 'assets/images/svgs/download.svg' %}"></button>
                                         </div>
                                     </div>
@@ -703,26 +725,26 @@
 
                     <div class="blocks">
                         <div class="col1">
-                            <div class="iconhead"><img src="{% static 'assets/images/svgs/emlak-header.svg' %}"></div>
+                            <div class="iconhead"><img src="{% static '/' %}{{ image_path }}" width="50"></div>
                             <div class="cont">
-                                <div class="wtitle">{{category}}</div>
-                                <div class="wsubtitle2">Nüfus Verileri</div>
+                                <div class="wtitle">{{category_data}}</div>
+                                <div class="wsubtitle2">{{category_data}} verileri</div>
                             </div>
                         </div>
                         <div class="col2">
-                            <div class="wtitle">50</div>
+                            <div class="wtitle total-price">{{total_price}}</div>
                             <span>Satış Başı İçin Gereken Kredi</span>
                         </div>
                     </div>
 
-                    <button class="normalbtn">Kredi Yükle</button>
+                    <a href = "{% url 'payment_methods' %}" ><button class="normalbtn">Kredi Yükle</button></a>
 
                     <!-- VIEW 1 -->
                     <div class="maincont view1">
                         <div class="wtitle">Veri Setiniz Hakkında</div>
                         <div class="sonislemler">
-                            <div class="legenditems">
-                                <div class="legenditem">
+                            <div class="legenditems datasets-list" >
+                                <!-- <div class="legenditem">
                                     <div class="col1">
                                         <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
                                         <div class="coltitle">
@@ -738,6 +760,22 @@
                                         <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
                                     </div>
                                 </div>
+                                <div class="legenditem">
+                                    <div class="col1">
+                                        <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
+                                        <div class="coltitle">
+                                            <span>How to Farming.csv</span>
+                                            <div class="attrs">
+                                                <span>128 Mb</span>
+                                                <span>Aug 12, 2019</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="wsubtitle">Gurdata veri platformu, analitik çalışmalarınızda sizlere destek
@@ -747,8 +785,10 @@
                             yelpazede veriler sunmaktadır.</div>
                         <div class="action_btns green nextview"><span>Satın Al ve FileManager'a Kaydet</span><img
                                 src="{% static 'assets/images/svgs/check-circle.svg' %}"></div>
-                        <div class="action_btns red"><span>Veri Setini İndirmek İçin Krediniz Yetersiz</span><img
-                                src="{% static 'assets/images/svgs/info.svg' %}"></div>
+                                <div class="info">Satın alımı tamamlamak için 3 saniye basılı tutunuz   .
+                                </div>
+                        <a style = "width: 100%;" href = "{% url 'payment_methods' %}"><div class="action_btns red"><span>Veri Setini İndirmek İçin Krediniz Yetersiz</span><img
+                                src="{% static 'assets/images/svgs/info.svg' %}"></div></a>
                         <div class="info">İşlem tamamlandıktan sonra veri setine FileManager üzerinden ulaşabilirsiniz.
                         </div>
                     </div>
@@ -907,9 +947,10 @@
     var selectedFilters = {
         time: "",
         anotherFilter: ""
-        // Diğer filtre kategorileri buraya eklenebilir
+        
     };
-
+    var visibleElements = [];
+    
     function set_filter(filter_category, value) {
         selectedFilters[filter_category] = value;
 
@@ -918,7 +959,6 @@
         for (var i = 0; i < trElements.length; i++) {
             var trElement = trElements[i];
 
-            // Her bir filtre kategorisi için değeri alın
             var tdValues = {};
             for (var key in selectedFilters) {
                 var tdElement = trElement.querySelector(".td-" + key);
@@ -927,23 +967,28 @@
                 }
             }
 
-            // Tüm filtre kategorilerinin değerleri seçilen değerlere eşitse göster, değilse gizle
             var shouldDisplay = true;
             for (var key in selectedFilters) {
                 if (selectedFilters[key] !== "" && tdValues[key] !== selectedFilters[key]) {
                     shouldDisplay = false;
+                    
                     break;
                 }
             }
 
             if (shouldDisplay) {
                 trElement.style.display = "table-row";
+                if (!visibleElements.includes(trElement)){
+                    visibleElements.push(trElement);
+                }
+                
             } else {
                 trElement.style.display = "none";
             }
         }
-
+        
     }
+    
     function clear_filter() {
         var trElements = document.getElementsByClassName("data-tr");
 
@@ -952,20 +997,17 @@
             trElement.style.display = "table-row";
         }
 
-        // Tüm filtre kategorilerinin seçilen değerlerini temizle
         for (var key in selectedFilters) {
             selectedFilters[key] = "";
         }
 
-        var selectElements = document.querySelectorAll("select"); // Tüm select elementlerini seç
+        var selectElements = document.querySelectorAll("select"); 
 
         for (var i = 0; i < selectElements.length; i++) {
             var selectElement = selectElements[i];
 
-            // "Name: -" adlı başlangıç option'ını seçili hale getir
             selectElement.selectedIndex = 0;
 
-            // onchange olayını programatik olarak tetikle
             if ("createEvent" in document) {
                 var evt = document.createEvent("HTMLEvents");
                 evt.initEvent("change", false, true);
@@ -975,6 +1017,69 @@
             }
         }
     }
+    function showBuyPanel(){
+        var total_price = 0;
+        var total_price_div = document.querySelector(".total-price");
+        var datasets_list = document.querySelector(".datasets-list");
+        
+        datasets_list.innerHTML = "";
+        visibleElements.forEach(visibleElement =>{
+            if(visibleElement.style.display==="none"){
+                
+            }else{
+                var price = visibleElement.querySelector(".td-price").textContent;
+                var data_name = visibleElement.querySelector(".td-name").textContent;
+                var data_time = visibleElement.querySelector(".td-time").textContent;
+                total_price += parseFloat(price);
+
+                total_price_div.innerHTML = total_price;
+                
+                datasets_list.innerHTML += `
+                    <div class="legenditem">
+                        <div class="col1">
+                            <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
+                            <div class="coltitle">
+                                <span>${data_name}</span>
+                                <div class="attrs">
+                                    <span>128 Mb</span>
+                                    <span>A${data_time}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                            <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                        </div>
+                    </div>
+                `;
+            }
+        });
+        var greenButton = document.querySelector(".green")
+        var redButton = document.querySelector(".red")
+        if({{ user_data.user_balance}}>= total_price){
+            greenButton.style.display = 'flex';
+            redButton.style.display = 'none';
+        }else{
+            greenButton.style.display = 'none';
+            redButton.style.display = 'flex';
+        }
+    }
+    document.querySelector('.green').addEventListener('mousedown', function() {
+        if (event.button === 0) { // Sol tıklama
+            pressTimer = setTimeout(function() {
+                // Sol tıklama ile 3 saniye basılı tutulduğunda yönlendirme yap
+                window.location.href = "{% url 'files' %}";
+            }, 3000);
+        }
+    });
+
+
+    document.querySelector('.green').addEventListener('mouseup', function() {
+        clearTimeout(pressTimer);
+    });
+
+
+    
 </script>
 
 </html>
