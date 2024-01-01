@@ -515,28 +515,6 @@
                                                     </div>
                                                     <div class="item">
                                                         <select class="form-control select2-show-search form-select"
-                                                            data-placeholder="Path: -"
-                                                            onchange="set_filter('path', this.value)">
-                                                            <option label="Path: -"></option>
-                                                            {% for path in data_dict.path %}
-                                                            <option value="{{path}}">{{path}}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                    <div class="item">
-                                                        <select class="form-control select2-show-search form-select"
-                                                            data-placeholder="Demo Path: -"
-                                                            onchange="set_filter('demo_path', this.value)">
-                                                            <option label="Demo Path: -"></option>
-                                                            {% for demo_path in data_dict.demo_path %}
-                                                            <option value="{{demo_path}}">{{demo_path}}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="rows">
-                                                    <div class="item">
-                                                        <select class="form-control select2-show-search form-select"
                                                             data-placeholder="download Count: -"
                                                             onchange="set_filter('download_count', this.value)">
                                                             <option label="download Count: -"></option>
@@ -556,6 +534,9 @@
                                                             {% endfor %}
                                                         </select>
                                                     </div>
+                                                </div>
+                                                <div class="rows">
+                                                    
                                                     <div class="item">
                                                         <select class="form-control select2-show-search form-select"
                                                             data-placeholder="Time: -"
@@ -583,8 +564,7 @@
                                                     <tr>
                                                         <th>name</th>
                                                         <th>description</th>
-                                                        <th>path</th>
-                                                        <th>demo path</th>
+                                                        
                                                         <th>download count</th>
                                                         <th>price</th>
                                                         <th>time</th>
@@ -596,8 +576,6 @@
                                                     <tr class="data-tr">
                                                         <td class="td-name">{{data.data_name}}</td>
                                                         <td class="td-description">{{data.data_description}}</td>
-                                                        <td class="td-path">{{data.data_path}}</td>
-                                                        <td class="td-demo_path">{{data.data_demo_path}}</td>
                                                         <td class="td-download_count">{{data.data_download_count}}</td>
                                                         <td class="td-price">{{data.data_price}}</td>
                                                         <td class="td-time">{{data.data_time}}</td>
@@ -778,6 +756,8 @@
                                 </div> -->
                             </div>
                         </div>
+                        <div id = "existing-data-div" style = "width: 100%;" ></div>
+                        
                         <div class="wsubtitle">Gurdata veri platformu, analitik çalışmalarınızda sizlere destek
                             olabilecek veri
                             kaynaklarını, doğrudan filtreleme ile indirme imkanı sunan bir platformdur. Gurdata veri
@@ -942,6 +922,8 @@
 
     <!-- DEMO FUNCS-->
 
+
+    
 </body>
 <script>
     var selectedFilters = {
@@ -950,7 +932,7 @@
         
     };
     var visibleElements = [];
-    
+    var buying_data_list = [];
     function set_filter(filter_category, value) {
         selectedFilters[filter_category] = value;
 
@@ -1017,12 +999,18 @@
             }
         }
     }
+    
     function showBuyPanel(){
         var total_price = 0;
         var total_price_div = document.querySelector(".total-price");
+        total_price_div.innerHTML = total_price;
         var datasets_list = document.querySelector(".datasets-list");
-        
+        var existing_data_div = document.querySelector("#existing-data-div");
+        existing_data_div.innerHTML  = "";
         datasets_list.innerHTML = "";
+        
+        
+        var existing_list = [];
         visibleElements.forEach(visibleElement =>{
             if(visibleElement.style.display==="none"){
                 
@@ -1030,28 +1018,70 @@
                 var price = visibleElement.querySelector(".td-price").textContent;
                 var data_name = visibleElement.querySelector(".td-name").textContent;
                 var data_time = visibleElement.querySelector(".td-time").textContent;
-                total_price += parseFloat(price);
 
-                total_price_div.innerHTML = total_price;
-                
-                datasets_list.innerHTML += `
-                    <div class="legenditem">
-                        <div class="col1">
-                            <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
-                            <div class="coltitle">
-                                <span>${data_name}</span>
-                                <div class="attrs">
-                                    <span>128 Mb</span>
-                                    <span>A${data_time}</span>
+                {% for data in existing_datas %}
+                if(data_name == "{{data}}"){
+                    existing_list.push(data_name);
+                }
+                {% endfor %}
+
+                if (existing_list.indexOf(data_name) !== -1) {
+                    if(existing_data_div.childElementCount == 0){
+                        existing_data_div.innerHTML = `
+                        <div class="wtitle">Sizde Mevcut olanlar</div>
+                         <div class="sonislemler">
+                             <div class="legenditems datasets-list-existing" >
+                                
+                             </div>
+                         </div>
+                        `;
+                    }
+                    var existing_list_element = existing_data_div.querySelector(".datasets-list-existing");
+                    existing_list_element.innerHTML += `
+                        <div class="legenditem">
+                            <div class="col1">
+                                <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
+                                <div class="coltitle">
+                                    <span>${data_name}</span>
+                                    <div class="attrs">
+                                        <span>128 Mb</span>
+                                        <span>A${data_time}</span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col2">
+                                <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                            </div>
                         </div>
-                        <div class="col2">
-                            <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                            <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                    `;
+                } else {
+                    total_price += parseFloat(price);
+                    total_price_div.innerHTML = total_price;
+                    if (buying_data_list.indexOf(data_name) === -1) {
+                        buying_data_list.push(data_name);
+                    }
+                    datasets_list.innerHTML += `
+                        <div class="legenditem">
+                            <div class="col1">
+                                <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
+                                <div class="coltitle">
+                                    <span>${data_name}</span>
+                                    <div class="attrs">
+                                        <span>128 Mb</span>
+                                        <span>A${data_time}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
+
+                
             }
         });
         var greenButton = document.querySelector(".green")
@@ -1065,14 +1095,38 @@
         }
     }
     document.querySelector('.green').addEventListener('mousedown', function() {
-        if (event.button === 0) { // Sol tıklama
+        if (event.button === 0) { 
             pressTimer = setTimeout(function() {
-                // Sol tıklama ile 3 saniye basılı tutulduğunda yönlendirme yap
-                window.location.href = "{% url 'files' %}";
+                $.ajax({
+                    url: '/buydata',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ eventList: buying_data_list }),
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    dataType: 'text',
+                    
+                });
+                window.location.href = '/files/';
             }, 3000);
         }
     });
 
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
     document.querySelector('.green').addEventListener('mouseup', function() {
         clearTimeout(pressTimer);

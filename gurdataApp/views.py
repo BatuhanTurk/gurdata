@@ -472,32 +472,27 @@ def category_page(request, category):
     data_dict = {
         "name": set(),
         "description": set(),
-        "path": set(),
-        "demo_path": set(),
         "download_count": set(),
         "price": set(),
         "time": set(),
     }
 
     image_path = str(category_data[0].category_image).replace("gurdataApp/static/","")
-    total_price = 0
     for data in all_data:
         data_dict["name"].add(data.data_name)
         data_dict["description"].add(data.data_description)
-        data_dict["path"].add(data.data_path)
-        data_dict["demo_path"].add(data.data_demo_path)
         data_dict["download_count"].add(data.data_download_count)
         data_dict["price"].add(data.data_price)
-        total_price += data.data_price
         data_dict["time"].add(data.data_time)
 
+    existing_datas = user_data.user_data.all().filter(category_id = category_data[0].category_id)
     
-
+    
     return render(
         request,
         "categories_page.html",
         {   
-            "total_price": total_price,
+            "existing_datas":existing_datas,
             "image_path":image_path,
             "all_category_data": all_category_data,
             "category_data": category_data[0],
@@ -506,3 +501,28 @@ def category_page(request, category):
             "data_dict":data_dict
         },
     )
+
+import json
+from django.http import JsonResponse
+
+def buy_data(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            raw_data = request.body
+            decoded_data = raw_data.decode('utf-8')
+            data = json.loads(decoded_data)
+            data_names = data.get('eventList', [])
+            filtered_datas = DataGurdata.objects.filter(data_name__in=data_names)
+            user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
+            total_price = 0
+            for filtered_data in filtered_datas:
+                if filtered_data in user_data.user_data.all():
+                    pass
+                else:
+                    total_price += float(filtered_data.data_price)
+                    user_data.user_data.add(filtered_data)
+                    user_data.user_balance -= float(total_price)
+                    user_data.save()
+            
+    return redirect("files")
+

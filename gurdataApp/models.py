@@ -15,6 +15,7 @@ class UserGurdata(models.Model):
     system_notifications = models.IntegerField(default=1)
     file_manager_notifications = models.IntegerField(default=0)
     mail_notifications = models.IntegerField(default=0)
+    user_data = models.ManyToManyField('DataGurdata', related_name='users', blank=True)
 
     class Meta:
         db_table = "user_gurdata"
