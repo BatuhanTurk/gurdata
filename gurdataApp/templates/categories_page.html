@@ -1108,7 +1108,9 @@
                     dataType: 'text',
                     
                 });
-                window.location.href = '/files/';
+                setTimeout(function() {
+                    window.location.href = '/files/';
+                }, 1000);
             }, 3000);
         }
     });

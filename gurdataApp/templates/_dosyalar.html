@@ -418,6 +418,7 @@
 
 
                                             {% for category in category_data %}
+                                            
                                             <div class="files" onclick="set_visible('{{category}}')">
                                                 <img src="{% static 'assets/images/svgs/dir_emlak.svg' %}">
                                                 <div class="file-item-content">
@@ -508,30 +509,41 @@
 
                                             <div class="filelist sonislemler">
                                                 <div class="legenditems">
-
+                                                    <div class="sat-14n5003005 mb-30 ps-2 not-data-div" style = "display:none;"> Bu kategoriye ait veriniz bulunmamaktadır.</div>   
                                                     {% for data in all_data %}
-                                                    <div class="legenditem {{data.category_id}}">
+                                                    <div class="legenditem {{ data.category_id }}">
                                                         <div class="col1">
                                                             <img src="{% static 'assets/images/svgs/csvfile.svg' %}">
                                                             <div class="coltitle">
                                                                 <span>{{ data.data_name }}</span>
                                                                 <div class="attrs">
                                                                     <span>128 Mb</span>
-                                                                    <span>{{data.data_time}}</span>
+                                                                    <span>{{ data.data_time }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col2">
                                                             <div class="expirebtn">
-                                                                <span>24 Days to expire</span>
+                                                                
+                                                                {% for key,value in days_left_dict.items %}
+                                                                    
+                                                                    {% if key == data.data_id %}
+                                                                    <span>{{ value }} days left</span>
+                                                                    {% endif %}
+                                                                        
+                                                                {% endfor %}
+                                                                    
+                                                                    
+                                                                
                                                                 <img src="{% static 'assets/images/svgs/clock.svg' %}">
                                                             </div>
                                                             <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                            <img
-                                                                src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                                            <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
                                                         </div>
                                                     </div>
-                                                    {% endfor %}
+                                                {% endfor %}
+
+
 
                                                     <!-- <div class="legenditem">
                                                     <div class="col1">
@@ -994,6 +1006,17 @@
             for (var j = 0; j < category_elements.length; j++) {
                 category_elements[j].style.display = 'flex';
             }
+        }
+        var visible = 0;
+        for (var i = 0; i < all_elements.length; i++) {
+                if(all_elements[i].style.display == "none"){
+                    visible += 1;
+                }
+        }
+        if(visible == all_elements.length) {
+            document.querySelector(".not-data-div").style.display = "block";
+        }else{
+            document.querySelector(".not-data-div").style.display = "none";
         }
 
     }

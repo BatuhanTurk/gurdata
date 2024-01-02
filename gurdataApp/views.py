@@ -393,12 +393,16 @@ def dashboard(request):
 def files(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.all()
-    all_data = DataGurdata.objects.all()
-
+    existing_data = user_data.user_data.all()
+    days_left_dict = {}
+    for data in existing_data:
+        days_left = (data.data_time - datetime.now(timezone.utc)).days
+        days_left_dict[data.data_id] = days_left
+        
     return render(
         request,
         "_dosyalar.html",
-        {"user_data": user_data, "category_data": category_data, "all_data": all_data},
+        {"user_data": user_data, "category_data": category_data, "all_data": existing_data,"days_left_dict":days_left_dict},
     )
 
 
@@ -463,12 +467,18 @@ def sss(request):
         request, "_sss.html", {"user_data": user_data, "category_data": category_data}
     )
 
+from datetime import datetime
+from django.utils import timezone
 
 def category_page(request, category):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.filter(category_name=category)
     all_category_data = DataCategoryGurdata.objects.all()
-    all_data = DataGurdata.objects.filter(category_id=category_data[0].category_id)
+
+    current_datetime = datetime.now(timezone.utc)
+
+    all_data = DataGurdata.objects.filter(category_id=category_data[0].category_id,data_time__gte=current_datetime)
+
     data_dict = {
         "name": set(),
         "description": set(),
@@ -487,7 +497,6 @@ def category_page(request, category):
 
     existing_datas = user_data.user_data.all().filter(category_id = category_data[0].category_id)
     
-    
     return render(
         request,
         "categories_page.html",
@@ -503,7 +512,6 @@ def category_page(request, category):
     )
 
 import json
-from django.http import JsonResponse
 
 def buy_data(request):
     if request.is_ajax():
@@ -514,14 +522,14 @@ def buy_data(request):
             data_names = data.get('eventList', [])
             filtered_datas = DataGurdata.objects.filter(data_name__in=data_names)
             user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-            total_price = 0
+            
             for filtered_data in filtered_datas:
                 if filtered_data in user_data.user_data.all():
                     pass
                 else:
-                    total_price += float(filtered_data.data_price)
+                    price = float(filtered_data.data_price)
                     user_data.user_data.add(filtered_data)
-                    user_data.user_balance -= float(total_price)
+                    user_data.user_balance -= float(price)
                     user_data.save()
             
     return redirect("files")
