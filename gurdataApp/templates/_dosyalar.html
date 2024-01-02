@@ -527,18 +527,28 @@
                                                                 
                                                                 {% for key,value in days_left_dict.items %}
                                                                     
-                                                                    {% if key == data.data_id %}
-                                                                    <span>{{ value }} days left</span>
+                                                                    {% if key == data.data_name %}
+                                                                    
+                                                                    {% if value == "Süresi Doldu" %}
+                                                                    <span>{{value}}</span>
+                                                                        <img src="{% static 'assets/images/svgs/clock.svg' %}">
+                                                                        </div>
+                                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                                                    </div>
+                                                                    {% else %}
+                                                                        
+                                                                    <span>{{ value }}</span>
+                                                                    <img src="{% static 'assets/images/svgs/clock.svg' %}">
+                                                                    </div>
+                                                                    <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                                                    <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                                                    {% endif %}
+                                                                        
                                                                     {% endif %}
                                                                         
                                                                 {% endfor %}
-                                                                    
-                                                                    
                                                                 
-                                                                <img src="{% static 'assets/images/svgs/clock.svg' %}">
-                                                            </div>
-                                                            <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                            <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
                                                         </div>
                                                     </div>
                                                 {% endfor %}

@@ -1,3 +1,5 @@
+from datetime import datetime,timedelta
+from django.utils import timezone
 from django.shortcuts import render, redirect
 from .forms import (
     LoginForm,
@@ -13,6 +15,7 @@ from .models import (
     ContactModel,
     DataCategoryGurdata,
     DataGurdata,
+    DataDownloadGurdata
 )
 from django.urls import reverse
 from django.core.signing import dumps
@@ -389,16 +392,26 @@ def dashboard(request):
         {"user_data": user_data, "category_data": category_data},
     )
 
-
 def files(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.all()
     existing_data = user_data.user_data.all()
+    download_data = DataDownloadGurdata.objects.filter(user_id = user_data)
     days_left_dict = {}
-    for data in existing_data:
-        days_left = (data.data_time - datetime.now(timezone.utc)).days
-        days_left_dict[data.data_id] = days_left
+    for data in download_data:
+        new_download_datatime = (data.download_datatime + timedelta(minutes = data.download_time_minute))
+        remaining_time =new_download_datatime - timezone.now()
+        day = remaining_time.days
+        hours, remainder = divmod(remaining_time.seconds, 3600)
+        minutes = remainder // 60
         
+        if day <= 0:
+            formatted_time = "Süresi Doldu"
+        else:
+            formatted_time = "{:02} gün {:02} saat {:02} dakika Kaldı.".format(day,hours, minutes)
+        days_left_dict[str(data.data_id)] = formatted_time
+
+    
     return render(
         request,
         "_dosyalar.html",
@@ -467,17 +480,12 @@ def sss(request):
         request, "_sss.html", {"user_data": user_data, "category_data": category_data}
     )
 
-from datetime import datetime
-from django.utils import timezone
 
 def category_page(request, category):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.filter(category_name=category)
     all_category_data = DataCategoryGurdata.objects.all()
-
-    current_datetime = datetime.now(timezone.utc)
-
-    all_data = DataGurdata.objects.filter(category_id=category_data[0].category_id,data_time__gte=current_datetime)
+    all_data = DataGurdata.objects.filter(category_id=category_data[0].category_id)
 
     data_dict = {
         "name": set(),
@@ -514,7 +522,7 @@ def category_page(request, category):
 import json
 
 def buy_data(request):
-    if request.is_ajax():
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         if request.method == 'POST':
             raw_data = request.body
             decoded_data = raw_data.decode('utf-8')
@@ -527,6 +535,14 @@ def buy_data(request):
                 if filtered_data in user_data.user_data.all():
                     pass
                 else:
+                    download_data = DataDownloadGurdata(
+                        data_id=filtered_data,
+                        user_id=user_data,
+                        download_datatime=timezone.now(),
+                        download_time_minute=5000,
+                        data_active=1,
+                    )
+                    download_data.save()
                     price = float(filtered_data.data_price)
                     user_data.user_data.add(filtered_data)
                     user_data.user_balance -= float(price)
