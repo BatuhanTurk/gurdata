@@ -410,7 +410,7 @@
                                                 <div class="file-item-content">
                                                     Hepsi
                                                     <div class="file-item-info">
-                                                        <span>100 file</span>
+                                                        <span id = "file-count-all-span">100 file</span>
                                                         <span>Last update Aug 12, 2019</span>
                                                     </div>
                                                 </div>
@@ -419,12 +419,12 @@
 
                                             {% for category in category_data %}
                                             
-                                            <div class="files" onclick="set_visible('{{category}}')">
+                                            <div class="files" id = "{{category}}" onclick="set_visible('{{category}}')">
                                                 <img src="{% static 'assets/images/svgs/dir_emlak.svg' %}">
                                                 <div class="file-item-content">
                                                     {{ category }}
                                                     <div class="file-item-info">
-                                                        <span>100 file</span>
+                                                        <span id = "file-count-{{category}}-span">100 file</span>
                                                         <span>Last update Aug 12, 2019</span>
                                                     </div>
                                                 </div>
@@ -523,26 +523,31 @@
                                                             </div>
                                                         </div>
                                                         <div class="col2">
-                                                            <div class="expirebtn">
+                                                            
                                                                 
                                                                 {% for key,value in days_left_dict.items %}
                                                                     
                                                                     {% if key == data.data_name %}
                                                                     
                                                                     {% if value == "Süresi Doldu" %}
+                                                                    <div class="expirebtn expired">
                                                                     <span>{{value}}</span>
                                                                         <img src="{% static 'assets/images/svgs/clock.svg' %}">
                                                                         </div>
-                                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
-                                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
-                                                                    </div>
+                                                                        <img src="{% static 'assets/images/pngs/viewbutton.png' %}"
+                                                                        style = "pointer-events: none;opacity : 0.5;">
+                                                                        <img src="{% static 'assets/images/pngs/downloadbutton.png' %}"
+                                                                        style = "pointer-events: none;opacity : 0.5;">
+                                                                    
                                                                     {% else %}
-                                                                        
+                                                                    <div class="expirebtn ">
                                                                     <span>{{ value }}</span>
                                                                     <img src="{% static 'assets/images/svgs/clock.svg' %}">
                                                                     </div>
                                                                     <img src="{% static 'assets/images/pngs/viewbutton.png' %}">
+                                                                    <a href="{% url 'download_data' data=data %}">
                                                                     <img src="{% static 'assets/images/pngs/downloadbutton.png' %}">
+                                                                    </a>
                                                                     {% endif %}
                                                                         
                                                                     {% endif %}
@@ -998,6 +1003,16 @@
 
 </body>
 <script>
+    var total_files_count = 0;
+    {% for category in category_data %}
+        
+        
+        div = document.querySelectorAll(".{{category}}");
+        total_files_count+=div.length
+        span = document.querySelector("#file-count-{{category}}-span");
+        span.innerHTML = div.length+" files";
+    {% endfor %}
+    document.querySelector("#file-count-all-span").innerHTML = total_files_count + " files";
     function set_visible(category) {
         category_elements = document.getElementsByClassName(category);
         all_elements = document.getElementsByClassName('legenditem');

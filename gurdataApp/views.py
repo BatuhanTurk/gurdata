@@ -24,7 +24,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from django.db import IntegrityError
-
+from django.http import HttpResponse
 
 def get_user_data_by_id(user_id):
     user_data = UserGurdata.objects.filter(user_id=user_id)
@@ -550,3 +550,18 @@ def buy_data(request):
             
     return redirect("files")
 
+def download_data(request, data):
+    data_ = DataGurdata.objects.filter(data_name = data)
+    data_download = DataDownloadGurdata.objects.filter(user_id = request.session["user_id"],data_id = data_[0])
+    date = (data_download[0].download_datatime + timedelta(minutes = data_download[0].download_time_minute))
+    remaining_time =date - timezone.now()
+    if (remaining_time.days>=0):
+        file_path = data_[0].data_path+data_[0].data_name+".csv"
+        with open(file_path, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='application/octet-stream')
+            response['Content-Disposition'] = f'attachment; filename="GURDATA_{data_[0].data_name}"'
+            return response
+    else:
+        pass
+    
+    return redirect("files")

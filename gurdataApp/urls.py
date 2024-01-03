@@ -21,4 +21,5 @@ urlpatterns = [
     path("sss/", views.sss, name='sss'),
     path('category/<str:category>/', views.category_page, name='category_page'),
     path("buydata",views.buy_data, name='buydata'),
+    path('download_data/<str:data>/', views.download_data, name='download_data'),
 ]
