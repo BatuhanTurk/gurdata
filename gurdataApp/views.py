@@ -556,7 +556,7 @@ def download_data(request, data):
     date = (data_download[0].download_datatime + timedelta(minutes = data_download[0].download_time_minute))
     remaining_time =date - timezone.now()
     if (remaining_time.days>=0):
-        file_path = data_[0].data_path+data_[0].data_name+".csv"
+        file_path = data_[0].data_path+data_[0].data_name
         with open(file_path, 'rb') as file:
             response = HttpResponse(file.read(), content_type='application/octet-stream')
             response['Content-Disposition'] = f'attachment; filename="GURDATA_{data_[0].data_name}"'
