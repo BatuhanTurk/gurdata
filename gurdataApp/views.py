@@ -99,7 +99,7 @@ def login(request):
                     request.session["user_id"] = user.user_id
                     request.session["message_type"] = "success"
                     request.session["message"] = "Giriş Başarılı"
-                    return redirect("home")
+                    return redirect("dashboard")
                 else:
                     request.session["email"] = email
 
@@ -171,7 +171,7 @@ def register(request):
     request.session["message"] = ""
     return render(
         request,
-        "0_register.html",
+        "bakimda.html",
         {"form": form, "message_type": message_type, "message": message},
     )
 
