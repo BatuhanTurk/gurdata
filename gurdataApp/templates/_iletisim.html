@@ -223,13 +223,15 @@
                             </li> -->
                             {% for category in category_data %}
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'category_page' category=category %}">
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{% url 'category_page' category=category %}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
                                         fill="none">
                                         <path
-                                            d="M10.3125 1.375C5.38721 1.375 1.375 5.38721 1.375 10.3125C1.375 15.2378 5.38721 19.25 10.3125 19.25C15.2378 19.25 19.25 15.2378 19.25 10.3125C19.25 5.38721 15.2378 1.375 10.3125 1.375ZM9.625 2.78223V10.5972L15.1519 16.124C13.8413 17.2144 12.1548 17.875 10.3125 17.875C6.12842 17.875 2.75 14.4966 2.75 10.3125C2.75 6.35938 5.76318 3.13135 9.625 2.78223ZM11 2.78223C14.6309 3.10986 17.5151 5.99414 17.8374 9.625H11V2.78223ZM11.9722 11H17.8374C17.6978 12.5737 17.0801 14.0078 16.124 15.1519L11.9722 11Z"
+                                            d="{{category.category_svg}}"
                                             fill="" />
                                     </svg>
+
                                     <span class="side-menu__label">{{category}}</span>
                                 </a>
                             </li>

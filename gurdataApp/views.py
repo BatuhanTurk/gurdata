@@ -287,7 +287,7 @@ def account(request):
     user_id = request.session["user_id"]
     user = UserGurdata.objects.get(user_id=user_id)
     form = UserProfileForm(request.POST, user=user)
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     if request.method == "POST":
         if form.is_valid():
             user_name = request.POST["user_name"]
@@ -385,7 +385,7 @@ def support2(request):
 
 def dashboard(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     return render(
         request,
         "_dashboard.html",
@@ -394,12 +394,13 @@ def dashboard(request):
 
 def files(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     existing_data = user_data.user_data.all()
     download_data = DataDownloadGurdata.objects.filter(user_id = user_data)
     days_left_dict = {}
     for data in download_data:
-        new_download_datatime = (data.download_datatime + timedelta(minutes = data.download_time_minute))
+        data_minute = DataGurdata.objects.filter(data_name = data.data_id)[0].data_time_minute
+        new_download_datatime = (data.download_datatime + timedelta(minutes = data_minute))
         remaining_time =new_download_datatime - timezone.now()
         day = remaining_time.days
         hours, remainder = divmod(remaining_time.seconds, 3600)
@@ -409,6 +410,7 @@ def files(request):
             formatted_time = "Süresi Doldu"
         else:
             formatted_time = "{:02} gün {:02} saat {:02} dakika Kaldı.".format(day,hours, minutes)
+            
         days_left_dict[str(data.data_id)] = formatted_time
 
     
@@ -421,7 +423,7 @@ def files(request):
 
 def pre_owned(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     return render(
         request,
         "_ikinci-el.html",
@@ -432,7 +434,7 @@ def pre_owned(request):
 def contact(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     form = ContactForm2(request.POST)
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     if request.method == "POST":
         contact = ContactModel.objects.create(
             name=user_data.user_name,
@@ -467,7 +469,7 @@ def contact(request):
 
 def payment_methods(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     return render(
         request, "_odeme.html", {"user_data": user_data, "category_data": category_data}
     )
@@ -475,7 +477,7 @@ def payment_methods(request):
 
 def sss(request):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
-    category_data = DataCategoryGurdata.objects.all()
+    category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     return render(
         request, "_sss.html", {"user_data": user_data, "category_data": category_data}
     )
@@ -484,9 +486,9 @@ def sss(request):
 def category_page(request, category):
     user_data = UserGurdata.objects.get(user_id=request.session["user_id"])
     category_data = DataCategoryGurdata.objects.filter(category_name=category)
-    all_category_data = DataCategoryGurdata.objects.all()
+    all_category_data = DataCategoryGurdata.objects.all().order_by('category_name')
     all_data = DataGurdata.objects.filter(category_id=category_data[0].category_id)
-
+    
     data_dict = {
         "name": set(),
         "description": set(),
@@ -539,7 +541,6 @@ def buy_data(request):
                         data_id=filtered_data,
                         user_id=user_data,
                         download_datatime=timezone.now(),
-                        download_time_minute=5000,
                         data_active=1,
                     )
                     download_data.save()
@@ -553,7 +554,7 @@ def buy_data(request):
 def download_data(request, data):
     data_ = DataGurdata.objects.filter(data_name = data)
     data_download = DataDownloadGurdata.objects.filter(user_id = request.session["user_id"],data_id = data_[0])
-    date = (data_download[0].download_datatime + timedelta(minutes = data_download[0].download_time_minute))
+    date = (data_download[0].download_datatime + timedelta(minutes = data_[0].data_time_minute))
     remaining_time =date - timezone.now()
     if (remaining_time.days>=0):
         file_path = data_[0].data_path+data_[0].data_name
