@@ -177,8 +177,8 @@ def register(request):
 
 
 def send_email(email, subject, content):
-    mail_from = "Ekrem Gurdal <ekremgurdal@gmail.com>"
-    mail_to = f"Ekrem Gurdal <{email}>"
+    mail_from = "#"
+    mail_to = f"#"
 
     msg = MIMEMultipart()
     msg["From"] = mail_from
@@ -192,7 +192,7 @@ def send_email(email, subject, content):
         server.ehlo()
         server.login(
             "apikey",
-            "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",
+            "#",
         )
         server.sendmail(mail_from, mail_to, msg.as_string())
         server.close()
